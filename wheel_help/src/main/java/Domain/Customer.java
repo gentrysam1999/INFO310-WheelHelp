@@ -9,77 +9,77 @@ package Domain;
  *
  * @author shika823
  */
-public class User {
+public class Customer {
 	
-	private int userId;
-	private String userUsername;
-	private String userPassword;
-	private String ownerEmail;
-	private String userFirstName;
-	private String userSurname;
+	private int customerId;
+	private String customerUsername;
+	private String customerPassword;
+	private String customerEmail;
+	private String customerFirstName;
+	private String customerSurname;
 	private String phoneNumber;
 
-	public User() {
+	public Customer() {
 	}
 
-	public User(int userId, String userUsername, String userPassword, String ownerEmail, String userFirstName, String userSurname, String phoneNumber) {
-		this.userId = userId;
-		this.userUsername = userUsername;
-		this.userPassword = userPassword;
-		this.ownerEmail = ownerEmail;
-		this.userFirstName = userFirstName;
-		this.userSurname = userSurname;
+	public Customer(int customerId, String customerUsername, String customerPassword, String customerEmail, String customerFirstName, String customerSurname, String phoneNumber) {
+		this.customerId = customerId;
+		this.customerUsername = customerUsername;
+		this.customerPassword = customerPassword;
+		this.customerEmail = customerEmail;
+		this.customerFirstName = customerFirstName;
+		this.customerSurname = customerSurname;
 		this.phoneNumber = phoneNumber;
 	}
 	
 	
 
-	public int getUserId() {
-		return userId;
+	public int getcustomerId() {
+		return customerId;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setcustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 
-	public String getUserUsername() {
-		return userUsername;
+	public String getcustomercustomername() {
+		return customerUsername;
 	}
 
-	public void setUserUsername(String userUsername) {
-		this.userUsername = userUsername;
+	public void setcustomercustomername(String customercustomername) {
+		this.customerUsername = customercustomername;
 	}
 
-	public String getUserPassword() {
-		return userPassword;
+	public String getcustomerPassword() {
+		return customerPassword;
 	}
 
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
+	public void setcustomerPassword(String customerPassword) {
+		this.customerPassword = customerPassword;
 	}
 
-	public String getOwnerEmail() {
-		return ownerEmail;
+	public String getcustomerEmail() {
+		return customerEmail;
 	}
 
-	public void setOwnerEmail(String ownerEmail) {
-		this.ownerEmail = ownerEmail;
+	public void setcustomerEmail(String customerEmail) {
+		this.customerEmail = customerEmail;
 	}
 
-	public String getUserFirstName() {
-		return userFirstName;
+	public String getcustomerFirstName() {
+		return customerFirstName;
 	}
 
-	public void setUserFirstName(String userFirstName) {
-		this.userFirstName = userFirstName;
+	public void setcustomerFirstName(String customerFirstName) {
+		this.customerFirstName = customerFirstName;
 	}
 
-	public String getUserSurname() {
-		return userSurname;
+	public String getcustomerSurname() {
+		return customerSurname;
 	}
 
-	public void setUserSurname(String userSurname) {
-		this.userSurname = userSurname;
+	public void setcustomerSurname(String customerSurname) {
+		this.customerSurname = customerSurname;
 	}
 
 	public String getPhoneNumber() {
@@ -92,7 +92,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User{" + "userId=" + userId + ", userUsername=" + userUsername + ", userPassword=" + userPassword + ", ownerEmail=" + ownerEmail + ", userFirstName=" + userFirstName + ", userSurname=" + userSurname + ", phoneNumber=" + phoneNumber + '}';
+		return "customer{" + "customerId=" + customerId + ", customerUsername=" + customerUsername + ", customerPassword=" + customerPassword + ", customerEmail=" + customerEmail + ", customerFirstName=" + customerFirstName + ", customerSurname=" + customerSurname + ", phoneNumber=" + phoneNumber + '}';
 	}
 	
 	
