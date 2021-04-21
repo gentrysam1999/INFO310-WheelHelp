@@ -26,3 +26,8 @@ CREATE TABLE Car (
     PRIMARY KEY (Car_ID)
 );
 
+CREATE TABLE Transaction (
+    Transaction_ID INTEGER,
+    Transaction_Date DATE,
+    total DECIMAL(7,2)
+);
