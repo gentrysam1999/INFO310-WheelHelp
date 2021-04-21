@@ -5,6 +5,8 @@
  */
 package Domain;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author boybi215
@@ -35,6 +37,10 @@ public class Transaction {
 
 	public void setTransactionDate(int transactionDate) {
 		this.transactionDate = transactionDate;
+	}
+	
+	public BigDecimal getTransactionTotal(){
+	return null;
 	}
 
 	@Override

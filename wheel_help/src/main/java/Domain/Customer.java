@@ -42,12 +42,12 @@ public class Customer {
 		this.customerId = customerId;
 	}
 
-	public String getcustomercustomername() {
+	public String getcustomerUsername() {
 		return customerUsername;
 	}
 
-	public void setcustomercustomername(String customercustomername) {
-		this.customerUsername = customercustomername;
+	public void setcustomeUserrname(String customerUsername) {
+		this.customerUsername = customerUsername;
 	}
 
 	public String getcustomerPassword() {
