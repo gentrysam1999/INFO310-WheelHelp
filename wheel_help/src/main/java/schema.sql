@@ -51,4 +51,23 @@ CREATE TABLE Transaction (
 	 CONSTRAINT transaction_customerid_fk FOREIGN KEY (Customer_ID) REFERENCES Customer (Customer_ID)
 );
 
+INSERT INTO Customer (username, password, emailaddress, first_name, last_name, phone) 
+VALUES ('SUV', 'gahajja', '77.77', 'place',  '77.77', '0212458890');
+select * from customer
+
+INSERT INTO Car (Car_Type, SEAT_Number, hourly_charge, location) 
+VALUES ('SUV', '1', '77.77', 'place');
+select * from car
+
+INSERT INTO Owner (username, password, email) 
+VALUES ('SUV', 'ssssaa', 'djshd');
+select * from owner
+
+INSERT INTO Transaction (transaction_total) 
+VALUES ('44.44');
+SELECT * FROM TRANSACTION
+
+
+
+
 
