@@ -5,7 +5,7 @@
  */
 package Domain;
 
-import java.math.BigDecimal;
+import java.sql.Timestamp;
 
 /**
  *
@@ -14,13 +14,19 @@ import java.math.BigDecimal;
 public class Transaction {
 	private int transcactionID;
 	private int transactionDate;
+	private Timestamp pickupTime;
+	private Timestamp dropoffTime;
+	
+	
 
 	public Transaction() {
 	}
 
-	public Transaction(int transcactionID, int transactionDate) {
+	public Transaction(int transcactionID, int transactionDate, Timestamp pickupTime, Timestamp dropoffTime) {
 		this.transcactionID = transcactionID;
 		this.transactionDate = transactionDate;
+		this.pickupTime = pickupTime;
+		this.dropoffTime = dropoffTime;
 	}
 
 	public int getTranscactionID() {
@@ -38,15 +44,28 @@ public class Transaction {
 	public void setTransactionDate(int transactionDate) {
 		this.transactionDate = transactionDate;
 	}
-	
-	public BigDecimal getTransactionTotal(){
-	return null;
+
+	public Timestamp getPickupTime() {
+		return pickupTime;
+	}
+
+	public void setPickupTime(Timestamp pickupTime) {
+		this.pickupTime = pickupTime;
+	}
+
+	public Timestamp getDropoffTime() {
+		return dropoffTime;
+	}
+
+	public void setDropoffTime(Timestamp dropoffTime) {
+		this.dropoffTime = dropoffTime;
 	}
 
 	@Override
 	public String toString() {
-		return "Transaction{" + "transcactionID=" + transcactionID + ", transactionDate=" + transactionDate + '}';
+		return "Transaction{" + "transcactionID=" + transcactionID + ", transactionDate=" + transactionDate + ", pickupTime=" + pickupTime + ", dropoffTime=" + dropoffTime + '}';
 	}
+
 	
 	
 }
