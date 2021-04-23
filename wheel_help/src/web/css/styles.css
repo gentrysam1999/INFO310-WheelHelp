@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@700&display=swap');
+
+html {
+    /*font-family: Arial, Helvetica, sans-serif;*/
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 16px;
+    background-color: #f2f2f2; 
+}
+
+#welcome {
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+#nav1{
+    text-align: center;
+}
+
+a {
+    color: steelblue;
+    border: 2px solid black;
+    border-radius: 3px;
+    padding: 4px;
+    margin: 3px;
+    text-decoration: none;
+    font-size: 32px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+a:hover {
+    color: #f2f2f2;
+    background-color: steelblue;
+}
+
+#register-link {
+    font-size: 16px;
+}
+
+#register-link:hover {
+    background-color: #f2f2f2;
+    text-decoration: underline;
+}
+
+#register-link {
+    color: steelblue;
+    border: none;
+    border-radius: 0px;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+
+#header1 {
+    background-color: steelblue;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+#login, #accountdetails {
+    margin: 0 auto;
+    background-color: white;
+    width: 450px;
+    border-radius: 4px;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+}
+
+.registerForm, .loginForm{
+    text-align: right;
+}
+
+.registerInput, .loginInput {
+    width: 350px;
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+label {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.loginSubmit, .registerSubmit {
+    background-color: steelblue;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 7px;
+    color: #fff;
+    width: 80px;
+    margin-top: 5px;
+    margin-right: 185px;
+}
+
+.registerSubmit {
+    width: 110px;
+    margin-right: 170px;
+}
+
+h2 {
+    margin: 0;
+}

@@ -20,7 +20,7 @@ public class Car {
 	private String seatNumber;
 	private BigDecimal hourlyCharge;
 	private String location;
-	private Collection<String> daysAvailble;
+	private Collection<String> daysAvailable;
 
 	public Car() {
 	}
@@ -33,7 +33,7 @@ public class Car {
 		this.seatNumber = seatNumber;
 		this.hourlyCharge = hourlyCharge;
 		this.location = location;
-		this.daysAvailble = daysAvailble;
+		this.daysAvailable = daysAvailble;
 	}
 	
 	
@@ -78,17 +78,17 @@ public class Car {
 		this.location = location;
 	}
 
-	public Collection<String> getDaysAvailble() {
-		return daysAvailble;
+	public Collection<String> getDaysAvailable() {
+		return daysAvailable;
 	}
 
-	public void setDaysAvailble(Collection<String> daysAvailble) {
-		this.daysAvailble = daysAvailble;
+	public void setDaysAvailable(Collection<String> daysAvailble) {
+		this.daysAvailable = daysAvailble;
 	}
 
 	@Override
 	public String toString() {
-		return "Car{" + "carId=" + carId + ", carType=" + carType + ", seatNumber=" + seatNumber + ", hourlyCharge=" + hourlyCharge + ", location=" + location + ", daysAvailble=" + daysAvailble + '}';
+		return "Car{" + "carId=" + carId + ", carType=" + carType + ", seatNumber=" + seatNumber + ", hourlyCharge=" + hourlyCharge + ", location=" + location + ", daysAvailable=" + daysAvailable + '}';
 	}
 	
 	
