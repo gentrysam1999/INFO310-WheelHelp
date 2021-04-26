@@ -14,27 +14,36 @@ import java.util.Collection;
  */
 public class Car { 
 	
-	
+	private String carName;
 	private int carId;
 	private String carType;
 	private String seatNumber;
 	private BigDecimal hourlyCharge;
 	private String location;
-	private Collection<String> daysAvailable;
+	//private Collection<String> daysAvailable;
 
 	public Car() {
 	}
 	
 	
 
-	public Car(int carId, String carType, String seatNumber, BigDecimal hourlyCharge, String location, Collection<String> daysAvailble) {
+	public Car(String carName, int carId, String carType, String seatNumber, BigDecimal hourlyCharge, String location) {
+            this.carName = carName;
 		this.carId = carId;
 		this.carType = carType;
 		this.seatNumber = seatNumber;
 		this.hourlyCharge = hourlyCharge;
 		this.location = location;
-		this.daysAvailable = daysAvailble;
+		
 	}
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public void setCarName(String carName) {
+        this.carName = carName;
+    }
 	
 	
 
@@ -78,6 +87,7 @@ public class Car {
 		this.location = location;
 	}
 
+        /*
 	public Collection<String> getDaysAvailable() {
 		return daysAvailable;
 	}
@@ -85,11 +95,13 @@ public class Car {
 	public void setDaysAvailable(Collection<String> daysAvailble) {
 		this.daysAvailable = daysAvailble;
 	}
+*/
 
-	@Override
-	public String toString() {
-		return "Car{" + "carId=" + carId + ", carType=" + carType + ", seatNumber=" + seatNumber + ", hourlyCharge=" + hourlyCharge + ", location=" + location + ", daysAvailable=" + daysAvailable + '}';
-	}
+    @Override
+    public String toString() {
+        return "Car{" + "carName=" + carName + ", carId=" + carId + ", carType=" + carType + ", seatNumber=" + seatNumber + ", hourlyCharge=" + hourlyCharge + ", location=" + location + '}';
+    }
+
 	
 	
 	
