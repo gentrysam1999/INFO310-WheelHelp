@@ -44,7 +44,7 @@ CREATE TABLE Transaction (
     Transaction_ID INTEGER auto_increment,
 	 Car_ID INTEGER,
 	 Customer_ID INTEGER,
-    Transaction_Date TIMESTAMP,
+    Transaction_Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	 Transaction_Total DECIMAL(7,2),
 	 CONSTRAINT transaction_pk PRIMARY KEY (Transaction_ID),
 	 CONSTRAINT transaction_carid_fk FOREIGN KEY (Car_ID) REFERENCES Car (Car_ID),
