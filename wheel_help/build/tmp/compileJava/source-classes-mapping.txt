@@ -1,2 +1,10 @@
+Domain/Car.java
+ Domain.Car
 Main.java
  Main
+Domain/Customer.java
+ Domain.Customer
+Domain/owner.java
+ Domain.owner
+Domain/Transaction.java
+ Domain.Transaction
