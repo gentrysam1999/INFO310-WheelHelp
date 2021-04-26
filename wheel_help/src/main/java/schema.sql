@@ -56,7 +56,7 @@ INSERT INTO Customer (username, password, emailaddress, first_name, last_name, p
 VALUES ('SUV', 'gahajja', '77.77', 'place',  '77.77', '0212458890');
 select * from customer
 
-INSERT INTO Car (Car_Type, SEAT_Number, hourly_charge, location) 
+INSERT INTO Car (Car_ Name, Car_Type, SEAT_Number, hourly_charge, location) 
 VALUES ('2006 Ford Ranger', 'SUV', '1', '77.77', 'place');
 select * from car
 
