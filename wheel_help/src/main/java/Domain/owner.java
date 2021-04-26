@@ -9,28 +9,28 @@ package Domain;
  *
  * @author boybi215
  */
-public class owner {
-	private int ownerID;
+public class Owner {
+	private int OwnerID;
 	private String Username;
 	private String Password;
 	private String email;
 
-	public owner() {
+	public Owner() {
 	}
 
-	public owner(int ownerID, String Username, String Password, String email) {
-		this.ownerID = ownerID;
+	public Owner(int OwnerID, String Username, String Password, String email) {
+		this.OwnerID = OwnerID;
 		this.Username = Username;
 		this.Password = Password;
 		this.email = email;
 	}
 
 	public int getOwnerID() {
-		return ownerID;
+		return OwnerID;
 	}
 
-	public void setOwnerID(int ownerID) {
-		this.ownerID = ownerID;
+	public void setOwnerID(int OwnerID) {
+		this.OwnerID = OwnerID;
 	}
 
 	public String getUsername() {
@@ -59,7 +59,7 @@ public class owner {
 
 	@Override
 	public String toString() {
-		return "owner{" + "ownerID=" + ownerID + ", Username=" + Username + ", Password=" + Password + ", email=" + email + '}';
+		return "Owner{" + "OwnerID=" + OwnerID + ", Username=" + Username + ", Password=" + Password + ", email=" + email + '}';
 	}
 	
 	

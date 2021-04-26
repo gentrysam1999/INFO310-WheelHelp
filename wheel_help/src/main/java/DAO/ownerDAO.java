@@ -5,14 +5,14 @@
  */
 package DAO;
 
-import Domain.owner;
+import Domain.Owner;
 
 /**
  *
  * @author Karl Shipley
  */
-public interface ownerDAO {
+public interface OwnerDAO {
     public Boolean validateCredentials(String username, String password);
-    public void saveOwner(owner owner);
-    public owner getOwner(String username); 
+    public void saveOwner(Owner owner);
+    public Owner getOwner(String username); 
 }
