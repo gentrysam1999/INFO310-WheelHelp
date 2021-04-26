@@ -12,7 +12,7 @@ import Domain.owner;
  * @author Karl Shipley
  */
 public interface ownerDAO {
-       
+    public Boolean validateCredentials(String username, String password);
     public void saveOwner(owner owner);
     public owner getOwner(String username); 
 }
