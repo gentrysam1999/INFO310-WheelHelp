@@ -12,7 +12,7 @@ import Domain.Customer;
  * @author Karl Shipley
  */
 public interface customerDAO {
-    
+     public Boolean validateCredentials(String username, String password);
     public void saveCustomer(Customer customer);
     public Customer getCustomer(String username);
 }

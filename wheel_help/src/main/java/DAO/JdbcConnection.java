@@ -22,8 +22,6 @@ public class JdbcConnection {
    /* The default URI for windows users: */ 
    private static final String DEFAULT_URI = "jdbc:h2:tcp://localhost/~/test";
    
-   /* The Default URI for mac users: */ 
-   //private static final String DEFAULT_URI = "jdbc:h2:tcp://localhost/./test";
 
    private static JdbcConnectionPool pool;
 

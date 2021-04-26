@@ -27,7 +27,7 @@ public class CarJdbcDAO implements carDAO {
     public CarJdbcDAO() {
     }
 
-    //this may be wrong - check
+   
     public CarJdbcDAO(String uri) {
         this.url = uri;
     }
@@ -39,7 +39,7 @@ public class CarJdbcDAO implements carDAO {
         try (
                 Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
-             stmt.setString(1, car.getCarName());
+            stmt.setString(1, car.getCarName());
             stmt.setInt(2, car.getCarId());
             stmt.setString(3, car.getCarType());
             stmt.setString(4, car.getSeatNumber());
@@ -54,8 +54,8 @@ public class CarJdbcDAO implements carDAO {
     }
 
     @Override
-    public void removecar(Car car) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void removeCar(Car car) {
+        
         String sql = "delete from car where car_ID = ?";
 
         try (
@@ -70,13 +70,14 @@ public class CarJdbcDAO implements carDAO {
     }
 
     @Override
-    public Collection<Car> filterByType(String type) {
+    
+   public Collection<Car> filterByType(String carType){
         String sql = "select * from car where Type = ?";
-        System.out.println(type);
+        System.out.println(carType);
         try (
                 Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
-            stmt.setString(1, type);
+            stmt.setString(1, carType);
             ResultSet rs = stmt.executeQuery();
 
             ArrayList<Car> typeList = new ArrayList<>();
@@ -100,13 +101,13 @@ public class CarJdbcDAO implements carDAO {
     }
 
     @Override
-    public Collection<Car> filterBySeatNumber(String number) {
+    public Collection<Car> filterBySeatNumber(String seatNumber) {
         String sql = "select * from car where Seat_Number = ?";
-        System.out.println(number);
+        System.out.println(seatNumber);
         try (
                 Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
-            stmt.setString(1, number);
+            stmt.setString(1, seatNumber);
             ResultSet rs = stmt.executeQuery();
 
             ArrayList<Car> seatNumberList = new ArrayList<>();

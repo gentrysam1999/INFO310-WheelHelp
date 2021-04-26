@@ -14,15 +14,12 @@ import java.util.Collection;
  */
 public interface carDAO {
 	
-	Collection<Car> filterByType(String carType);
+	public Collection<Car> filterByType(String carType);
+	public Collection<Car> filterBySeatNumber(String seatNumber);
+	public void saveCar(Car car);
+         
 	
-	Collection<Car> filterBySeatNumber(String seatNumber);
-	
-	//Collection<Car> filterByRating(String carRating);
-	
-	void saveCar(Car car);
-	
-	void removeCar(Car car);
+	public void removeCar(Car car);
 
 	
 	
