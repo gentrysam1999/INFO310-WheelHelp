@@ -46,7 +46,7 @@ public class Customer {
 		return customerUsername;
 	}
 
-	public void setcustomeUserrname(String customerUsername) {
+	public void setcustomerUsername(String customerUsername) {
 		this.customerUsername = customerUsername;
 	}
 
