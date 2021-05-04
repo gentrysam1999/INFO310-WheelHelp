@@ -22,112 +22,146 @@ import java.util.List;
  */
 public class CarJdbcDAO implements CarDAO {
 
-    private String url = JdbcConnection.getDefaultConnectionUri();
+	private String url = JdbcConnection.getDefaultConnectionUri();
 
-    public CarJdbcDAO() {
-    }
+	public CarJdbcDAO() {
+	}
 
-   
-    public CarJdbcDAO(String uri) {
-        this.url = uri;
-    }
+	public CarJdbcDAO(String uri) {
+		this.url = uri;
+	}
 
-    @Override
-    public void saveCar(Car car) {
-        String sql = "insert into car (car_Name, car_ID, car_Type, Seat_Number, Hourly_Charge, Location) values (?, ?, ?, ?, ?, ?)";
+	@Override
+	public void saveCar(Car car) {
+		String sql = "insert into car (car_Name, car_ID, car_Type, Seat_Number, Hourly_Charge, Location) values (?, ?, ?, ?, ?, ?)";
 
-        try (
-                Connection dbCon = JdbcConnection.getConnection(url);
-                PreparedStatement stmt = dbCon.prepareStatement(sql);) {
-            stmt.setString(1, car.getCarName());
-            stmt.setInt(2, car.getCarId());
-            stmt.setString(3, car.getCarType());
-            stmt.setString(4, car.getSeatNumber());
-            stmt.setBigDecimal(5, car.getHourlyCharge());
-            stmt.setString(6, car.getLocation());
+		try (
+			Connection dbCon = JdbcConnection.getConnection(url);
+			PreparedStatement stmt = dbCon.prepareStatement(sql);) {
+			stmt.setString(1, car.getCarName());
+			stmt.setInt(2, car.getCarId());
+			stmt.setString(3, car.getCarType());
+			stmt.setString(4, car.getSeatNumber());
+			stmt.setBigDecimal(5, car.getHourlyCharge());
+			stmt.setString(6, car.getLocation());
 
-            stmt.executeUpdate();
+			stmt.executeUpdate();
 
-        } catch (SQLException ex) {
-            throw new DAOException(ex.getMessage(), ex);
-        }
-    }
+		} catch (SQLException ex) {
+			throw new DAOException(ex.getMessage(), ex);
+		}
+	}
 
-    @Override
-    public void removeCar(Car car) {
-        
-        String sql = "delete from car where car_ID = ?";
+	@Override
+	public Collection<Car> getCar() {
+		
 
-        try (
-                Connection dbCon = JdbcConnection.getConnection(url);
-                PreparedStatement stmt = dbCon.prepareStatement(sql);) {
-            stmt.setInt(1, car.getCarId());
-            stmt.executeUpdate();
+		String sql = "select * from Car";
+		try (
+			Connection dbCon = JdbcConnection.getConnection(url); //get connection to db
+			PreparedStatement stmt = dbCon.prepareStatement(sql); //create stmt
+			) {
+			ResultSet rs = stmt.executeQuery(); 
 
-        } catch (SQLException ex) {
-            throw new DAOException(ex.getMessage(), ex);
-        }
-    }
+			List<Car> cars = new ArrayList<>(); 
 
-    @Override
-    
-   public Collection<Car> filterByType(String carType){
-        String sql = "select * from car where Type = ?";
-        System.out.println(carType);
-        try (
-                Connection dbCon = JdbcConnection.getConnection(url);
-                PreparedStatement stmt = dbCon.prepareStatement(sql);) {
-            stmt.setString(1, carType);
-            ResultSet rs = stmt.executeQuery();
+			//iterate through query results
+			while (rs.next()) {
+				Car car = new Car(
+					rs.getString("Car_Name"),
+					rs.getInt("Car_Id"),
+					rs.getString("Car_Type"),
+					rs.getString("Seat_Number"),
+					rs.getBigDecimal("Hourly_Charge"),
+					rs.getString("Location")
+				);
 
-            ArrayList<Car> typeList = new ArrayList<>();
+				cars.add(car); 
 
-            while (rs.next()) {
-                Car car = new Car(
-                        rs.getString("car_Name"),
-                       
-                        rs.getString("car_Type"),
-                        rs.getString("Seat_Number"),
-                        rs.getBigDecimal("Hourly_Charge"),
-                        rs.getString("Location")
-                );
-                System.out.println(car);
-                typeList.add(car);
-            }
-            return typeList;
-        } catch (SQLException ex) {
-            throw new DAOException(ex.getMessage(), ex);
-        }
-    }
+			}
 
-    @Override
-    public Collection<Car> filterBySeatNumber(String seatNumber) {
-        String sql = "select * from car where Seat_Number = ?";
-        System.out.println(seatNumber);
-        try (
-                Connection dbCon = JdbcConnection.getConnection(url);
-                PreparedStatement stmt = dbCon.prepareStatement(sql);) {
-            stmt.setString(1, seatNumber);
-            ResultSet rs = stmt.executeQuery();
+			return cars;
 
-            ArrayList<Car> seatNumberList = new ArrayList<>();
+		} catch (SQLException ex) {
+			throw new DAOException(ex.getMessage(), ex);
+		}
+	}
 
-            while (rs.next()) {
-               Car car = new Car(
-                       rs.getString("car_Name"),
-                        
-                        rs.getString("car_Type"),                        
-                        rs.getString("Seat_Number"),
-                        rs.getBigDecimal("Hourly_Charge"),
-                        rs.getString("Location")
-                );
-                System.out.println(car);
-                seatNumberList.add(car);
-            }
-            return seatNumberList;
-        } catch (SQLException ex) {
-            throw new DAOException(ex.getMessage(), ex);
-        }
-    }
+	@Override
+	public void removeCar(Car car) {
+
+		String sql = "delete from car where car_ID = ?";
+
+		try (
+			Connection dbCon = JdbcConnection.getConnection(url);
+			PreparedStatement stmt = dbCon.prepareStatement(sql);) {
+			stmt.setInt(1, car.getCarId());
+			stmt.executeUpdate();
+
+		} catch (SQLException ex) {
+			throw new DAOException(ex.getMessage(), ex);
+		}
+	}
+
+	@Override
+
+	public Collection<Car> filterByType(String carType) {
+		String sql = "select * from car where Type = ?";
+		System.out.println(carType);
+		try (
+			Connection dbCon = JdbcConnection.getConnection(url);
+			PreparedStatement stmt = dbCon.prepareStatement(sql);) {
+			stmt.setString(1, carType);
+			ResultSet rs = stmt.executeQuery();
+
+			ArrayList<Car> typeList = new ArrayList<>();
+
+			while (rs.next()) {
+				Car car = new Car(
+					rs.getString("car_Name"),
+					rs.getInt("Car_id"),
+					rs.getString("car_Type"),
+					rs.getString("Seat_Number"),
+					rs.getBigDecimal("Hourly_Charge"),
+					rs.getString("Location")
+				);
+				System.out.println(car);
+				typeList.add(car);
+			}
+			return typeList;
+		} catch (SQLException ex) {
+			throw new DAOException(ex.getMessage(), ex);
+		}
+	}
+
+	@Override
+	public Collection<Car> filterBySeatNumber(String seatNumber) {
+		String sql = "select * from car where Seat_Number = ?";
+		System.out.println(seatNumber);
+		try (
+			Connection dbCon = JdbcConnection.getConnection(url);
+			PreparedStatement stmt = dbCon.prepareStatement(sql);) {
+			stmt.setString(1, seatNumber);
+			ResultSet rs = stmt.executeQuery();
+
+			ArrayList<Car> seatNumberList = new ArrayList<>();
+
+			while (rs.next()) {
+				Car car = new Car(
+					rs.getString("car_Name"),
+					rs.getInt("Car_id"),
+					rs.getString("car_Type"),
+					rs.getString("Seat_Number"),
+					rs.getBigDecimal("Hourly_Charge"),
+					rs.getString("Location")
+				);
+				System.out.println(car);
+				seatNumberList.add(car);
+			}
+			return seatNumberList;
+		} catch (SQLException ex) {
+			throw new DAOException(ex.getMessage(), ex);
+		}
+	}
 
 }
