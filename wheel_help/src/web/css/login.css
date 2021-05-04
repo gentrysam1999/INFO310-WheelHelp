@@ -24,11 +24,11 @@ body{
     margin-top: 50px;
     background-color:rgba(162, 225, 255);
     width: 500px;
-    height: 200px;
+    height: 250px;
     text-align: center;
 }
 
-.innerContainer button{
+.innerContainer button, #signInBttn{
     display:inline-block;
     padding:0.46em 1.6em;
     border:0.1em solid #000000;
@@ -45,10 +45,9 @@ body{
     transition: all 0.15s;
     font-size: 15px;
     width: 200px;
-
     }
 
-.innerContainer button:hover{
+.innerContainer button:hover, #signInBttn:hover{
     text-shadow: 0 0 2em rgba(255,255,255,1);
     border-color:#FFFFFF;
     }
@@ -58,5 +57,14 @@ body{
     margin:0.4em auto;
         }
     }
-        
+
+#signInBttn{
+    margin-top: 20px;
+}
+
+form input{
+    width: 50%;
+    text-align: center;
+    font-size: 15px;
+}
 
