@@ -1,0 +1,24 @@
+body{
+    background-image: none;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+
+
+}
+
+.container div{
+    width: 500px;
+    height: 300px;
+    text-align: center;
+    background-color:rgba(162, 225, 255);
+}
+
+form{
+
+}
+
+
