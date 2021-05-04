@@ -12,7 +12,7 @@ import java.util.Collection;
  *
  * @author shika823
  */
-public interface carDAO {
+public interface CarDAO {
 	
 	public Collection<Car> filterByType(String carType);
 	public Collection<Car> filterBySeatNumber(String seatNumber);

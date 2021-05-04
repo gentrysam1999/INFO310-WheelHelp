@@ -20,7 +20,7 @@ import java.util.List;
  *
  * @author jamespettitt
  */
-public class CarJdbcDAO implements carDAO {
+public class CarJdbcDAO implements CarDAO {
 
     private String url = JdbcConnection.getDefaultConnectionUri();
 
@@ -85,7 +85,7 @@ public class CarJdbcDAO implements carDAO {
             while (rs.next()) {
                 Car car = new Car(
                         rs.getString("car_Name"),
-                        rs.getInt("car_ID"),
+                       
                         rs.getString("car_Type"),
                         rs.getString("Seat_Number"),
                         rs.getBigDecimal("Hourly_Charge"),
@@ -115,7 +115,7 @@ public class CarJdbcDAO implements carDAO {
             while (rs.next()) {
                Car car = new Car(
                        rs.getString("car_Name"),
-                        rs.getInt("car_ID"),
+                        
                         rs.getString("car_Type"),                        
                         rs.getString("Seat_Number"),
                         rs.getBigDecimal("Hourly_Charge"),
