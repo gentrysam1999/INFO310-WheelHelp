@@ -17,6 +17,7 @@ public interface CarDAO {
 	public Collection<Car> filterByType(String carType);
 	public Collection<Car> filterBySeatNumber(String seatNumber);
 	public void saveCar(Car car);
+	public Collection<Car> getCar();
          
 	
 	public void removeCar(Car car);
