@@ -14,7 +14,7 @@ import java.sql.SQLException;
  *
  * @author shika823
  */
-public class TransactionJdbcDAO implements transactionDAO{
+public class TransactionJdbcDAO implements TransactionDAO{
 	
 	private final String url = JdbcConnection.getDefaultConnectionUri();
 

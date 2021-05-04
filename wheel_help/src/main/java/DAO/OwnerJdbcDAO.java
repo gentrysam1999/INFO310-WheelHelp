@@ -15,7 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class OwnerJdbcDAO implements ownerDAO {
+public class OwnerJdbcDAO implements OwnerDAO {
 
     private String url = JdbcConnection.getDefaultConnectionUri();
 

@@ -5,14 +5,20 @@
  */
 package DAO;
 
-import Domain.Transaction;
+import Domain.Owner;
 
 /**
  *
  * @author shika823
  */
-public interface transactionDAO {
-	
-		void save(Transaction tran);
-	
+public interface OwnerDAO {
+
+
+
+
+    public Boolean validateCredentials(String username, String password);
+    public void saveOwner(Owner owner);
+    public Owner getOwner(String username); 
 }
+
+

@@ -6,7 +6,7 @@
 package Test;
 
 import DAO.CarJdbcDAO;
-import DAO.carDAO;
+import DAO.CarDAO;
 import Domain.Car;
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -21,7 +21,7 @@ import  org.junit.jupiter.api.Assertions;
  */
 public class JDBCDAOTest {
 	
-	private carDAO dao = new CarJdbcDAO("jdbc:h2:mem:tests;INIT=runscript from 'src/main/java/schema.sql'");
+	private CarDAO dao = new CarJdbcDAO("jdbc:h2:mem:tests;INIT=runscript from 'src/main/java/schema.sql'");
 	
 	private  Car car1;
 	
