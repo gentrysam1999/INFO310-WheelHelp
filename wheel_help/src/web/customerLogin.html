@@ -18,18 +18,22 @@
                 <li><a href="index.html">Home</href></a></li>
             </ul>
         </nav>
+        <section id="header">
+            <h1>Customer Login</h1>
+        </section
+        >
         <section class="container">
             <div class="innerContainer">
                 <h2>Account Details</h2>
-                <form class="loginForm">
+                <form class="loginForm" action="customerHome.html">
                     <label for="username">Username:</label>
                     <br>    
-                    <input class="loginInput" type="text" name="username" placeholder="Username" required><br>
+                    <input class="loginInput" type="text" name="username" required><br>
                     <label for="password">Password:</label>
                     <br>
-                    <input class="loginInput" type="password" name="password" placeholder="********" required><br>
+                    <input class="loginInput" type="password" name="password" required><br>
                     
-                    <input class="loginSubmit" type="submit" name="submit" value="Sign In">
+                    <input class="loginSubmit" id="signInBttn" type="submit" name="submit" value="Sign In" onclick="window.location.href='customerHome.html'">
                 </form>
             </div>
         </section>
