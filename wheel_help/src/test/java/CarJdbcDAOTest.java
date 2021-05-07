@@ -46,7 +46,7 @@ public class CarJdbcDAOTest {
 			car1 = new Car("2006 Ford Mondeo", "Hatchnack", "1", new BigDecimal("1.00"), "30 Dundas Street");
 			car2 = new Car("2007 Honda Civic", "Hatchback", "1", new BigDecimal("5.00"), "301 Great King Street");
 			car3 = new Car("2001 Toyota Prado", "4x4", "1", new BigDecimal("4.00"), "30  duke Street");
-
+			dao.saveCar(car1);
 			dao.saveCar(car2);
 
 		}
