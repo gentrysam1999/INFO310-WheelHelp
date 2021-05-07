@@ -1,56 +1,45 @@
-apply plugin: 'java'
-apply plugin: 'jacoco'
-apply plugin: 'application'
-
-
-mainClassName = '.Main'
+plugins {
+   id 'application'
+   id 'jacoco'
+}
 
 repositories {
-    jcenter()
-	
-    maven { url 'http://repo1.maven.org/maven2' }
-	 
+   jcenter()
 }
 
 dependencies {
-    def junitVer = '5.6.2'
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junitVer
-    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitVer
-	 compile 'org.junit.jupiter:junit-jupiter:5.6.2'
-    
-	 
-
-	testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
-	testImplementation 'org.hamcrest:hamcrest-library:2.2'
-	implementation 'org.hamcrest:hamcrest:2.2'
-
-	
-	  testCompile group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
+   def junitVer = '5.6.2'
+	//imp0lementation grou:
+	//?https://mvnrepository.com/artifact/net.sf.oval/oval
+compile group: 'net.sf.oval', name: 'oval', version: '2.1.6'
+testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.+'
+testImplementation group: 'org.assertj', name: 'assertj-swing-junit', version: '3.+'
+	implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+   implementation group: 'com.google.guava', name: 'guava', version: '29.0-jre'
+   testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junitVer
+   testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitVer
+   testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+   testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
+	def joobyVer = '1.6.8'
+implementation group: 'org.jooby', name: 'jooby-netty', version: joobyVer
+implementation group: 'org.jooby', name: 'jooby-gson', version: joobyVer
    
-    implementation group: 'com.google.guava', name: 'guava', version: '29.0-jre'
-	 
-    implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
-	
-    // https://mvnrepository.com/artifact/net.sf.oval/oval
-    implementation group: 'net.sf.oval', name: 'oval', version: '2.1.6'
-        
-    testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.+'
-    testImplementation group: 'org.assertj', name: 'assertj-swing-junit', version: '3.+'
-
-    def joobyVer = '1.6.8'
-    implementation group: 'org.jooby', name: 'jooby-netty', version: joobyVer
-    implementation group: 'org.jooby', name: 'jooby-gson', version: joobyVer
 }
 
 test {
+   useJUnitPlatform()
+}
+
+tasks.test {
     useJUnitPlatform()
 }
 
 run {
-    standardInput = System.in
+   standardInput = System.in
 }
 
 mainClassName = 'Main'
+
 
 task createMissingSourceDirs {
    group = "Source Directories"
@@ -81,6 +70,7 @@ task deleteEmptySourceDirs {
       }
    }
 }
+
 sourceSets {
    web {
       resources {
