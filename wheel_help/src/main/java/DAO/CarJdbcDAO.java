@@ -95,7 +95,7 @@ public class CarJdbcDAO implements CarDAO {
 		try (
 			Connection dbCon = JdbcConnection.getConnection(url);
 			PreparedStatement stmt = dbCon.prepareStatement(sql);) {
-			stmt.setInt(1, car.getCarId());
+			stmt.setInt(1, car.getCarId()-2);
 			stmt.executeUpdate();
 
 		} catch (SQLException ex) {
