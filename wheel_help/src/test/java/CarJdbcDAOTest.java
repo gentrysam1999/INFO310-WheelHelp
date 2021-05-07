@@ -30,9 +30,9 @@ public class CarJdbcDAOTest {
 	 *
 	 * @author shika823
 	 */
-	public class JDBCDAOTest {
 
-		private CarDAO dao = new CarJdbcDAO("jdbc:h2:mem:tests;INIT=runscript from 'src/main/java/schema.sql'");
+
+		private CarDAO dao = new CarJdbcDAO("jdbc:h2:~/test;INIT=runscript from 'src/main/java/schema.sql'");
 
 		private Car car1;
 
@@ -81,4 +81,4 @@ public class CarJdbcDAOTest {
 		}
 	}
 
-}
+

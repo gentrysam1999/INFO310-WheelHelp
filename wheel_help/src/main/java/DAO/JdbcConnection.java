@@ -18,7 +18,7 @@ public class JdbcConnection {
    private static final String USERNAME = "sa";
    private static final String PASSWORD = "sa";
 
-   private static final Integer DB_PORT = 9092;
+   private static final Integer DB_PORT = 8082;
    
    /* The default URI for windows users: */ 
    private static final String DEFAULT_URI = "jdbc:h2:tcp://localhost/~/test";
