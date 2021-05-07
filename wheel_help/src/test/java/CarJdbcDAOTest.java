@@ -32,7 +32,7 @@ public class CarJdbcDAOTest {
 	 */
 
 
-		private CarDAO dao = new CarJdbcDAO("jdbc:h2:~/test;INIT=runscript from 'src/main/java/schema.sql'");
+		private CarDAO dao = new CarJdbcDAO("jdbc:h2:~/test;INIT=runscript from 'src/main/java/DAO/schema.sql'");
 
 		private Car car1;
 

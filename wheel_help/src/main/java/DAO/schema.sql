@@ -9,7 +9,7 @@
  */
 
 
-CREATE TABLE Customer (
+CREATE TABLE IF NOT EXISTS Customer (
 	 Customer_ID INTEGER auto_increment,
     Username VARCHAR(30),
     Password VARCHAR(30),
@@ -21,7 +21,7 @@ CREATE TABLE Customer (
 );
  
 
-CREATE TABLE Owner (
+CREATE TABLE IF NOT EXISTS Owner (
     Owner_ID INTEGER auto_increment,
     Username VARCHAR(30),
     Password VARCHAR(30),
@@ -30,7 +30,7 @@ CREATE TABLE Owner (
    
 );
  
-CREATE TABLE Car (
+CREATE TABLE IF NOT EXISTS Car (
     Car_ID INTEGER auto_increment,
     Car_NAME VARCHAR(50),
     Car_Type VARCHAR(40),
@@ -43,7 +43,7 @@ CREATE TABLE Car (
 );
 
  
-CREATE TABLE Transaction (
+CREATE TABLE IF NOT EXISTS Transaction (
     Transaction_ID INTEGER auto_increment,
 	 Car_ID INTEGER,
 	 Customer_ID INTEGER,
@@ -53,6 +53,8 @@ CREATE TABLE Transaction (
 	 CONSTRAINT transaction_carid_fk FOREIGN KEY (Car_ID) REFERENCES Car (Car_ID),
 	 CONSTRAINT transaction_customerid_fk FOREIGN KEY (Customer_ID) REFERENCES Customer (Customer_ID)
 );
+
+/*
 
 INSERT INTO Customer (username, password, emailaddress, first_name, last_name, phone) 
 VALUES ('SUV', 'gahajja', '77.77', 'place',  '77.77', '0212458890');
@@ -70,7 +72,7 @@ INSERT INTO Transaction (transaction_total)
 VALUES ('44.44');
 SELECT * FROM TRANSACTION
 
-
+*/
 
 
 
