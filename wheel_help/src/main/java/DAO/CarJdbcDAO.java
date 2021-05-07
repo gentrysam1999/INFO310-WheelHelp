@@ -33,17 +33,17 @@ public class CarJdbcDAO implements CarDAO {
 
 	@Override
 	public void saveCar(Car car) {
-		String sql = "insert into car (car_Name, car_ID, car_Type, Seat_Number, Hourly_Charge, Location) values (?, ?, ?, ?, ?, ?)";
+		String sql = "insert into car (car_Name, car_Type, Seat_Number, Hourly_Charge, Location) values (?, ?, ?, ?, ?)";
 
 		try (
 			Connection dbCon = JdbcConnection.getConnection(url);
 			PreparedStatement stmt = dbCon.prepareStatement(sql);) {
 			stmt.setString(1, car.getCarName());
-			stmt.setInt(2, car.getCarId());
-			stmt.setString(3, car.getCarType());
-			stmt.setString(4, car.getSeatNumber());
-			stmt.setBigDecimal(5, car.getHourlyCharge());
-			stmt.setString(6, car.getLocation());
+			//stmt.setInt(2, car.getCarId());
+			stmt.setString(2, car.getCarType());
+			stmt.setString(3, car.getSeatNumber());
+			stmt.setBigDecimal(4, car.getHourlyCharge());
+			stmt.setString(5, car.getLocation());
 
 			stmt.executeUpdate();
 
@@ -53,7 +53,7 @@ public class CarJdbcDAO implements CarDAO {
 	}
 
 	@Override
-	public Collection<Car> getCar() {
+	public Collection<Car> getCars() {
 		
 
 		String sql = "select * from Car";
