@@ -15,7 +15,7 @@ import java.util.Collection;
 public class Car { 
 	
 	private String carName;
-	private int carId;
+	private String carId;
 	private String carType;
 	private String seatNumber;
 	private BigDecimal hourlyCharge;
@@ -27,8 +27,8 @@ public class Car {
 	
 	
 
-	public Car(String carName, int carId, String carType, String seatNumber, BigDecimal hourlyCharge, String location) {
-            this.carName = carName;
+	public Car(String carId, String carName, String carType, String seatNumber, BigDecimal hourlyCharge, String location) {
+      this.carName = carName;
 		this.carId = carId;
 		this.carType = carType;
 		this.seatNumber = seatNumber;
@@ -58,11 +58,11 @@ public class Car {
 	
 	
 
-	public int getCarId() {
+	public String getCarId() {
 		return carId;
 	}
 
-	public void setCarId(int carId) {
+	public void setCarId(String carId) {
 		this.carId = carId;
 	}
 
