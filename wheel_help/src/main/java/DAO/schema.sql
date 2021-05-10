@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS Customer (
 );
  
 
-CREATE TABLE IF NOT EXISTS Owner (
+CREATE TABLE Owner (
     Owner_ID INTEGER auto_increment,
     Username VARCHAR(30),
     Password VARCHAR(30),
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS Owner (
    
 );
  
-CREATE TABLE IF NOT EXISTS Car (
+CREATE TABLE Car (
     Car_ID INTEGER auto_increment,
     Car_NAME VARCHAR(50),
     Car_Type VARCHAR(40),
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS Car (
 );
 
  
-CREATE TABLE IF NOT EXISTS Transaction (
+CREATE TABLE Transaction (
     Transaction_ID INTEGER auto_increment,
 	 Car_ID INTEGER,
 	 Customer_ID INTEGER,

@@ -33,17 +33,17 @@ public class CarJdbcDAO implements CarDAO {
 
 	@Override
 	public void saveCar(Car car) {
-		String sql = "insert into car (car_Name, car_Type, Seat_Number, Hourly_Charge, Location) values (?, ?, ?, ?, ?)";
+		String sql = "insert into car (car_id, car_Name, car_Type, Seat_Number, Hourly_Charge, Location) values (?, ?, ?, ?, ?, ?)";
 
 		try (
 			Connection dbCon = JdbcConnection.getConnection(url);
 			PreparedStatement stmt = dbCon.prepareStatement(sql);) {
-			stmt.setString(1, car.getCarName());
-			//stmt.setInt(2, car.getCarId());
-			stmt.setString(2, car.getCarType());
-			stmt.setString(3, car.getSeatNumber());
-			stmt.setBigDecimal(4, car.getHourlyCharge());
-			stmt.setString(5, car.getLocation());
+			stmt.setString(1, car.getCarId());
+			stmt.setString(2, car.getCarName());
+			stmt.setString(3, car.getCarType());
+			stmt.setString(4, car.getSeatNumber());
+			stmt.setBigDecimal(5, car.getHourlyCharge());
+			stmt.setString(6, car.getLocation());
 
 			stmt.executeUpdate();
 
@@ -68,8 +68,9 @@ public class CarJdbcDAO implements CarDAO {
 			//iterate through query results
 			while (rs.next()) {
 				Car car = new Car(
+					rs.getString("Car_Id"),
 					rs.getString("Car_Name"),
-					rs.getInt("Car_Id"),
+					
 					rs.getString("Car_Type"),
 					rs.getString("Seat_Number"),
 					rs.getBigDecimal("Hourly_Charge"),
@@ -95,7 +96,7 @@ public class CarJdbcDAO implements CarDAO {
 		try (
 			Connection dbCon = JdbcConnection.getConnection(url);
 			PreparedStatement stmt = dbCon.prepareStatement(sql);) {
-			stmt.setInt(1, car.getCarId()-2);
+			stmt.setString(1, car.getCarId());
 			stmt.executeUpdate();
 
 		} catch (SQLException ex) {
@@ -118,8 +119,9 @@ public class CarJdbcDAO implements CarDAO {
 
 			while (rs.next()) {
 				Car car = new Car(
+					rs.getString("Car_id"),
 					rs.getString("car_Name"),
-					rs.getInt("Car_id"),
+					
 					rs.getString("car_Type"),
 					rs.getString("Seat_Number"),
 					rs.getBigDecimal("Hourly_Charge"),
@@ -148,8 +150,9 @@ public class CarJdbcDAO implements CarDAO {
 
 			while (rs.next()) {
 				Car car = new Car(
+					rs.getString("Car_id"),
 					rs.getString("car_Name"),
-					rs.getInt("Car_id"),
+					
 					rs.getString("car_Type"),
 					rs.getString("Seat_Number"),
 					rs.getBigDecimal("Hourly_Charge"),
