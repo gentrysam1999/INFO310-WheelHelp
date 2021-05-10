@@ -13,7 +13,10 @@ DROP TABLE CAR
 DROP TABLE CUSTOMER
 DROP TABLE OWNER
 */
-CREATE TABLE IF NOT EXISTS Customer (
+
+
+
+CREATE TABLE  Customer (
 	 Customer_ID INTEGER auto_increment,
     Username VARCHAR(30),
     Password VARCHAR(30),
@@ -25,7 +28,7 @@ CREATE TABLE IF NOT EXISTS Customer (
 );
  
 
-CREATE TABLE IF NOT EXISTS Owner (
+CREATE TABLE  Owner (
     Owner_ID INTEGER auto_increment,
     Username VARCHAR(30),
     Password VARCHAR(30),
@@ -34,7 +37,7 @@ CREATE TABLE IF NOT EXISTS Owner (
    
 );
  
-CREATE TABLE IF NOT EXISTS Car (
+CREATE TABLE  Car (
     Car_ID VARCHAR(20),
     Car_NAME VARCHAR(50),
     Car_Type VARCHAR(40),
@@ -47,7 +50,7 @@ CREATE TABLE IF NOT EXISTS Car (
 );
 
  
-CREATE TABLE IF NOT EXISTS Transaction (
+CREATE TABLE  Transaction (
     Transaction_ID INTEGER auto_increment,
 	 Car_ID VARCHAR(20),
 	 Customer_ID INTEGER,
@@ -76,6 +79,8 @@ INSERT INTO Transaction (transaction_total)
 VALUES ('44.44');
 SELECT * FROM TRANSACTION
 
+
+DROP ALL OBJECTS DELETE FILES;
 */
 
 
