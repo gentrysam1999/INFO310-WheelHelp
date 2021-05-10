@@ -7,8 +7,12 @@
  * Author:  shika823
  * Created: 23 Apr 2021
  */
-
-
+/*
+DROP TABLE TRANSACTION
+DROP TABLE CAR
+DROP TABLE CUSTOMER
+DROP TABLE OWNER
+*/
 CREATE TABLE IF NOT EXISTS Customer (
 	 Customer_ID INTEGER auto_increment,
     Username VARCHAR(30),
@@ -21,7 +25,7 @@ CREATE TABLE IF NOT EXISTS Customer (
 );
  
 
-CREATE TABLE Owner (
+CREATE TABLE IF NOT EXISTS Owner (
     Owner_ID INTEGER auto_increment,
     Username VARCHAR(30),
     Password VARCHAR(30),
@@ -30,11 +34,11 @@ CREATE TABLE Owner (
    
 );
  
-CREATE TABLE Car (
-    Car_ID INTEGER auto_increment,
+CREATE TABLE IF NOT EXISTS Car (
+    Car_ID VARCHAR(20),
     Car_NAME VARCHAR(50),
     Car_Type VARCHAR(40),
-    Seat_Number INTEGER,
+    Seat_Number vARCHAR(20),
     Hourly_Charge DECIMAL(7,2),
     Location VARCHAR(70),
 	 owner_Id integer,
@@ -43,9 +47,9 @@ CREATE TABLE Car (
 );
 
  
-CREATE TABLE Transaction (
+CREATE TABLE IF NOT EXISTS Transaction (
     Transaction_ID INTEGER auto_increment,
-	 Car_ID INTEGER,
+	 Car_ID VARCHAR(20),
 	 Customer_ID INTEGER,
     Transaction_Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	 Transaction_Total DECIMAL(7,2),
