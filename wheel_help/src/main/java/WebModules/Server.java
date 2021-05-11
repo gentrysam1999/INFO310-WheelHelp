@@ -50,7 +50,7 @@ public class Server extends Jooby {
         port(8080);
         use(new Gzon());
         use(new OwnerModule(ownerDao));
-//        use(new CustomerModule(CustomerDao));
+        use(new CustomerModule(customerDao));
 //        use(new SaleModule(saleDao));
         use(new AssetModule());
 //
