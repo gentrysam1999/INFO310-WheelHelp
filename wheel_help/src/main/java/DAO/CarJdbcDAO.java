@@ -64,7 +64,7 @@ public class CarJdbcDAO implements CarDAO {
 			) {
 			ResultSet rs = stmt.executeQuery(); 
 
-			Collection<Car> cars = new ArrayList<>(); 
+			List<Car> carsList = new ArrayList<>(); 
 
 			//iterate through query results
 			while (rs.next()) {
@@ -82,11 +82,11 @@ public class CarJdbcDAO implements CarDAO {
                                                 Car car = new Car(carId, carName, carType, seatNumber, hourlyCharge, location);
                                                 
 
-				cars.add(car); 
+				carsList.add(car); 
 
 			}
 
-			return cars;
+			return carsList;
 
 		} catch (SQLException ex) {
 			throw new DAOException(ex.getMessage(), ex);
@@ -120,7 +120,7 @@ public class CarJdbcDAO implements CarDAO {
 			stmt.setString(1, carType);
 			ResultSet rs = stmt.executeQuery();
 
-			ArrayList<Car> typeList = new ArrayList<>();
+			List<Car> typeList = new ArrayList<>();
 
 			while (rs.next()) {
 				Car car = new Car(

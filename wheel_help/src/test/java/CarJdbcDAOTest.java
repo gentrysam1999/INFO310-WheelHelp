@@ -9,20 +9,19 @@ import DAO.CarDAO;
 import DAO.CarJdbcDAO;
 import Domain.Car;
 import java.math.BigDecimal;
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.CoreMatchers.is;
+//import static org.hamcrest.CoreMatchers.hasItems;
+//import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.CoreMatchers.nullValue;
-//import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.hasItems;
+//import static org.hamcrest.Matchers.hasItems;
+//import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.hasSize;
+//import static org.hamcrest.core.IsCollectionContaining.hasItems;
 import static org.junit.Assert.assertThat;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
@@ -48,31 +47,13 @@ public class CarJdbcDAOTest {
 //	String carName, int carId, String carType, String seatNumber, BigDecimal hourlyCharge, String location) {
     @BeforeEach
     public void setUp() {
-        car1 = new Car();
-        car1.setCarId("12412");
-        car1.setCarName("Car sokmething");
-        car1.setCarType("A type");
-        car1.setSeatNumber("1");
-        car1.setHourlyCharge(new BigDecimal("4.00"));
-        car1.setLocation("30 Duke Street");
+        this.car1 = new Car("0917817", "Car sokmet", "Car smet", "1", new BigDecimal("4.00"), "26 Duke street");
 
-        car2 = new Car();
-        car2.setCarId("12902");
-        car2.setCarName("Car sething");
-        car2.setCarType("A tyjksspe");
-        car2.setSeatNumber("2");
-        car2.setHourlyCharge(new BigDecimal("3.00"));
-        car2.setLocation("28 Duke Street");
+        this.car2 = new Car("00898297", "Car soet", "Caret", "5", new BigDecimal("6.00"), "26 Dundas street");
+
 //        
-//        car3 = new Car();
-//        car3.setCarId("1862");
-//        car3.setCarName("Car setng");
-//        car3.setCarType("yjksspe");
-//        car3.setSeatNumber("8");
-//        car3.setHourlyCharge(new BigDecimal("3.00"));
-//        car3.setLocation("98 Duke Street");
-        
-        
+        this.car3 = new Car("0936297", "Cat", "Caet", "7", new BigDecimal("3.00"), "2226 Dundas street");
+
         dao.saveCar(car1);
         dao.saveCar(car2);
 
@@ -88,17 +69,16 @@ public class CarJdbcDAOTest {
     public void testSaveCar() {
         //dao.saveCar(car3);
 
-        assertThat(dao.getCars(), hasItem(car1));
-        assertThat(dao.getCars(), hasItem(car2));
-        assertThat(dao.getCars(), hasItem(car3));
+        assertThat(dao.getCars(), hasItems(car1, car2));
+
         //dao.removeCar(car3);
 
     }
 
     @Test
     public void testGetCars() {
-        assertThat(dao.getCars(), hasItem(car1));
- 
+        assertThat(dao.getCars().extracting("carid").contains("0917817", "00898297"));
+
     }
 
     @Test
