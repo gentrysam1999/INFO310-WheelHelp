@@ -9,7 +9,9 @@ import DAO.CarDAO;
 import DAO.CarJdbcDAO;
 import Domain.Car;
 import java.math.BigDecimal;
+import java.util.Collection;
 import static org.hamcrest.CoreMatchers.hasItem;
+import static org.hamcrest.CoreMatchers.is;
 //import static org.hamcrest.CoreMatchers.hasItems;
 //import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.CoreMatchers.not;
@@ -67,17 +69,17 @@ public class CarJdbcDAOTest {
 
     @Test
     public void testSaveCar() {
-        //dao.saveCar(car3);
+        dao.saveCar(car3);
 
-        assertThat(dao.getCars(), hasItems(car1, car2));
+        assertThat(dao.getCars(), hasItems(car1, car2, car3));
 
-        //dao.removeCar(car3);
+        dao.removeCar(car3);
 
     }
 
     @Test
     public void testGetCars() {
-        assertThat(dao.getCars().extracting("carid").contains("0917817", "00898297"));
+        assertThat(dao.getCars(), hasItems(car1, car2));
 
     }
 
@@ -86,6 +88,21 @@ public class CarJdbcDAOTest {
         dao.removeCar(car1);
         assertThat(dao.getCars(), hasSize(1));
         assertThat(dao.getCars(), not(hasItem(car1)));
+    }
+    
+    @Test
+    public void testFilterByCarType() {
+        Collection<Car> filterType = dao.filterByType("Caret");
+
+        for (Car car : filterType) {
+
+            String type = car.getCarType();
+            assertThat(car.getCarType(), is(type));
+
+            assertThat(car.getCarType(), is(not("Caet")));
+
+        }
+
     }
 
 }
