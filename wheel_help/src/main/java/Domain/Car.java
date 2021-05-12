@@ -7,6 +7,7 @@ package Domain;
 
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.Objects;
 
 /**
  *
@@ -48,7 +49,24 @@ public class Car {
 		
 	}
 
-
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Car other = (Car) obj;
+        if (!Objects.equals(this.carId, other.carId)) {
+            return false;
+        }
+        return true;
+    }
+    
     public String getCarName() {
         return carName;
     }

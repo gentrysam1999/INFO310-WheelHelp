@@ -108,11 +108,37 @@ public class CarJdbcDAO implements CarDAO {
 			throw new DAOException(ex.getMessage(), ex);
 		}
 	}
+        
+           @Override
+    public Collection<String> getTypes() {
+        String sql = "select car_type from car ";
+
+        try (
+                 Connection dbCon = JdbcConnection.getConnection(url);  PreparedStatement stmt = dbCon.prepareStatement(sql);) {
+
+            ResultSet rs = stmt.executeQuery();
+
+            Collection<String> typesList = new HashSet<>();
+
+            while (rs.next()) {
+
+                String type = rs.getString("car_type");
+                typesList.add(type);
+            }
+
+            return typesList;
+
+        } catch (SQLException ex) {
+
+            throw new DAOException(ex.getMessage(), ex);
+        }
+
+    }
 
 	@Override
 
 	public Collection<Car> filterByType(String carType) {
-		String sql = "select * from car where Type = ?";
+		String sql = "select * from car where car_Type = ?";
 		System.out.println(carType);
 		try (
 			Connection dbCon = JdbcConnection.getConnection(url);
@@ -140,6 +166,32 @@ public class CarJdbcDAO implements CarDAO {
 			throw new DAOException(ex.getMessage(), ex);
 		}
 	}
+        
+                   @Override
+    public Collection<String> getSeatNumbers() {
+        String sql = "select seat_number from car ";
+
+        try (
+                 Connection dbCon = JdbcConnection.getConnection(url);  PreparedStatement stmt = dbCon.prepareStatement(sql);) {
+
+            ResultSet rs = stmt.executeQuery();
+
+            Collection<String> seatNumbers = new HashSet<>();
+
+            while (rs.next()) {
+
+                String seats = rs.getString("seat_number");
+                seatNumbers.add(seats);
+            }
+
+            return seatNumbers;
+
+        } catch (SQLException ex) {
+
+            throw new DAOException(ex.getMessage(), ex);
+        }
+
+    }
 
 	@Override
 	public Collection<Car> filterBySeatNumber(String seatNumber) {
