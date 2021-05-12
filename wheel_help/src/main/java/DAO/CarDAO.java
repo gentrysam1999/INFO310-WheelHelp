@@ -8,6 +8,7 @@ package DAO;
 import Domain.Car;
 import java.util.ArrayList;
 import java.util.Collection;
+import org.jooby.Route;
 
 /**
  *
@@ -22,6 +23,9 @@ public interface CarDAO {
          
 	
 	public void removeCar(Car car);
+
+Collection<String> getTypes();
+Collection<String> getSeatNumbers();
 
 	
 	
