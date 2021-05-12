@@ -28,8 +28,9 @@ public class Car {
 	
 
 	public Car(String carId, String carName, String carType, String seatNumber, BigDecimal hourlyCharge, String location) {
-      this.carName = carName;
+      
 		this.carId = carId;
+                this.carName = carName;
 		this.carType = carType;
 		this.seatNumber = seatNumber;
 		this.hourlyCharge = hourlyCharge;

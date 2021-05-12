@@ -6,6 +6,7 @@
 package DAO;
 
 import Domain.Car;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**

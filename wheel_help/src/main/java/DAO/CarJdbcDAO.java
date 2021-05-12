@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -33,7 +34,7 @@ public class CarJdbcDAO implements CarDAO {
 
 	@Override
 	public void saveCar(Car car) {
-		String sql = "insert into car (car_id, car_Name, car_Type, Seat_Number, Hourly_Charge, Location) values (?, ?, ?, ?, ?, ?)";
+		String sql = "merge into car (car_id, car_Name, car_Type, Seat_Number, Hourly_Charge, Location) values (?, ?, ?, ?, ?, ?)";
 
 		try (
 			Connection dbCon = JdbcConnection.getConnection(url);
@@ -63,25 +64,29 @@ public class CarJdbcDAO implements CarDAO {
 			) {
 			ResultSet rs = stmt.executeQuery(); 
 
-			List<Car> cars = new ArrayList<>(); 
+			List<Car> carsList = new ArrayList<>(); 
 
 			//iterate through query results
 			while (rs.next()) {
-				Car car = new Car(
-					rs.getString("Car_Id"),
-					rs.getString("Car_Name"),
-					
-					rs.getString("Car_Type"),
-					rs.getString("Seat_Number"),
-					rs.getBigDecimal("Hourly_Charge"),
-					rs.getString("Location")
-				);
+                            
 
-				cars.add(car); 
+				
+					String carId = rs.getString("Car_Id");
+					String carName = rs.getString("Car_Name");
+					
+					String carType = rs.getString("Car_Type");
+					String seatNumber = rs.getString("Seat_Number");
+					BigDecimal hourlyCharge = rs.getBigDecimal("Hourly_Charge");
+					String location = rs.getString("Location");
+                                                
+                                                Car car = new Car(carId, carName, carType, seatNumber, hourlyCharge, location);
+                                                
+
+				carsList.add(car); 
 
 			}
 
-			return cars;
+			return carsList;
 
 		} catch (SQLException ex) {
 			throw new DAOException(ex.getMessage(), ex);
@@ -115,7 +120,7 @@ public class CarJdbcDAO implements CarDAO {
 			stmt.setString(1, carType);
 			ResultSet rs = stmt.executeQuery();
 
-			ArrayList<Car> typeList = new ArrayList<>();
+			List<Car> typeList = new ArrayList<>();
 
 			while (rs.next()) {
 				Car car = new Car(
