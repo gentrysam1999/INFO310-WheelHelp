@@ -51,9 +51,10 @@ public class Server extends Jooby {
         use(new Gzon());
         use(new OwnerModule(ownerDao));
         use(new CustomerModule(customerDao));
-//        use(new SaleModule(saleDao));
+
         use(new AssetModule());
         use(new CarModule(carDao));
+        use(new TransactionModule(transactionDao));
 //
 
     }
