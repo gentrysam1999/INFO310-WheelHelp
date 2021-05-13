@@ -5,6 +5,7 @@ plugins {
 
 repositories {
    jcenter()
+	mavenCentral()
 }
 
 dependencies {
@@ -38,7 +39,7 @@ run {
    standardInput = System.in
 }
 
-mainClassName = 'Main'
+mainClassName = 'WebModules.Server'
 
 
 task createMissingSourceDirs {
