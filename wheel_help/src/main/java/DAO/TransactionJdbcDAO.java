@@ -6,6 +6,7 @@
 package DAO;
 
 import Domain.Car;
+import Domain.CarPurchase;
 import Domain.Customer;
 import Domain.Transaction;
 import java.sql.Connection;
@@ -15,6 +16,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -35,35 +38,67 @@ public class TransactionJdbcDAO implements TransactionDAO {
             try (
                      PreparedStatement insertTransactionStmt = dbCon.prepareStatement(
                             sql, Statement.RETURN_GENERATED_KEYS);  PreparedStatement insertCarPurchaseStmt
-                    = dbCon.prepareStatement("insert into Car_Purchase (hours_selected, purchase_price, transaction_id, car_Id) values (?,?,?,?)");) 
-                
-                    {
-			
-                    Customer customer = transaction.getCustomer();
-                    System.out.println(customer);
-                    
-                     Car car = transaction.getCar();
-                    System.out.println(car);
-                    
-                    
+                    = dbCon.prepareStatement("insert into Car_Purchase (hours_selected, purchase_price, transaction_id, car_Id) values (?,?,?,?)");) {
 
-                    if (transaction.getTransactionDate() == null) {
-                        transaction.setTransactionDate(LocalDateTime.now());
-                    }
-                       LocalDateTime date = transaction.getTransactionDate();
-                    Timestamp timestamp = Timestamp.valueOf(date);
-                    
+                Customer customer = transaction.getCustomer();
+                System.out.println(customer);
+
+                Car car = transaction.getCar();
+                System.out.println(car);
+
+                if (transaction.getTransactionDate() == null) {
+                    transaction.setTransactionDate(LocalDateTime.now());
+                } 
+                LocalDateTime date = transaction.getTransactionDate();
+                Timestamp timestamp = Timestamp.valueOf(date);
+
                 insertTransactionStmt.setString(1, car.getCarId());
                 insertTransactionStmt.setInt(2, customer.getcustomerId());
                 insertTransactionStmt.setTimestamp(3, timestamp);
                 insertTransactionStmt.executeUpdate();
-                
+
                 ResultSet rs = insertTransactionStmt.getGeneratedKeys();
                 System.out.println(transaction);
                 Integer transactionId = null;
 
-                }catch (SQLException ex){
-			throw new DAOException(ex.getMessage(), ex);
-		}
+                if (rs.next()) {
+                    transactionId = rs.getInt(1);
+                } else {
+                    throw new DAOException("Problem getting generated transaction ID");
+                }
+                CarPurchase carp = transaction.getCarPurchase();
+
+                insertCarPurchaseStmt.setBigDecimal(1, carp.getHoursSelected());
+                insertCarPurchaseStmt.setBigDecimal(2, carp.getPurchasePrice());
+                insertCarPurchaseStmt.setInt(3, transactionId);
+                insertCarPurchaseStmt.setString(4, carp.getCar().getCarId());
+                insertCarPurchaseStmt.executeUpdate();
+
+                dbCon.setAutoCommit(true);
+            }
+        } catch (SQLException ex) {
+
+            Logger.getLogger(TransactionJdbcDAO.class.getName()).log(Level.SEVERE, null, ex);
+
+            try {
+                // something went wrong so rollback
+                dbCon.rollback();
+                // turn auto-commit back on
+                dbCon.setAutoCommit(true);
+
+                // and throw an exception to tell the user something bad happened
+                throw new DAOException(ex.getMessage(), ex);
+            } catch (SQLException ex1) {
+                throw new DAOException(ex1.getMessage(), ex1);
+            }
+
+        } finally {
+            try {
+                dbCon.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(TransactionJdbcDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+}

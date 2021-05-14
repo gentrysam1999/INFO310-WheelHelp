@@ -18,16 +18,20 @@ public class Transaction {
     private LocalDateTime transactionDate;
     private Car car;
     private Customer customer;
+    private CarPurchase carpurchase;
 
     public Transaction() {
     }
 
-    public Transaction(int transcactionID, LocalDateTime transactionDate, Car car, Customer customer) {
+    public Transaction(int transcactionID, LocalDateTime transactionDate, Car car, Customer customer, CarPurchase carpurchase) {
         this.transcactionID = transcactionID;
         this.transactionDate = transactionDate;
         this.car = car;
         this.customer = customer;
+        this.carpurchase = carpurchase;
     }
+
+
 
     public int getTranscactionID() {
         return transcactionID;
@@ -60,6 +64,16 @@ public class Transaction {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+    public CarPurchase getCarPurchase() {
+        return carpurchase;
+    }
+
+    public void setCarPurchase(CarPurchase carpurchase) {
+        this.carpurchase = carpurchase;
+    }
+    
+    
 
     @Override
     public String toString() {
