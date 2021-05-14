@@ -7,6 +7,7 @@ package Domain;
 
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.Objects;
 
 /**
  *
@@ -15,7 +16,7 @@ import java.util.Collection;
 public class Car { 
 	
 	private String carName;
-	private int carId;
+	private String carId;
 	private String carType;
 	private String seatNumber;
 	private BigDecimal hourlyCharge;
@@ -27,9 +28,20 @@ public class Car {
 	
 	
 
-	public Car(String carName, int carId, String carType, String seatNumber, BigDecimal hourlyCharge, String location) {
-            this.carName = carName;
+	public Car(String carId, String carName, String carType, String seatNumber, BigDecimal hourlyCharge, String location) {
+      
 		this.carId = carId;
+                this.carName = carName;
+		this.carType = carType;
+		this.seatNumber = seatNumber;
+		this.hourlyCharge = hourlyCharge;
+		this.location = location;
+		
+	}
+	
+	
+	public Car(String carName,  String carType, String seatNumber, BigDecimal hourlyCharge, String location) {
+            this.carName = carName;
 		this.carType = carType;
 		this.seatNumber = seatNumber;
 		this.hourlyCharge = hourlyCharge;
@@ -37,6 +49,24 @@ public class Car {
 		
 	}
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Car other = (Car) obj;
+        if (!Objects.equals(this.carId, other.carId)) {
+            return false;
+        }
+        return true;
+    }
+    
     public String getCarName() {
         return carName;
     }
@@ -47,11 +77,11 @@ public class Car {
 	
 	
 
-	public int getCarId() {
+	public String getCarId() {
 		return carId;
 	}
 
-	public void setCarId(int carId) {
+	public void setCarId(String carId) {
 		this.carId = carId;
 	}
 

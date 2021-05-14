@@ -1,0 +1,41 @@
+
+#header{
+    text-align: center;
+    background-color:rgba(162, 225, 255, .65);
+}
+
+#header h1{
+    filter: none;
+    font-size: x-large  ;
+    font-family: Copperplate;  
+
+}
+
+body{
+    background-image: none;
+}
+
+.gridContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-gap: 50px;
+}
+
+.gridContainer p{
+    display: block;
+}
+
+#bottomContainer{
+    width: 100%;
+}
+
+
+#carLine{
+    margin-top: 30px;
+    width: 100%;
+}
+
+#header, .centerFlex, #bottomContainer p, #bottomContainer h2{
+    display: flex;
+    justify-content: center;
+}
