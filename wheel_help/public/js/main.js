@@ -4,7 +4,7 @@
 
 // create a new module, and load the other pluggable modules
 //var module = angular.module('ShopApp', ['ngResource', 'ngStorage']);
-
+var module = angular.module('ShopApp', ['ngResource', 'ngStorage']);
 class CarPurchase {
 
     constructor(car, hoursSelected) {
@@ -22,15 +22,18 @@ class CarPurchase {
     }
 }
 
-module.factory('ownerSignInAPI', function ($resource) {
-    return $resource('/api/owners/:username');
-});
 
 module.factory('ownerRegisterAPI', function ($resource) {
     return $resource('/api/owners/register');
 });
 
-var module = angular.module('ShopApp', ['ngResource', 'ngStorage']);
+module.factory('ownerSignInAPI', function ($resource) {
+    return $resource('/api/owners/:username');
+});
+
+
+
+
 
 module.controller('OwnerController', function (ownerRegisterAPI, $window, ownerSignInAPI, $sessionStorage) {
     this.signInMessage = "Please sign in to continue.";
