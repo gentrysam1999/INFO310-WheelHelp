@@ -6,66 +6,78 @@
 package Domain;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 /**
  *
  * @author boybi215
  */
 public class Transaction {
-	private int transcactionID;
-	private int transactionDate;
-	private Timestamp pickupTime;
-	private Timestamp dropoffTime;
-	
-	
 
-	public Transaction() {
-	}
+    private int transcactionID;
+    private LocalDateTime transactionDate;
+    private Car car;
+    private Customer customer;
+    private CarPurchase carpurchase;
 
-	public Transaction(int transcactionID, int transactionDate, Timestamp pickupTime, Timestamp dropoffTime) {
-		this.transcactionID = transcactionID;
-		this.transactionDate = transactionDate;
-		this.pickupTime = pickupTime;
-		this.dropoffTime = dropoffTime;
-	}
+    public Transaction() {
+    }
 
-	public int getTranscactionID() {
-		return transcactionID;
-	}
+    public Transaction(int transcactionID, LocalDateTime transactionDate, Car car, Customer customer, CarPurchase carpurchase) {
+        this.transcactionID = transcactionID;
+        this.transactionDate = transactionDate;
+        this.car = car;
+        this.customer = customer;
+        this.carpurchase = carpurchase;
+    }
 
-	public void setTranscactionID(int transcactionID) {
-		this.transcactionID = transcactionID;
-	}
 
-	public int getTransactionDate() {
-		return transactionDate;
-	}
 
-	public void setTransactionDate(int transactionDate) {
-		this.transactionDate = transactionDate;
-	}
+    public int getTranscactionID() {
+        return transcactionID;
+    }
 
-	public Timestamp getPickupTime() {
-		return pickupTime;
-	}
+    public void setTranscactionID(int transcactionID) {
+        this.transcactionID = transcactionID;
+    }
 
-	public void setPickupTime(Timestamp pickupTime) {
-		this.pickupTime = pickupTime;
-	}
+    public LocalDateTime getTransactionDate() {
+        return transactionDate;
+    }
 
-	public Timestamp getDropoffTime() {
-		return dropoffTime;
-	}
+    public void setTransactionDate(LocalDateTime transactionDate) {
+        this.transactionDate = transactionDate;
+    }
 
-	public void setDropoffTime(Timestamp dropoffTime) {
-		this.dropoffTime = dropoffTime;
-	}
+    public Car getCar() {
+        return car;
+    }
 
-	@Override
-	public String toString() {
-		return "Transaction{" + "transcactionID=" + transcactionID + ", transactionDate=" + transactionDate + ", pickupTime=" + pickupTime + ", dropoffTime=" + dropoffTime + '}';
-	}
+    public void setCar(Car car) {
+        this.car = car;
+    }
 
-	
-	
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public CarPurchase getCarPurchase() {
+        return carpurchase;
+    }
+
+    public void setCarPurchase(CarPurchase carpurchase) {
+        this.carpurchase = carpurchase;
+    }
+    
+    
+
+    @Override
+    public String toString() {
+        return "Transaction{" + "transcactionID=" + transcactionID + ", transactionDate=" + transactionDate + ", car=" + car + ", customer=" + customer + '}';
+    }
+
 }

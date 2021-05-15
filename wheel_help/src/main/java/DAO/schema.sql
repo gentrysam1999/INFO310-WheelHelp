@@ -61,7 +61,20 @@ CREATE TABLE  Transaction (
 	 CONSTRAINT transaction_customerid_fk FOREIGN KEY (Customer_ID) REFERENCES Customer (Customer_ID)
 );
 
+Create Table Car_Purchase(
+hours_selected decimal(5,3) not null,
+Purchase_Price decimal(5,2) not null,
+Transaction_Id integer (7),
+car_id varchar (7),
+constraint Car_Purchase_Pk primary key (Transaction_id, car_id),
+constraint Car_Purchase_Fk_transaction foreign key (Transaction_id) references transaction,
+constraint Car_Purchase_Fk_car foreign key (car_id) references car
+)
+
 /*
+constraint Sale_Item_PK primary key (Sale_Id, Product_Id),
+constraint Sale_Item_FK_Sale foreign key (Sale_Id) references Sale,
+constraint Sale_Item_FK_Product foreign key (Product_Id) references Product
 
 INSERT INTO Customer (username, password, emailaddress, first_name, last_name, phone) 
 VALUES ('SUV', 'gahajja', '77.77', 'place',  '77.77', '0212458890');

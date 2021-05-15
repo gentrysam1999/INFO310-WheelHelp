@@ -27,7 +27,7 @@ public class CustomerModule extends Jooby {
             }
         });
         
-        post("/api/register", (req, rsp) -> {
+        post("/api/customer/register", (req, rsp) -> {
             Customer customer = req.body().to(Customer.class);
             customerDAO.saveCustomer(customer);
             rsp.status(Status.CREATED);
