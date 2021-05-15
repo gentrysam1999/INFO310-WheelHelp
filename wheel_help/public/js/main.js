@@ -1,28 +1,25 @@
-/* global angular */
-
-"use strict";
-
-// create a new module, and load the other pluggable modules
-//var module = angular.module('ShopApp', ['ngResource', 'ngStorage']);
-var module = angular.module('ShopApp', ['ngResource', 'ngStorage']);
-class CarPurchase {
-
-    constructor(car, hoursSelected) {
-       
-        if (car) {
-            this.car = car;
-            this.hoursSelected = hoursSelected;
-            this.purchasePrice = car.hourlyCharge;
-
-        }
-    }
-
-    getCarTotal() {
-        return this.hoursSelected * this.purchasePrice;
-    }
-}
+//"use strict";
 
 
+
+//class CarPurchase {
+//
+//    constructor(car, hoursSelected) {
+//       
+//        if (car) {
+//            this.car = car;
+//            this.hoursSelected = hoursSelected;
+//            this.purchasePrice = car.hourlyCharge;
+//
+//        }
+//    }
+//
+//    getCarTotal() {
+//        return this.hoursSelected * this.purchasePrice;
+//    }
+//}
+
+var module = angular.module('ShoppingApp', ['ngResource', 'ngStorage']);
 module.factory('ownerRegisterAPI', function ($resource) {
     return $resource('/api/owners/register');
 });
@@ -50,7 +47,7 @@ module.controller('OwnerController', function (ownerRegisterAPI, $window, ownerS
         ownerRegisterAPI.save(null, owner,
                 // success callback
                         function () {
-                            $window.location = 'signin.html';
+                            $window.location = 'ownerLogin.html';
                         },
                         // error callback
                                 function (error) {
