@@ -8,7 +8,7 @@
 class CarPurchase {
 
     constructor(car, hoursSelected) {
-        
+       
         if (car) {
             this.car = car;
             this.hoursSelected = hoursSelected;
@@ -79,8 +79,3 @@ module.controller('OwnerController', function (ownerRegisterAPI, $window, ownerS
                         $window.location = 'index.html';
                     };
                 });
-
-
-
-
-
