@@ -21,7 +21,7 @@ public class OwnerModule extends Jooby {
             }
         });
         
-        post("/api/register", (req, rsp) -> {
+        post("/api/owner/register", (req, rsp) -> {
             Owner owner = req.body().to(Owner.class);
             ownerDAO.saveOwner(owner);
             rsp.status(Status.CREATED);
