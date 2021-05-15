@@ -4,11 +4,11 @@
 
 // create a new module, and load the other pluggable modules
 //var module = angular.module('ShopApp', ['ngResource', 'ngStorage']);
-
+var module = angular.module('ShopApp', ['ngResource', 'ngStorage']);
 class CarPurchase {
 
     constructor(car, hoursSelected) {
-        
+       
         if (car) {
             this.car = car;
             this.hoursSelected = hoursSelected;
@@ -22,29 +22,32 @@ class CarPurchase {
     }
 }
 
+
+module.factory('ownerRegisterAPI', function ($resource) {
+    return $resource('/api/owners/register');
+});
+
 module.factory('ownerSignInAPI', function ($resource) {
     return $resource('/api/owners/:username');
 });
 
-module.factory('ownerRegisterAPI', function ($resource) {
-    return $resource('/api/owner/register');
-});
 
-var module = angular.module('ShopApp', ['ngResource', 'ngStorage']);
+
+
 
 module.controller('OwnerController', function (ownerRegisterAPI, $window, ownerSignInAPI, $sessionStorage) {
     this.signInMessage = "Please sign in to continue.";
     this.checkSignIn = function () {
         // has the customer been added to the session?
-        if ($sessionStorage.customer) {
+        if ($sessionStorage.owner) {
             this.signedIn = true;
-            this.welcome = "Welcome " + $sessionStorage.customer.firstName;
+            this.welcome = "Welcome " + $sessionStorage.owner.firstName;
         } else {
             this.signedIn = false;
         }
     };
-    this.registerCustomer = function (customer) {
-        ownerRegisterAPI.save(null, customer,
+    this.registerOwner = function (owner) {
+        ownerRegisterAPI.save(null, owner,
                 // success callback
                         function () {
                             $window.location = 'signin.html';
@@ -61,9 +64,9 @@ module.controller('OwnerController', function (ownerRegisterAPI, $window, ownerS
                 // get customer from web service
                 ownerSignInAPI.get({'username': username},
                         // success callback
-                                function (customer) {
+                                function (owner) {
                                     // also store the retrieved customer
-                                    $sessionStorage.customer = customer;
+                                    $sessionStorage.owner = owner;
                                     // redirect to home
                                     $window.location = '.';
                                 },
@@ -75,12 +78,7 @@ module.controller('OwnerController', function (ownerRegisterAPI, $window, ownerS
                             };
 
                     this.signOut = function () {
-                        delete $sessionStorage.customer;
+                        delete $sessionStorage.owner;
                         $window.location = 'index.html';
                     };
                 });
-
-
-
-
-

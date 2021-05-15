@@ -1,0 +1,3 @@
+2021-05-14 15:56:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CAR" not found; SQL statement:
+select * from Car [42102-200]
