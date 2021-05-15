@@ -6,9 +6,12 @@
             <link rel="stylesheet" href="css/index.css">
             <link rel="stylesheet" href="css/signUp.css">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   
+   <script src="js/angular.min.js"></script>
+        <script src="js/angular-resource.min.js"></script>
+        <script src="js/ngStorage.min.js"></script>
+        <script src="js/main.js"></script>
         </head>
-        <body>
+        <body ng-controller="OwnerController as ownerCtrl">
             <nav>
                 <ul>
                     <li><a href="about.html">About</href></a></li>
@@ -21,31 +24,26 @@
                     <h2>Owner</h2>
                     <h2>Sign Up</h2>
                     <div>
-                    <form>
-                        <label for="username">Username:</label>
-                        <input class="createInput" type="text" name="username" placeholder="Username" required>
-                        <br>
+							  <form ng-submit="ownerCtrl.registerOwner(owner)" required>
+                      
+								
+								
+								
+								 <label for="username"><b>Username:</b></label>
+                <input type="text" maxlength = "15" ng-model= "owner.username" required/><br>
+								
+								
+								
                         <label for="password">Password:</label>
-                        <input class="createInput" type="password" name="password" placeholder="********" required><br>
+                        <input  type="password" ng-model =" owner.password" required><br>
 
-                        <label for="firstName">First Name:</label>
-                        <input class="createInput" type="text" name="firstName" placeholder="First Name" required><br>
-
-
-                        <label for="lastName">Last Name:</label>
-                        <input class="createInput" type="text" name="lastName" placeholder="Last Name" required><br>
-
+                        
                         <label for="email">Email:</label>
-                        <input class="createInput" type="email" name="email" placeholder="" required><br>
+                        <input  type="email" ng-model =" owner.password" required><br>
 
-                        <label for="phoneNumber">Phone Number:</label>
-                        <input class="createInput" type="tel" name="phoneNumber" placeholder="" required><br>
 
-                        <label for="tAndC">Agree to Terms & Conditions:</label>
-                        <input class="createInput" type="checkbox" name="tAndC" placeholder="" required><br>
 
-                        <input class="createSubmit" type="submit" name="submit" value="Create Account">
-
+                        <button type = "submit">Create Account</button>
                     </form>
                     </div>
                 </div>
