@@ -1,64 +1,62 @@
 <!DOCTYPE html>
-    <html>
-        <head>
-            <meta charset="utf-8">
-            <title>Wheelhelp</title>
-            <link rel="stylesheet" href="css/index.css">
-            <link rel="stylesheet" href="css/signUp.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            
-        </head>
-        <body>
-            <nav>
-                <ul>
-                    <li><a href="about.html">About</href></a></li>
-                    <li><a href="login.html">Log In</href></a></li>
-                    <li><a href="index.html">Home</href></a></li>
-                </ul>
-            </nav>
-            <section class = "container">
+<html data-ng-app="ShoppingApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Wheelhelp</title>
+        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/signUp.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="js/angular.js"></script>
+        <script src="js/angular-resource.js"></script>
+        <script src="js/ngStorage.js"></script>
+        <script src="js/main.js"></script>
+    </head>
+    <body ng-controller="OwnerController as ownerCtrl">
+        <nav>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html">Log In</a></li>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
+        <section class = "container">
+            <div>
+                <h2>Owner</h2>
+                <h2>Sign Up</h2>
                 <div>
-                    <h2>Owner</h2>
-                    <h2>Sign Up</h2>
-                    <div>
-                    <form>
-                        <label for="username">Username:</label>
-                        <input class="createInput" type="text" name="username" placeholder="Username" required>
-                        <br>
+                    <form ng-submit="ownerCtrl.registerOwner(owner)" required>
+
+
+
+
+                        <label for="username"><b>Username:</b></label>
+                        <input type="text" maxlength = "15" ng-model= "owner.Username" required/><br>
+
+
+
                         <label for="password">Password:</label>
-                        <input class="createInput" type="password" name="password" placeholder="********" required><br>
+                        <input  type="password" ng-model =" owner.Password" required><br>
 
-                        <label for="firstName">First Name:</label>
-                        <input class="createInput" type="text" name="firstName" placeholder="First Name" required><br>
-
-
-                        <label for="lastName">Last Name:</label>
-                        <input class="createInput" type="text" name="lastName" placeholder="Last Name" required><br>
 
                         <label for="email">Email:</label>
-                        <input class="createInput" type="email" name="email" placeholder="" required><br>
+                        <input  type="email" ng-model =" owner.email" required><br>
 
-                        <label for="phoneNumber">Phone Number:</label>
-                        <input class="createInput" type="tel" name="phoneNumber" placeholder="" required><br>
 
-                        <label for="tAndC">Agree to Terms & Conditions:</label>
-                        <input class="createInput" type="checkbox" name="tAndC" placeholder="" required><br>
 
-                        <input class="createSubmit" type="submit" name="submit" value="Create Account">
-
+                        <button type = "submit">Create Account</button>
                     </form>
-                    </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            
-            <footer>
-                <div>
+
+        <footer>
+            <div>
                 <a href="#" class="fa fa-facebook"></a>
                 <a href="#" class="fa fa-instagram"></a>
                 <a href="#" class="fa fa-envelope"></a>
-                </div>
+            </div>
 
-            </footer>
-        </body>
-    </html>
+        </footer>
+    </body>
+</html>

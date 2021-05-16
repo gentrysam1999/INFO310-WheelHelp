@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html ng-app="WheelHelpWeb">
+<html ng-app="ShoppingApp">
     <head>
         <title>Sign In</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="css/homePage.css">
+		  
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <script src="js/"></script>
+        <script src="js/angular.js"></script>
+        <script src="js/angular-resource.js"></script>
+        <script src="js/ngStorage.js"></script>
+        <script src="js/main.js"></script>
+       
     </head>
-    <body>
+    <body ng-controller="OwnerController as ownerCtrl">
         <nav>
             <ul>
                 <li>Welcome ....</li>
-                <li><a href="index.html">Log Out</href></a></li>
+                 <li><a href="index.html" data-ng-click="ownerCtrl.signOut()">Sign Out</a></li>
             </ul>
         </nav>
         <section class="container">

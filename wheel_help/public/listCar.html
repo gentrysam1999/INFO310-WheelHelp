@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html ng-app="WheelHelpWeb">
+<html ng-app="ShoppingApp">
     <head>
         <title>List a car</title>
         <meta charset="windows-1252">
@@ -12,19 +12,23 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="css/listCar.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="js/"></script>
+        <script src="js/angular.js"></script>
+        <script src="js/angular-resource.js"></script>
+        <script src="js/ngStorage.js"></script>
+        <script src="js/main.js"></script>
     </head>
-    <body>
+    <body ng-controller="OwnerController as ownerCtrl">
         <nav>
             <ul>
                 <li>Welcome ....</li>
-                <li><a href="index.html">Log Out</href></a></li>
-                <li><a href="ownerHome.html">Home</href></a></li>
+                   <li><a href="index.html" data-ng-click="ownerCtrl.signOut()">Sign Out</a></li>
+                   
+                       <li><a href="ownerHome.html">Home</a></li>
             </ul>
         </nav>            
-            <div id="header1">
-                <h1>List a vehicle</h1>
-            </div>
+        <div id="header1">
+            <h1>List a vehicle</h1>
+        </div>
         <div>TODO write content</div>
         <form ng-controller="", 
               ng-submit="">
@@ -51,7 +55,7 @@ and open the template in the editor.
                         <td><label for="location">Location for pick up:</label></td>
                         <td><input id="location" type="text" ng-model="car.location" required></td>
                     </tr>
-                    
+
                 </table>
                 <br>
                 <button type="submit">Create Account</button>
