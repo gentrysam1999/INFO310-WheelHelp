@@ -68,10 +68,10 @@ public class CustomerJdbcDAO implements CustomerDAO {
                 String password = rs.getString("Password");
                 String emailAddress = rs.getString("EmailAddress");
                 String firstName = rs.getString("First_Name");
-                String surname = rs.getString("Surname");
+                String surname = rs.getString("Last_name");
                 String phone = rs.getString("Phone");
 
-                return new Customer(customerID, customerUsername, firstName, surname, password, emailAddress, phone);
+                return new Customer(customerID, customerUsername, password, firstName, surname, emailAddress, phone);
 
             } else {
                 return null;

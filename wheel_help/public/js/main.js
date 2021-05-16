@@ -36,7 +36,7 @@ module.factory('customerRegisterAPI', function ($resource) {
 
 
 module.factory('customerSignInAPI', function ($resource) {
-    return $resource('/api/customers/:username');
+    return $resource('/api/customers/:customerUsername');
 });
 
 
@@ -72,7 +72,7 @@ module.controller('OwnerController', function (ownerRegisterAPI, $window, ownerS
         ownerSignInAPI.get({'username': username},
                 function (owner) {
                     $sessionStorage.owner = owner;
-                    $window.location = 'listCar.html';
+                    $window.location = 'ownerHome.html';
                 },
                 function () {
                     ctrl.signInMessage = 'Sign in failed. Please try again.';
@@ -108,24 +108,24 @@ module.controller('CustomerController', function (customerRegisterAPI, $window, 
                 }
         );
     };
-//    let ctrl = this;
-//    this.signIn = function (customerUsername, customerPassword) {
-//
-//
-//        customerSignInAPI.get({'customerUsername': customerUsername},
-//                function (customer) {
-//                    $sessionStorage.customer = customer;
-//                    $window.location = 'customerHome.html';
-//                },
-//                function () {
-//                    ctrl.signInMessage = 'Sign in failed. Please try again.';
-//                }
-//        );
-//    };
+    let ctrl = this;
+    this.signIn = function (customerUsername, customerPassword) {
 
-//    this.signOut = function () {
-//        delete $sessionStorage.customer;
-//        $window.location = 'index.html';
-//    };
+
+        customerSignInAPI.get({'customerUsername': customerUsername},
+                function (customer) {
+                    $sessionStorage.customer = customer;
+                    $window.location = 'customerHome.html';
+                },
+                function () {
+                    ctrl.signInMessage = 'Sign in failed. Please try again.';
+                }
+        );
+    };
+
+    this.signOut = function () {
+        delete $sessionStorage.customer;
+        $window.location = 'index.html';
+    };
 });
 
