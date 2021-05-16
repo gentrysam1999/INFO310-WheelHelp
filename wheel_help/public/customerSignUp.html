@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-    <html>
+<html data-ng-app="ShoppingApp">
         <head>
             <meta charset="utf-8">
             <title>Wheelhelp</title>
             <link rel="stylesheet" href="css/index.css">
             <link rel="stylesheet" href="css/signUp.css">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            
+                    <script src="js/angular.js"></script>
+        <script src="js/angular-resource.js"></script>
+        <script src="js/ngStorage.js"></script>
+        <script src="js/main.js"></script>
         </head>
-        <body>
+        <body ng-controller="CustomerController as customerCtrl">
             <nav>
                 <ul>
                     <li><a href="about.html">About</href></a></li>
@@ -22,30 +25,36 @@
                     <h2>Sign Up</h2>
 
                     <div>
-                    <form>
-                        <label for="username">Username:</label>
-                        <input class="createInput" type="text" name="username" placeholder="Username" required>
-                        <br>
-                        <label for="password">Password:</label>
-                        <input class="createInput" type="password" name="password" placeholder="********" required><br>
-
-                        <label for="firstName">First Name:</label>
-                        <input class="createInput" type="text" name="firstName" placeholder="First Name" required><br>
+                    <form ng-submit="customerCtrl.registerCustomer(customer)" required>
+                        
+                        <label for="customerUsername"><b>Username:</b></label>
+                        <input type="text" maxlength = "15" ng-model= "customer.customerUsername" required/><br>
 
 
-                        <label for="lastName">Last Name:</label>
-                        <input class="createInput" type="text" name="lastName" placeholder="Last Name" required><br>
 
-                        <label for="email">Email:</label>
-                        <input class="createInput" type="email" name="email" placeholder="" required><br>
+                        <label for="customerPassword">Password:</label>
+                        <input  type="password" ng-model =" customer.customerPassword" required><br>
+
+
+                        <label for="customerEmail">Email:</label>
+                        <input  type="email" ng-model =" customer.customerEmail" required><br>
+                        
+                        <label for="customerFirstName"><b>First name:</b></label>
+                        <input type="text" maxlength = "20" ng-model= "customer.customerFirstName" required/><br>
+
+
+
+                        <label for="customerSurname">Last Name:</label>
+                        <input  type="text" maxlength = "20" ng-model= "customer.customerSurname" required/><br>
+
 
                         <label for="phoneNumber">Phone Number:</label>
-                        <input class="createInput" type="tel" name="phoneNumber" placeholder="" required><br>
+                        <input  type="number" ng-model =" customer.phoneNumber" required><br>
+                        
+                        
 
-                        <label for="tAndC">Agree to Terms & Conditions:</label>
-                        <input class="createInput" type="checkbox" name="tAndC" placeholder="" required><br>
-
-                        <input class="createSubmit" id="createAccBtn" type="submit" name="submit" value="Create Account">
+                 
+                        <button type = "submit">Create Account</button>
 
                     </form>
                     </div>

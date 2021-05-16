@@ -30,16 +30,16 @@ public class OwnerJdbcDAO implements OwnerDAO {
     @Override
     public void saveOwner(Owner owner) {
 
-        String sql = "insert into Owner (OwnerID, String Username, String Password, String email) values (?, ?, ?, ?)";
+        String sql = "insert into Owner (Username, Password, email) values ( ?, ?, ?)";
 
         try (
                 Connection dbCon = JdbcConnection.getConnection(url);
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
 
-            stmt.setInt(1, owner.getOwnerID());
-            stmt.setString(2, owner.getUsername());
-            stmt.setString(3, owner.getPassword());
-            stmt.setString(4, owner.getEmail());
+           //stmt.setInt(1, owner.getOwnerID());
+            stmt.setString(1, owner.getUsername());
+            stmt.setString(2, owner.getPassword());
+            stmt.setString(3, owner.getEmail());
 
             stmt.executeUpdate();
 
