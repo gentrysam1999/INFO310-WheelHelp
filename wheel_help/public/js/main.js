@@ -38,7 +38,7 @@ module.controller('OwnerController', function (ownerRegisterAPI, $window, ownerS
         // has the customer been added to the session?
         if ($sessionStorage.owner) {
             this.signedIn = true;
-            this.welcome = "Welcome " + $sessionStorage.owner.firstName;
+            this.welcome = "Welcome " + $sessionStorage.owner.username;
         } else {
             this.signedIn = false;
         }
@@ -65,7 +65,7 @@ module.controller('OwnerController', function (ownerRegisterAPI, $window, ownerS
                                     // also store the retrieved customer
                                     $sessionStorage.owner = owner;
                                     // redirect to home
-                                    $window.location = '.';
+                                    $window.location = 'listCar.html';
                                 },
                                 // fail callback
                                         function () {
