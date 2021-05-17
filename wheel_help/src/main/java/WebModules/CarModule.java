@@ -22,7 +22,7 @@ public class CarModule extends Jooby {
 
     public CarModule(CarDAO daoIn) {
 
-        post("/api/cars", (req, rsp) -> {
+        post("/api/cars/register", (req, rsp) -> {
             Car car = req.body().to(Car.class);
             carDao.saveCar(car);
             rsp.status(Status.CREATED);

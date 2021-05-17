@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html ng-app="ShoppingApp">
     <head>
         <title>List a car</title>
@@ -17,50 +12,51 @@ and open the template in the editor.
         <script src="js/ngStorage.js"></script>
         <script src="js/main.js"></script>
     </head>
-    <body ng-controller="OwnerController as ownerCtrl">
-        <nav>
-            <ul>
-                <li>Welcome ....</li>
-                   <li><a href="index.html" data-ng-click="ownerCtrl.signOut()">Sign Out</a></li>
-                   
-                       <li><a href="ownerHome.html">Home</a></li>
-            </ul>
-        </nav>            
-        <div id="header1">
-            <h1>List a vehicle</h1>
-        </div>
-        <div>TODO write content</div>
-        <form ng-controller="", 
-              ng-submit="">
-            <fieldset>
-                <legend>Account Details</legend>
-                <table>
-                    <tr>
-                        <td><label for="carName">Car Name:</label></td>
-                        <td><input id="carName" type="text" ng-model="car.carName" required></td>
-                    </tr>
-                    <tr>
-                        <td><label for="carType"> Car Type:</label></td>
-                        <td><input id="carType" type="text" ng-model="car.carType" required></td>
-                    </tr>
-                    <tr>
-                        <td><label for="seatNumber">Number of Seats:</label></td>
-                        <td><input id="seatNumber" type="text" ng-model="car.seatNumber" required></td>
-                    </tr>
-                    <tr>
-                        <td><label for="hourlyCharge">Hourly Rate:</label></td>
-                        <td><input id="hourlyCharge" type="decimal" ng-model="car.hourlyCharge" required></td>
-                    </tr>
-                    <tr>
-                        <td><label for="location">Location for pick up:</label></td>
-                        <td><input id="location" type="text" ng-model="car.location" required></td>
-                    </tr>
+    <body ng-controller="CarController as carCtrl">
 
-                </table>
-                <br>
-                <button type="submit">Create Account</button>
-            </fieldset>
-        </form>
+
+        <section class = "container">
+            <div>
+                <h2>List A Vehicle</h2>
+           
+                <div>
+
+                
+                    <p>{{carCtrl.listMessage}}</p>
+                    <form  ng-submit="carCtrl.registerCar(car)" required>
+                        
+
+
+
+
+                        <label for="carId"><b>Registration Number:</b></label>
+                        <input type="text" maxlength = "6" ng-model="car.carId" required></b>
+
+                        <label for="carName"><b>Car Name:</b></label>
+                        <input type="text" maxlength = "30" ng-model="car.carName" required></b>
+
+
+                        <label for="carType"><b>Car Type:</b></label>
+                        <input type="text" maxlength = "15" ng-model="car.carType" required></b>
+
+                        <label for="seatNumber"><b>Number of Seats:</b></label>
+                        <input type="number" maxlength = "1" ng-model="car.seatNumber" required></b>
+
+                        <label for="hourlyCharge"><b>Hourly Rate:</b></label>
+                        <input type="decimal" maxlength = "4" ng-model="car.hourlyCharge" required></b>
+
+                        <label for="location"><b>Location for pick up:</b></label>
+                        <input type="text" maxlength = "30" ng-model="car.location" required></b>
+
+
+
+                        <button type="submit">List Car</button>
+
+                    </form>
+                </div>
+            </div>
+        </section>
+
         <footer>
             <a href="#" class="fa fa-facebook"></a>
             <a href="#" class="fa fa-instagram"></a>
