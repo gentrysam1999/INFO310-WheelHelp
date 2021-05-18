@@ -42,11 +42,15 @@ module.factory('customerSignInAPI', function ($resource) {
 });
 
 module.factory('carAPI', function ($resource) {
-    return $resource('/api/cars/:id');
+    return $resource('/api/cars');
 });
 
 module.factory('registerCarAPI', function ($resource) {
     return $resource('/api/cars/register');
+});
+
+module.factory('carOwnerAPI', function ($resource) {
+    return $resource('/api/cars/:ownerId');
 });
 
 
@@ -137,12 +141,21 @@ module.controller('CustomerController', function (customerRegisterAPI, $window, 
     };
 });
 
-module.controller('CarController', function (registerCarAPI, $window, $sessionStorage, ownerSignInAPI) {
+module.controller('CarController', function (registerCarAPI, $window, $sessionStorage, carAPI, carOwnerAPI) {
     this.listMessage = "Please register your car here:";
-     
+
+
+    this.cars = carAPI.query();
+
+//        this.selectCategory = function (selectedCat) {
+//        this.products = categoryAPI.query({"category": selectedCat});
+        //this.requests = studentRequestDAO.query({"studentID": $sessionStorage.student.studentID});
+        this.ownerCars = carOwnerAPI.query({'ownerId': $sessionStorage.owner.OwnerID});
+    
+
     this.registerCar = function (car) {
 
-            
+
         car.ownerId = $sessionStorage.owner.OwnerID;
         registerCarAPI.save(null, car,
                 function () {
@@ -151,7 +164,7 @@ module.controller('CarController', function (registerCarAPI, $window, $sessionSt
                 function (error) {
                     console.log(error);
                 }
-            
+
         );
     };
 

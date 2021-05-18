@@ -8,7 +8,6 @@ package WebModules;
 import DAO.CarDAO;
 import DAO.CarJdbcDAO;
 import Domain.Car;
-import Domain.Customer;
 import org.jooby.Jooby;
 import org.jooby.Status;
 
@@ -43,8 +42,12 @@ public class CarModule extends Jooby {
             String seats = req.param("seatamount").value();
             return carDao.filterBySeatNumber(seats);
         });
-//
-
-//   
+        
+              get("/api/cars/:ownerId", (req) -> {
+            String ownerId = req.param("ownerId").value();
+            return carDao.getCarsOwnedBy(ownerId);
+        });
+        
+         
     }
 }
