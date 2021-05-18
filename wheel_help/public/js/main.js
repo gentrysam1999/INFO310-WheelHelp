@@ -152,9 +152,12 @@ module.controller('CarController', function (registerCarAPI, $window, $sessionSt
     this.selectType = function (selectedType) {
 
     };
+    });
 //        this.selectCategory = function (selectedCat) {
 //        this.products = categoryAPI.query({"category": selectedCat});
     //this.requests = studentRequestDAO.query({"studentID": $sessionStorage.student.studentID});
+    
+   module.controller('CarListController', function (registerCarAPI, $window, $sessionStorage, carOwnerAPI,) {
     this.ownerCars = carOwnerAPI.query({'ownerId': $sessionStorage.owner.OwnerID});
 
 
