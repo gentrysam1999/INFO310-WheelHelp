@@ -222,5 +222,34 @@ public class CarJdbcDAO implements CarDAO {
             throw new DAOException(ex.getMessage(), ex);
         }
     }
+    
+        @Override
+    public Collection<Car> getCarsOwnedBy(String ownerId) {
+        String sql = "select * from car where owner_id = ?";
+        System.out.println(ownerId);
+        try (
+                 Connection dbCon = JdbcConnection.getConnection(url);  PreparedStatement stmt = dbCon.prepareStatement(sql);) {
+            stmt.setString(1, ownerId);
+            ResultSet rs = stmt.executeQuery();
+
+            ArrayList<Car> userCars = new ArrayList<>();
+
+            while (rs.next()) {
+                Car car = new Car(
+                        rs.getString("Car_id"),
+                        rs.getString("car_Name"),
+                        rs.getString("car_Type"),
+                        rs.getString("Seat_Number"),
+                        rs.getBigDecimal("Hourly_Charge"),
+                        rs.getString("Location")
+                );
+                System.out.println(car);
+                userCars.add(car);
+            }
+            return userCars;
+        } catch (SQLException ex) {
+            throw new DAOException(ex.getMessage(), ex);
+        }
+    }
 
 }

@@ -20,7 +20,7 @@ public interface CarDAO {
 	public Collection<Car> filterBySeatNumber(String seatNumber);
 	public void saveCar(Car car);
 	public Collection<Car> getCars();
-         
+         public Collection<Car> getCarsOwnedBy(String ownerId);
 	
 	public void removeCar(Car car);
 

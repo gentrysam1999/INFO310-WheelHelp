@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html ng-app="ShoppingApp">
     <head>
         <title>Sign In</title>
@@ -39,7 +44,7 @@
                     </thead>
 
                     <tbody>
-                        <tr ng-repeat="car in carCtrl.ownerCars">
+                        <tr ng-repeat="car in carCtrl.cars">
                             <td>{{car.carName}}</td>
                             <td>{{car.carType}}</td>
                             <td>{{car.seatNumber}}</td>
@@ -63,6 +68,3 @@
 
     </body>
 </html>
-
-
-
