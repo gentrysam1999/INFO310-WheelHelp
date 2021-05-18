@@ -45,6 +45,10 @@ module.factory('carAPI', function ($resource) {
     return $resource('/api/cars');
 });
 
+module.factory('carTypeAPI', function ($resource) {
+    return $resource('/api/types');
+});
+
 module.factory('registerCarAPI', function ($resource) {
     return $resource('/api/cars/register');
 });
@@ -141,17 +145,18 @@ module.controller('CustomerController', function (customerRegisterAPI, $window, 
     };
 });
 
-module.controller('CarController', function (registerCarAPI, $window, $sessionStorage, carAPI, carOwnerAPI) {
+module.controller('CarController', function (registerCarAPI, $window, $sessionStorage, carAPI, carOwnerAPI, carTypeAPI, $scope) {
     this.listMessage = "Please register your car here:";
-
-
+    this.types = carTypeAPI.query();
     this.cars = carAPI.query();
+    this.selectType = function (selectedType) {
 
+    };
 //        this.selectCategory = function (selectedCat) {
 //        this.products = categoryAPI.query({"category": selectedCat});
-        //this.requests = studentRequestDAO.query({"studentID": $sessionStorage.student.studentID});
-        this.ownerCars = carOwnerAPI.query({'ownerId': $sessionStorage.owner.OwnerID});
-    
+    //this.requests = studentRequestDAO.query({"studentID": $sessionStorage.student.studentID});
+    this.ownerCars = carOwnerAPI.query({'ownerId': $sessionStorage.owner.OwnerID});
+
 
     this.registerCar = function (car) {
 
