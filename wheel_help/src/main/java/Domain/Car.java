@@ -6,7 +6,6 @@
 package Domain;
 
 import java.math.BigDecimal;
-import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -21,6 +20,9 @@ public class Car {
     private String seatNumber;
     private BigDecimal hourlyCharge;
     private String location;
+    private Integer ownerId;
+
+ 
 
     private Owner owner;
     //private Collection<String> daysAvailable;
@@ -121,7 +123,13 @@ public class Car {
     public void setOwner(Owner owner) {
         this.owner = owner;
     }
+   public Integer getOwnerId() {
+        return ownerId;
+    }
 
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+    }
     /*
 	public Collection<String> getDaysAvailable() {
 		return daysAvailable;

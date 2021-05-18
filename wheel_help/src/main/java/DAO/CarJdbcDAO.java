@@ -49,9 +49,9 @@ public class CarJdbcDAO implements CarDAO {
             stmt.setBigDecimal(5, car.getHourlyCharge());
             stmt.setString(6, car.getLocation());
             
-            Owner owner = car.getOwner();
+            //Owner owner = car.getOwner();
             
-            stmt.setInt(7, owner.getOwnerID());
+            stmt.setInt(7, car.getOwnerId());
 
             
             stmt.executeUpdate();

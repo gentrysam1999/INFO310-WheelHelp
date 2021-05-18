@@ -142,8 +142,8 @@ module.controller('CarController', function (registerCarAPI, $window, $sessionSt
      
     this.registerCar = function (car) {
 
-        $sessionStorage.owner = owner;     
-        this.ownerID = owner.OwnerID;
+            
+        car.ownerId = $sessionStorage.owner.OwnerID;
         registerCarAPI.save(null, car,
                 function () {
                     $window.location = 'viewCars.html';
