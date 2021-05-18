@@ -22,6 +22,8 @@
 var module = angular.module('ShoppingApp', ['ngResource', 'ngStorage']);
 
 
+
+
 module.factory('ownerRegisterAPI', function ($resource) {
     return $resource('/api/owners/register');
 });
@@ -39,7 +41,13 @@ module.factory('customerSignInAPI', function ($resource) {
     return $resource('/api/customers/:customerUsername');
 });
 
+module.factory('carAPI', function ($resource) {
+    return $resource('/api/cars/:id');
+});
 
+module.factory('registerCarAPI', function ($resource) {
+    return $resource('/api/cars/register');
+});
 
 
 
@@ -129,3 +137,23 @@ module.controller('CustomerController', function (customerRegisterAPI, $window, 
     };
 });
 
+module.controller('CarController', function (registerCarAPI, $window, $sessionStorage, ownerSignInAPI) {
+    this.listMessage = "Please register your car here:";
+     
+    this.registerCar = function (car) {
+
+            
+        car.ownerId = $sessionStorage.owner.OwnerID;
+        registerCarAPI.save(null, car,
+                function () {
+                    $window.location = 'viewCars.html';
+                },
+                function (error) {
+                    console.log(error);
+                }
+            
+        );
+    };
+
+
+});
