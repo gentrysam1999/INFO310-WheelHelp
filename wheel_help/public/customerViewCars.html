@@ -19,19 +19,19 @@ and open the template in the editor.
         <script src="js/main.js"></script>
 
     </head>
-    <body>
+    <body ng-controller="CarController as carCtrl" >
         <nav>
             <ul>
                 <li>Welcome ....</li>
                 <li><a href="index.html">Log Out</href></a></li>
-                <li><a href="ownerHome.html">Home</href></a></li>
- <li><a href="filterCars.html">filterCars</href></a></li>
+                <li><a href="customerHome.html">Home</href></a></li>
+
 
             </ul>
         </nav>
         <section class="container">
             <div class="innerContainer">
-                <table ng-controller="CarController as carCtrl">
+                <table   ng-controller="ShoppingCartController as cartCtrl">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -51,7 +51,7 @@ and open the template in the editor.
                             <td>{{car.seatNumber}}</td>
                             <td>{{car.hourlyCharge}}</td>
                             <td>{{car.location}}</td>
-                            <td ng-click="cartCtrl.buy(product)"><button id="buy">Buy</button></td>
+                            <td ><button ng-click="cartCtrl.rentCar(car)">Select Car</button></td>
 
 
                         </tr>

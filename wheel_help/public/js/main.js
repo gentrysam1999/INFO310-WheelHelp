@@ -2,26 +2,70 @@
 
 
 
-//class CarPurchase {
-//
-//    constructor(car, hoursSelected) {
-//       
-//        if (car) {
-//            this.car = car;
-//            this.hoursSelected = hoursSelected;
-//            this.purchasePrice = car.hourlyCharge;
-//
-//        }
-//    }
-//
-//    getCarTotal() {
-//        return this.hoursSelected * this.purchasePrice;
-//    }
-//}
+class CarPurchase {
 
+    constructor(car, hoursSelected) {
+
+        if (car) {
+            this.car = car;
+            this.hoursSelected = hoursSelected;
+            this.purchasePrice = car.hourlyCharge;
+
+        }
+    }
+
+    getCarTotal() {
+        return this.hoursSelected * this.purchasePrice;
+    }
+}
+
+class ShoppingCart {
+
+    constructor() {
+        this.items = new Array();
+    }
+
+    reconstruct(sessionData) {
+        for (let item of sessionData.items) {
+            this.addItem(Object.assign(new CarPurchase(), item));
+        }
+    }
+
+    getItems() {
+        return this.items;
+    }
+
+    addItem(item) {
+        this.items.push(item);
+    }
+
+    setCustomer(customer) {
+        this.customer = customer;
+    }
+
+    getTotal() {
+
+         let total = 0;
+        for (let item of this.items) {
+            total += item.getCarTotal();
+        }
+        return total;
+    }
+
+}
 var module = angular.module('ShoppingApp', ['ngResource', 'ngStorage']);
 
+      module.factory('cart', function ($sessionStorage) {
+        let cart = new ShoppingCart();
+                // is the cart in the session storage?
+                if ($sessionStorage.cart) {
 
+        // reconstruct the cart from the session data
+        cart.reconstruct($sessionStorage.cart);
+        }
+
+        return cart;
+        });
 
 
 module.factory('ownerRegisterAPI', function ($resource) {
@@ -55,6 +99,10 @@ module.factory('registerCarAPI', function ($resource) {
 
 module.factory('carOwnerAPI', function ($resource) {
     return $resource('/api/cars/:ownerId');
+});
+
+module.factory('transactionAPI', function ($resource) {
+    return $resource('/api/transactions');
 });
 
 
@@ -152,15 +200,13 @@ module.controller('CarController', function (registerCarAPI, $window, $sessionSt
     this.selectType = function (selectedType) {
 
     };
-    });
+});
 //        this.selectCategory = function (selectedCat) {
 //        this.products = categoryAPI.query({"category": selectedCat});
-    //this.requests = studentRequestDAO.query({"studentID": $sessionStorage.student.studentID});
-    
-   module.controller('CarListController', function (registerCarAPI, $window, $sessionStorage, carOwnerAPI,) {
+//this.requests = studentRequestDAO.query({"studentID": $sessionStorage.student.studentID});
+
+module.controller('CarListController', function (registerCarAPI, $window, $sessionStorage, carOwnerAPI, ) {
     this.ownerCars = carOwnerAPI.query({'ownerId': $sessionStorage.owner.OwnerID});
-
-
     this.registerCar = function (car) {
 
 
@@ -178,3 +224,42 @@ module.controller('CarController', function (registerCarAPI, $window, $sessionSt
 
 
 });
+
+
+
+
+
+
+
+module.controller('ShoppingCartController', function (cart, $window, $sessionStorage, carAPI, transactionAPI) {
+    this.items = cart.getItems();
+    this.total = cart.getTotal();
+    this.selectedCar = $sessionStorage.car;
+    this.rentCar = function (car) {
+        carAPI.get({'car': car}),
+                $sessionStorage.car = car;
+        $window.location = 'hireCar.html';
+    };
+    this.addCart = function (hoursSelected) {
+
+        let car = $sessionStorage.car;
+        let item = new CarPurchase(car, hoursSelected);
+        cart.addItem(item);
+        $sessionStorage.cart = cart;
+        delete $sessionStorage.car;
+        $window.location = 'cart.html';
+
+    };
+    this.checkout = function () {
+        if ($sessionStorage.cart) {
+            cart.setCustomer($sessionStorage.customer);
+            transactionAPI.save(cart);
+            //delete $sessionStorage.customer;
+            delete $sessionStorage.cart;
+            $window.location = 'confirmation.html';
+        } else {
+            alert("No product in cart");
+        }
+    };
+});
+

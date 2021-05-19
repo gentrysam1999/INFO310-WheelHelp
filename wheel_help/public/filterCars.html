@@ -19,19 +19,19 @@
             <ul>
                 <li>Welcome ....</li>
                 <li><a href="index.html">Log Out</href></a></li>
-                <li><a href="ownerHome.html">Home</href></a></li>
+                <li><a href="customerHome.html">Home</href></a></li>
 
             </ul>
         </nav>
         
             <div class="innerContainer">
 
-      <label> Search
-   <input type="text" list="dataList">
+      <label> Filter By Car Type:
+   <input type="text" list="dataList" Select>
       </label>
              <datalist id="dataList" >
          <option ng-repeat="type in carCtrl.types" value="{{type}}"> 
-        <option  >Type </option>
+        
       </datalist>
                 
               
