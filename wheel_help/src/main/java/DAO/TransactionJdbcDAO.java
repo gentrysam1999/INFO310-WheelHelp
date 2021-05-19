@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -55,6 +56,7 @@ public class TransactionJdbcDAO implements TransactionDAO {
                 insertTransactionStmt.setString(1, car.getCarId());
                 insertTransactionStmt.setInt(2, customer.getcustomerId());
                 insertTransactionStmt.setTimestamp(3, timestamp);
+                
                 insertTransactionStmt.executeUpdate();
 
                 ResultSet rs = insertTransactionStmt.getGeneratedKeys();
@@ -66,15 +68,20 @@ public class TransactionJdbcDAO implements TransactionDAO {
                 } else {
                     throw new DAOException("Problem getting generated transaction ID");
                 }
-                CarPurchase carp = transaction.getCarPurchase();
-
-                insertCarPurchaseStmt.setBigDecimal(1, carp.getHoursSelected());
-                insertCarPurchaseStmt.setBigDecimal(2, carp.getPurchasePrice());
+                
+                 Collection<CarPurchase> items = transaction.getItems();
+                 for (CarPurchase item : items) {
+               
+                insertCarPurchaseStmt.setBigDecimal(1, item.getHoursSelected());
+                insertCarPurchaseStmt.setBigDecimal(2, item.getPurchasePrice());
                 insertCarPurchaseStmt.setInt(3, transactionId);
-                insertCarPurchaseStmt.setString(4, carp.getCar().getCarId());
+                insertCarPurchaseStmt.setString(4, item.getCar().getCarId());
+                
+                
                 insertCarPurchaseStmt.executeUpdate();
 
                 dbCon.setAutoCommit(true);
+                 }
             }
         } catch (SQLException ex) {
 
@@ -102,3 +109,4 @@ public class TransactionJdbcDAO implements TransactionDAO {
     }
 
 }
+

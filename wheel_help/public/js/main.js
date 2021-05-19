@@ -42,10 +42,14 @@ class ShoppingCart {
     setCustomer(customer) {
         this.customer = customer;
     }
+    
+    setCar(car){
+        this.car = car;
+    }
 
     getTotal() {
 
-         let total = 0;
+        let total = 0;
         for (let item of this.items) {
             total += item.getCarTotal();
         }
@@ -55,17 +59,17 @@ class ShoppingCart {
 }
 var module = angular.module('ShoppingApp', ['ngResource', 'ngStorage']);
 
-      module.factory('cart', function ($sessionStorage) {
-        let cart = new ShoppingCart();
-                // is the cart in the session storage?
-                if ($sessionStorage.cart) {
+module.factory('cart', function ($sessionStorage) {
+    let cart = new ShoppingCart();
+    // is the cart in the session storage?
+    if ($sessionStorage.cart) {
 
         // reconstruct the cart from the session data
         cart.reconstruct($sessionStorage.cart);
-        }
+    }
 
-        return cart;
-        });
+    return cart;
+});
 
 
 module.factory('ownerRegisterAPI', function ($resource) {
@@ -188,7 +192,15 @@ module.controller('CustomerController', function (customerRegisterAPI, $window, 
     };
 
     this.signOut = function () {
-        delete $sessionStorage.customer;
+        if ($sessionStorage.customer) {
+            delete $sessionStorage.customer;
+        }
+        if ($sessionStorage.cart) {
+            delete $sessionStorage.cart;
+        }
+        if ($sessionStorage.car) {
+            delete $sessionStorage.car;
+        }
         $window.location = 'index.html';
     };
 });
@@ -246,13 +258,14 @@ module.controller('ShoppingCartController', function (cart, $window, $sessionSto
         let item = new CarPurchase(car, hoursSelected);
         cart.addItem(item);
         $sessionStorage.cart = cart;
-        delete $sessionStorage.car;
+        //delete $sessionStorage.car;
         $window.location = 'cart.html';
 
     };
     this.checkout = function () {
         if ($sessionStorage.cart) {
             cart.setCustomer($sessionStorage.customer);
+            cart.setCar($sessionStorage.car);
             transactionAPI.save(cart);
             //delete $sessionStorage.customer;
             delete $sessionStorage.cart;
