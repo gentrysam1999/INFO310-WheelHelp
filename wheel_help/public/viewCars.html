@@ -15,17 +15,17 @@
 
     </head>
     <body>
-        <nav>
+
+        <nav ng-controller="OwnerController as ownerCtrl">
             <ul>
                 <li>Welcome ....</li>
-                <li><a href="index.html">Log Out</href></a></li>
+                <li><a href="index.html" data-ng-click="ownerCtrl.signOut()">Sign Out</a></li>
                 <li><a href="ownerHome.html">Home</href></a></li>
-
             </ul>
         </nav>
         <section class="container">
             <div class="innerContainer">
-                <table ng-controller="CarController as carCtrl">
+                <table ng-controller="CarListController as carListCtrl">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -39,13 +39,13 @@
                     </thead>
 
                     <tbody>
-                        <tr ng-repeat="car in carCtrl.ownerCars">
+                        <tr ng-repeat="car in carListCtrl.ownerCars">
                             <td>{{car.carName}}</td>
                             <td>{{car.carType}}</td>
                             <td>{{car.seatNumber}}</td>
                             <td>{{car.hourlyCharge}}</td>
                             <td>{{car.location}}</td>
-                            <td ng-click="cartCtrl.buy(product)"><button id="buy">Buy</button></td>
+
 
 
                         </tr>

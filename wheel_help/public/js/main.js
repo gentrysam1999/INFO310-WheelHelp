@@ -2,26 +2,74 @@
 
 
 
-//class CarPurchase {
-//
-//    constructor(car, hoursSelected) {
-//       
-//        if (car) {
-//            this.car = car;
-//            this.hoursSelected = hoursSelected;
-//            this.purchasePrice = car.hourlyCharge;
-//
-//        }
-//    }
-//
-//    getCarTotal() {
-//        return this.hoursSelected * this.purchasePrice;
-//    }
-//}
+class CarPurchase {
 
+    constructor(car, hoursSelected) {
+
+        if (car) {
+            this.car = car;
+            this.hoursSelected = hoursSelected;
+            this.purchasePrice = car.hourlyCharge;
+
+        }
+    }
+
+    getCarTotal() {
+        return this.hoursSelected * this.purchasePrice;
+    }
+}
+
+class ShoppingCart {
+
+    constructor() {
+        this.items = new Array();
+    }
+
+    reconstruct(sessionData) {
+        for (let item of sessionData.items) {
+            this.addItem(Object.assign(new CarPurchase(), item));
+        }
+    }
+
+    getItems() {
+        return this.items;
+    }
+
+    addItem(item) {
+        this.items.push(item);
+    }
+
+    setCustomer(customer) {
+        this.customer = customer;
+    }
+
+    setCar(car) {
+        this.car = car;
+    }
+
+    getTotal() {
+
+        let total = 0;
+        for (let item of this.items) {
+            total += item.getCarTotal();
+        }
+        return total;
+    }
+
+}
 var module = angular.module('ShoppingApp', ['ngResource', 'ngStorage']);
 
+module.factory('cart', function ($sessionStorage) {
+    let cart = new ShoppingCart();
+    // is the cart in the session storage?
+    if ($sessionStorage.cart) {
 
+        // reconstruct the cart from the session data
+        cart.reconstruct($sessionStorage.cart);
+    }
+
+    return cart;
+});
 
 
 module.factory('ownerRegisterAPI', function ($resource) {
@@ -45,12 +93,20 @@ module.factory('carAPI', function ($resource) {
     return $resource('/api/cars');
 });
 
+module.factory('carTypeAPI', function ($resource) {
+    return $resource('/api/types');
+});
+
 module.factory('registerCarAPI', function ($resource) {
     return $resource('/api/cars/register');
 });
 
 module.factory('carOwnerAPI', function ($resource) {
     return $resource('/api/cars/:ownerId');
+});
+
+module.factory('transactionAPI', function ($resource) {
+    return $resource('/api/transactions');
 });
 
 
@@ -134,25 +190,44 @@ module.controller('CustomerController', function (customerRegisterAPI, $window, 
                 }
         );
     };
-
     this.signOut = function () {
-        delete $sessionStorage.customer;
+        if ($sessionStorage.customer) {
+            delete $sessionStorage.customer;
+        }
+        if ($sessionStorage.cart) {
+            delete $sessionStorage.cart;
+        }
+        if ($sessionStorage.car) {
+            delete $sessionStorage.car;
+        }
         $window.location = 'index.html';
     };
+
+    this.home = function () {
+
+        if ($sessionStorage.cart) {
+            delete $sessionStorage.cart;
+        }
+        if ($sessionStorage.car) {
+            delete $sessionStorage.car;
+        }
+    };
+
 });
-
-module.controller('CarController', function (registerCarAPI, $window, $sessionStorage, carAPI, carOwnerAPI) {
+module.controller('CarController', function (registerCarAPI, $window, $sessionStorage, carAPI, carOwnerAPI, carTypeAPI, $scope) {
     this.listMessage = "Please register your car here:";
-
-
+    this.types = carTypeAPI.query();
     this.cars = carAPI.query();
+    this.selectType = function (selectedType) {
 
-//        this.selectCategory = function (selectedCat) {
-//        this.products = categoryAPI.query({"category": selectedCat});
-        //this.requests = studentRequestDAO.query({"studentID": $sessionStorage.student.studentID});
-        this.ownerCars = carOwnerAPI.query({'ownerId': $sessionStorage.owner.OwnerID});
-    
+    };
+});
+// this.selectCategory = function (selectedCat) {
+// this.products = categoryAPI.query({"category": selectedCat});
+//this.requests = studentRequestDAO.query({"studentID": $sessionStorage.student.studentID});
 
+module.controller('CarListController', function (registerCarAPI, $window, $sessionStorage, carOwnerAPI, ) {
+    this.ownerCars = carOwnerAPI.query({'ownerId': $sessionStorage.owner.OwnerID});
     this.registerCar = function (car) {
 
 
@@ -167,6 +242,38 @@ module.controller('CarController', function (registerCarAPI, $window, $sessionSt
 
         );
     };
-
-
 });
+module.controller('ShoppingCartController', function (cart, $window, $sessionStorage, carAPI, transactionAPI) {
+    this.items = cart.getItems();
+    this.total = cart.getTotal();
+    this.selectedCar = $sessionStorage.car;
+    this.rentCar = function (car) {
+        carAPI.get({'car': car}),
+                $sessionStorage.car = car;
+        $window.location = 'hireCar.html';
+    };
+    this.addCart = function (hoursSelected) {
+
+        let car = $sessionStorage.car;
+        let item = new CarPurchase(car, hoursSelected);
+        cart.addItem(item);
+        $sessionStorage.cart = cart;
+        //delete $sessionStorage.car;
+        $window.location = 'cart.html';
+    };
+    this.checkout = function () {
+        if ($sessionStorage.cart) {
+            cart.setCustomer($sessionStorage.customer);
+            cart.setCar($sessionStorage.car);
+            transactionAPI.save(cart);
+            //delete $sessionStorage.customer;
+            delete $sessionStorage.cart;
+            $window.location = 'confirmation.html';
+        } else {
+            alert("No product in cart");
+        }
+    };
+})
+        ;
+
+

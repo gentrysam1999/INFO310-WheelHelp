@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html data-ng-app="ShoppingApp">
+    <head>
+        <title>buy</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="js/angular.js"></script>
+        <script src="js/angular-resource.js"></script>
+        <script src="js/ngStorage.js"></script>
+        <script src="js/main.js"></script>
+
+    </head>
+
+
+    <body data-ng-controller="ShoppingCartController as cartCtrl"  >
+
+        <nav ng-controller="CustomerController as customerCtrl">
+            <ul>
+                <li>Welcome ....</li>
+                <li><a href="index.html" data-ng-click="customerCtrl.signOut()">Sign Out</a></li>
+                <li><a href="customerHome.html" data-ng-click="customerCtrl.home()">Home</href></a></li>
+            </ul>
+        </nav>
+
+
+        <h1>Shopping Cart</h1>
+
+
+
+        <table class="center" data-ng-controller="ShoppingCartController as cartCtrl">
+            <thead>
+                <tr>
+                    <th>Car</th>
+                    <th>Price</th>
+                    <th>Hire Time</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in cartCtrl.items">
+                    <td>{{item.car.carName}} </td>
+                    <td>{{item.car.hourlyCharge}}</td>
+                    <td>{{item.hoursSelected}}</td>
+                    <td>{{cartCtrl.total}}  </td>
+
+                </tr>
+<!--            <br>
+                 <tr>
+                    <td>Total Cost</td>
+               
+                    <td>{{cartCtrl.total}}</td>
+                </tr>-->
+            
+            <tbody>
+        </table>
+        <br>
+        <br>
+<button ng-click="cartCtrl.checkout()"> Checkout Cart </button>
+    </body>
+</html>
+

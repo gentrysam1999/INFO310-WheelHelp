@@ -6,29 +6,37 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="css/homePage.css">
-		  
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="js/angular.js"></script>
         <script src="js/angular-resource.js"></script>
         <script src="js/ngStorage.js"></script>
         <script src="js/main.js"></script>
-       
+
     </head>
-    <body ng-controller="OwnerController as ownerCtrl">
-        <nav ng-controller="OwnerController as ownerCtrl">
+    <body ng-controller="CarController as carCtrl">
+        <nav>
             <ul>
                 <li>Welcome ....</li>
-                <li><a href="index.html" data-ng-click="ownerCtrl.signOut()">Sign Out</a></li>
-                <li><a href="ownerHome.html">Home</href></a></li>
+                <li><a href="index.html">Log Out</href></a></li>
+                <li><a href="customerHome.html">Home</href></a></li>
+
             </ul>
         </nav>
-        <section class="container">
+        
             <div class="innerContainer">
-                <button onclick="location.href='listCar.html'">List a Car</button>
-                <button onclick="location.href='viewCars.html'">View my Cars</button>
-                <button onclick="location.href='transaction.html'">Transaction</button>
+
+      <label> Filter By Car Type:
+   <input type="text" list="dataList" Select>
+      </label>
+             <datalist id="dataList" >
+         <option ng-repeat="type in carCtrl.types" value="{{type}}"> 
+        
+      </datalist>
+                
+              
+
             </div>
-        </section>
 
         <footer>
             <a href="#" class="fa fa-facebook"></a>
@@ -36,9 +44,6 @@
             <a href="#" class="fa fa-envelope"></a>
 
         </footer>
-        
+
     </body>
 </html>
-
-
-
