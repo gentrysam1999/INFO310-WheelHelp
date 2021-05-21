@@ -12,7 +12,7 @@
         <script src="js/ngStorage.js"></script>
         <script src="js/main.js"></script>
     </head>
-    <body ng-controller="CarController as carCtrl">
+    <body ng-controller="CarListController as carListCtrl">
                 <nav ng-controller="OwnerController as ownerCtrl">
             <ul>
                 <li>Welcome ....</li>
@@ -28,8 +28,8 @@
                 <div>
 
                 
-                    <p>{{carCtrl.listMessage}}</p>
-                    <form  ng-submit="carCtrl.registerCar(car)" required>
+                    <p>{{carListCtrl.listMessage}}</p>
+                    <form  ng-submit="carListCtrl.registerCar(car)" required>
                         
 
 
@@ -71,3 +71,5 @@
         </footer>
     </body>
 </html>
+
+

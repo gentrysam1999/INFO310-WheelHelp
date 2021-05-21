@@ -42,8 +42,8 @@ class ShoppingCart {
     setCustomer(customer) {
         this.customer = customer;
     }
-    
-    setCar(car){
+
+    setCar(car) {
         this.car = car;
     }
 
@@ -190,7 +190,6 @@ module.controller('CustomerController', function (customerRegisterAPI, $window, 
                 }
         );
     };
-
     this.signOut = function () {
         if ($sessionStorage.customer) {
             delete $sessionStorage.customer;
@@ -203,8 +202,18 @@ module.controller('CustomerController', function (customerRegisterAPI, $window, 
         }
         $window.location = 'index.html';
     };
-});
 
+    this.home = function () {
+
+        if ($sessionStorage.cart) {
+            delete $sessionStorage.cart;
+        }
+        if ($sessionStorage.car) {
+            delete $sessionStorage.car;
+        }
+    };
+
+});
 module.controller('CarController', function (registerCarAPI, $window, $sessionStorage, carAPI, carOwnerAPI, carTypeAPI, $scope) {
     this.listMessage = "Please register your car here:";
     this.types = carTypeAPI.query();
@@ -213,8 +222,8 @@ module.controller('CarController', function (registerCarAPI, $window, $sessionSt
 
     };
 });
-//        this.selectCategory = function (selectedCat) {
-//        this.products = categoryAPI.query({"category": selectedCat});
+// this.selectCategory = function (selectedCat) {
+// this.products = categoryAPI.query({"category": selectedCat});
 //this.requests = studentRequestDAO.query({"studentID": $sessionStorage.student.studentID});
 
 module.controller('CarListController', function (registerCarAPI, $window, $sessionStorage, carOwnerAPI, ) {
@@ -233,16 +242,7 @@ module.controller('CarListController', function (registerCarAPI, $window, $sessi
 
         );
     };
-
-
 });
-
-
-
-
-
-
-
 module.controller('ShoppingCartController', function (cart, $window, $sessionStorage, carAPI, transactionAPI) {
     this.items = cart.getItems();
     this.total = cart.getTotal();
@@ -260,7 +260,6 @@ module.controller('ShoppingCartController', function (cart, $window, $sessionSto
         $sessionStorage.cart = cart;
         //delete $sessionStorage.car;
         $window.location = 'cart.html';
-
     };
     this.checkout = function () {
         if ($sessionStorage.cart) {
@@ -274,5 +273,7 @@ module.controller('ShoppingCartController', function (cart, $window, $sessionSto
             alert("No product in cart");
         }
     };
-});
+})
+        ;
+
 
