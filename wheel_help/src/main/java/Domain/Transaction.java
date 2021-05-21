@@ -5,8 +5,10 @@
  */
 package Domain;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 /**
  *
@@ -19,6 +21,8 @@ public class Transaction {
     private Car car;
     private Customer customer;
     private CarPurchase carpurchase;
+private Collection<CarPurchase> items;
+
 
     public Transaction() {
     }
@@ -73,6 +77,24 @@ public class Transaction {
         this.carpurchase = carpurchase;
     }
     
+        public Collection<CarPurchase> getItems() {
+        return items;
+    }
+
+    public void setItems(Collection<CarPurchase> items) {
+        this.items = items;
+    }
+    
+        public BigDecimal getTotal() {
+
+        BigDecimal total = BigDecimal.ZERO;
+
+        for (CarPurchase item : items) {
+            total = total.add(item.getCarTotal());
+        }
+
+        return total;
+        }
     
 
     @Override

@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html ng-app="ShoppingApp">
     <head>
         <title>Sign In</title>
@@ -14,18 +19,19 @@
         <script src="js/main.js"></script>
 
     </head>
-    <body>
-
-        <nav ng-controller="OwnerController as ownerCtrl">
+    <body ng-controller="CarController as carCtrl" >
+        
+        <nav ng-controller="CustomerController as customerCtrl">
             <ul>
                 <li>Welcome ....</li>
-                <li><a href="index.html" data-ng-click="ownerCtrl.signOut()">Sign Out</a></li>
-                <li><a href="ownerHome.html">Home</href></a></li>
+                <li><a href="index.html" data-ng-click="customerCtrl.signOut()">Sign Out</a></li>
+                <li><a href="customerHome.html" data-ng-click="customerCtrl.home()">Home</href></a></li>
             </ul>
         </nav>
+        
         <section class="container">
             <div class="innerContainer">
-                <table ng-controller="CarListController as carListCtrl">
+                <table   ng-controller="ShoppingCartController as cartCtrl">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -39,13 +45,13 @@
                     </thead>
 
                     <tbody>
-                        <tr ng-repeat="car in carListCtrl.ownerCars">
+                        <tr ng-repeat="car in carCtrl.cars">
                             <td>{{car.carName}}</td>
                             <td>{{car.carType}}</td>
                             <td>{{car.seatNumber}}</td>
                             <td>{{car.hourlyCharge}}</td>
                             <td>{{car.location}}</td>
-
+                            <td ><button ng-click="cartCtrl.rentCar(car)">Select Car</button></td>
 
 
                         </tr>
@@ -63,6 +69,3 @@
 
     </body>
 </html>
-
-
-

@@ -12,8 +12,14 @@
         <script src="js/ngStorage.js"></script>
         <script src="js/main.js"></script>
     </head>
-    <body ng-controller="CarController as carCtrl">
-
+    <body ng-controller="CarListController as carListCtrl">
+                <nav ng-controller="OwnerController as ownerCtrl">
+            <ul>
+                <li>Welcome ....</li>
+                 <li><a href="index.html" data-ng-click="ownerCtrl.signOut()">Sign Out</a></li>
+                 <li><a href="ownerHome.html">Home</href></a></li>
+            </ul>
+        </nav>
 
         <section class = "container">
             <div>
@@ -22,8 +28,8 @@
                 <div>
 
                 
-                    <p>{{carCtrl.listMessage}}</p>
-                    <form  ng-submit="carCtrl.registerCar(car)" required>
+                    <p>{{carListCtrl.listMessage}}</p>
+                    <form  ng-submit="carListCtrl.registerCar(car)" required>
                         
 
 
@@ -65,3 +71,5 @@
         </footer>
     </body>
 </html>
+
+

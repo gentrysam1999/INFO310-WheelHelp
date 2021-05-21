@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+
+<html data-ng-app="ShoppingApp">
+	<head>
+		<title>Products</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="js/angular.js"></script>
+		<script src="js/angular-resource.js"></script>
+		<script src="js/ngStorage.js"></script>
+		<script src="js/main.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	</head>
+
+    <body>
+
+        <nav ng-controller="CustomerController as customerCtrl">
+            <ul>
+                <li>Welcome ....</li>
+                <li><a href="index.html" data-ng-click="customerCtrl.signOut()">Sign Out</a></li>
+                <li><a href="customerHome.html" data-ng-click="customerCtrl.home()">Home</href></a></li>
+            </ul>
+        </nav>
+
+
+
+
+		<h1>Thank You For Using Wheelhelp</h1>
+                
+                
+                <h2>We have emailed you the details of your Car Hire.</h2>
+		
+    </body>
+</html>
+
