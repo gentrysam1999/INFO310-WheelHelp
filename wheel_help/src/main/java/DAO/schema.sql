@@ -33,7 +33,8 @@ CREATE TABLE  Owner (
     Username VARCHAR(30),
     Password VARCHAR(30),
 	 Email VARCHAR(30),
-  CONSTRAINT owner_pk PRIMARY KEY (Owner_ID)
+  CONSTRAINT owner_pk PRIMARY KEY (Owner_ID, Username)
+
    
 );
  
@@ -52,12 +53,12 @@ CREATE TABLE  Car (
  
 CREATE TABLE  Transaction (
     Transaction_ID INTEGER auto_increment,
-	 Car_ID VARCHAR(20),
+	 Owner_Id VARCHAR(20),
 	 Customer_ID INTEGER,
     Transaction_Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	 Transaction_Total DECIMAL(7,2),
 	 CONSTRAINT transaction_pk PRIMARY KEY (Transaction_ID),
-	 CONSTRAINT transaction_carid_fk FOREIGN KEY (Car_ID) REFERENCES Car (Car_ID),
+	 CONSTRAINT transaction_carid_fk FOREIGN KEY (Owner_ID) REFERENCES Owner(Owner_ID),
 	 CONSTRAINT transaction_customerid_fk FOREIGN KEY (Customer_ID) REFERENCES Customer (Customer_ID)
 );
 

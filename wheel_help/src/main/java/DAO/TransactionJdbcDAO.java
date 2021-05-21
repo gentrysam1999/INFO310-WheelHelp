@@ -9,6 +9,7 @@ import Domain.Car;
 import Domain.CarPurchase;
 import Domain.Customer;
 import Domain.Transaction;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,6 +17,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +29,10 @@ import java.util.logging.Logger;
 public class TransactionJdbcDAO implements TransactionDAO {
 
     private final String url = JdbcConnection.getDefaultConnectionUri();
+    
+    
+
+
 
     @Override
     public void save(Transaction transaction) {
@@ -34,7 +40,7 @@ public class TransactionJdbcDAO implements TransactionDAO {
         Connection dbCon = JdbcConnection.getConnection(url);
 
         try {
-            String sql = "insert into Transaction (car_id, customer_id, transaction_date) values (?, ?, ?)";
+            String sql = "insert into Transaction (owner_id, customer_id, transaction_date) values (?, ?, ?)";
 
             try (
                      PreparedStatement insertTransactionStmt = dbCon.prepareStatement(
@@ -53,7 +59,7 @@ public class TransactionJdbcDAO implements TransactionDAO {
                 LocalDateTime date = transaction.getTransactionDate();
                 Timestamp timestamp = Timestamp.valueOf(date);
 
-                insertTransactionStmt.setString(1, car.getCarId());
+                insertTransactionStmt.setInt(1, car.getOwnerId());
                 insertTransactionStmt.setInt(2, customer.getcustomerId());
                 insertTransactionStmt.setTimestamp(3, timestamp);
                 
@@ -107,6 +113,35 @@ public class TransactionJdbcDAO implements TransactionDAO {
             }
         }
     }
+        @Override
+    public Collection<Transaction> getOwnerTransactions(String owner_id) {
 
+        String sql = "SELECT * FROM transaction where owner_id = ?";
+
+        try (
+                Connection dbCon = JdbcConnection.getConnection(url); 
+                PreparedStatement stmt = dbCon.prepareStatement(sql); 
+                ) {
+            stmt.setString(1, owner_id);
+            ResultSet rs = stmt.executeQuery();
+
+            ArrayList<Transaction> userTransactions = new ArrayList<>();
+
+            while (rs.next()) {
+                Transaction tran = new Transaction(
+                        rs.getInt("transaction_Id"),
+                        rs.getInt("owner_id"),
+                        rs.getInt("customer_id"),
+                        rs.getTimestamp("transaction_date"),
+                        rs.getBigDecimal("transaction_total")
+                );
+                System.out.println(tran);
+                userTransactions.add(tran);
+            }
+            return userTransactions;
+        } catch (SQLException ex) {
+            throw new DAOException(ex.getMessage(), ex);
+        }
+    }
 }
 

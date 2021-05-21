@@ -16,33 +16,43 @@ import java.util.Collection;
  */
 public class Transaction {
 
-    private int transcactionID;
+    private int transactionID;
+    private int ownerId;
+    private int customerId;
+    private Timestamp date;
+    private BigDecimal total;
     private LocalDateTime transactionDate;
     private Car car;
     private Customer customer;
+    private Transaction transaction;
     private CarPurchase carpurchase;
-private Collection<CarPurchase> items;
 
+    private Collection<CarPurchase> items;
 
     public Transaction() {
     }
 
-    public Transaction(int transcactionID, LocalDateTime transactionDate, Car car, Customer customer, CarPurchase carpurchase) {
-        this.transcactionID = transcactionID;
-        this.transactionDate = transactionDate;
-        this.car = car;
-        this.customer = customer;
-        this.carpurchase = carpurchase;
+//    public Transaction(int transactionID, LocalDateTime transactionDate, Car car, Customer customer, CarPurchase carpurchase) {
+//        this.transactionID = transactionID;
+//        this.transactionDate = transactionDate;
+//        this.car = car;
+//        this.customer = customer;
+//        this.carpurchase = carpurchase;
+//    }
+    public Transaction(int transactionID, int ownerId, int customerId, Timestamp date, BigDecimal total) {
+        this.transactionID = transactionID;
+        this.ownerId = ownerId;
+        this.customerId = customerId;
+        this.date = date;
+        this.total = total;
     }
 
-
-
     public int getTranscactionID() {
-        return transcactionID;
+        return transactionID;
     }
 
     public void setTranscactionID(int transcactionID) {
-        this.transcactionID = transcactionID;
+        this.transactionID = transcactionID;
     }
 
     public LocalDateTime getTransactionDate() {
@@ -76,16 +86,64 @@ private Collection<CarPurchase> items;
     public void setCarPurchase(CarPurchase carpurchase) {
         this.carpurchase = carpurchase;
     }
-    
-        public Collection<CarPurchase> getItems() {
+
+    public Collection<CarPurchase> getItems() {
         return items;
     }
 
     public void setItems(Collection<CarPurchase> items) {
         this.items = items;
     }
-    
-        public BigDecimal getTotal() {
+
+    public int getTransactionID() {
+        return transactionID;
+    }
+
+    public void setTransactionID(int transactionID) {
+        this.transactionID = transactionID;
+    }
+
+    public int getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(int ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public Timestamp getDate() {
+        return date;
+    }
+
+    public void setDate(Timestamp date) {
+        this.date = date;
+    }
+
+    public Transaction getTransaction() {
+        return transaction;
+    }
+
+    public void setTransaction(Transaction transaction) {
+        this.transaction = transaction;
+    }
+
+    public CarPurchase getCarpurchase() {
+        return carpurchase;
+    }
+
+    public void setCarpurchase(CarPurchase carpurchase) {
+        this.carpurchase = carpurchase;
+    }
+
+    public BigDecimal getTotal() {
 
         BigDecimal total = BigDecimal.ZERO;
 
@@ -94,12 +152,11 @@ private Collection<CarPurchase> items;
         }
 
         return total;
-        }
-    
+    }
 
     @Override
     public String toString() {
-        return "Transaction{" + "transcactionID=" + transcactionID + ", transactionDate=" + transactionDate + ", car=" + car + ", customer=" + customer + '}';
+        return "Transaction{" + "transcactionID=" + transactionID + ", transactionDate=" + transactionDate + ", car=" + car + ", customer=" + customer + '}';
     }
 
 }

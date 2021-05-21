@@ -109,13 +109,19 @@ module.factory('transactionAPI', function ($resource) {
     return $resource('/api/transactions');
 });
 
+module.factory('ownerTransactionAPI', function ($resource) {
+    return $resource('/api/transactions/ownerId');
+});
+
+
+
 
 
 
 module.controller('OwnerController', function (ownerRegisterAPI, $window, ownerSignInAPI, $sessionStorage) {
     this.signInMessage = "Please sign in to continue.";
     this.checkSignIn = function () {
-
+ 
         if ($sessionStorage.owner) {
             this.signedIn = true;
             this.welcome = "Welcome " + $sessionStorage.owner.username;
@@ -135,8 +141,8 @@ module.controller('OwnerController', function (ownerRegisterAPI, $window, ownerS
     };
     let ctrl = this;
     this.signIn = function (username, password) {
-
-
+ 
+ 
         ownerSignInAPI.get({'username': username},
                 function (owner) {
                     $sessionStorage.owner = owner;
@@ -147,7 +153,7 @@ module.controller('OwnerController', function (ownerRegisterAPI, $window, ownerS
                 }
         );
     };
-
+ 
     this.signOut = function () {
         delete $sessionStorage.owner;
         $window.location = 'index.html';
@@ -155,7 +161,8 @@ module.controller('OwnerController', function (ownerRegisterAPI, $window, ownerS
 });
 
 
-module.controller('CustomerController', function (customerRegisterAPI, $window, customerSignInAPI, $sessionStorage) {
+module.controller('CustomerController', function (customerRegisterAPI, $window, customerSignInAPI, $sessionStorage, transactionAPI) {
+    
     this.signInMessage = "Please sign in to continue.";
     this.checkSignIn = function () {
 
@@ -190,6 +197,8 @@ module.controller('CustomerController', function (customerRegisterAPI, $window, 
                 }
         );
     };
+    
+    
     this.signOut = function () {
         if ($sessionStorage.customer) {
             delete $sessionStorage.customer;
@@ -275,5 +284,12 @@ module.controller('ShoppingCartController', function (cart, $window, $sessionSto
     };
 })
         ;
+        
+        module.controller('TransactionController', function($window, $sessionStorage, ownerTransactionAPI){
+
+this.ownerTransactions = ownerTransactionAPI.query({'ownerId': $sessionStorage.owner.OwnerID});
+
+
+});
 
 
