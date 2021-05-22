@@ -30,7 +30,7 @@ public class Car {
     public Car() {
     }
 
-    public Car(String carId, String carName, String carType, String seatNumber, BigDecimal hourlyCharge, String location) {
+    public Car(String carId, String carName, String carType, String seatNumber, BigDecimal hourlyCharge, String location, int ownerId) {
 
         this.carId = carId;
         this.carName = carName;
@@ -38,6 +38,7 @@ public class Car {
         this.seatNumber = seatNumber;
         this.hourlyCharge = hourlyCharge;
         this.location = location;
+        this.ownerId = ownerId;
 
     }
 

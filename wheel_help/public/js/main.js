@@ -109,6 +109,17 @@ module.factory('transactionAPI', function ($resource) {
     return $resource('/api/transactions');
 });
 
+module.factory('ownerTransactionAPI', function ($resource) {
+    return $resource('/api/transactions/:ownerId');
+});
+
+module.factory('customerTransactionAPI', function ($resource) {
+    return $resource('/api/customertransactions/:customerUsername');
+});
+
+
+
+
 
 
 
@@ -155,7 +166,8 @@ module.controller('OwnerController', function (ownerRegisterAPI, $window, ownerS
 });
 
 
-module.controller('CustomerController', function (customerRegisterAPI, $window, customerSignInAPI, $sessionStorage) {
+module.controller('CustomerController', function (customerRegisterAPI, $window, customerSignInAPI, $sessionStorage, transactionAPI) {
+
     this.signInMessage = "Please sign in to continue.";
     this.checkSignIn = function () {
 
@@ -190,6 +202,8 @@ module.controller('CustomerController', function (customerRegisterAPI, $window, 
                 }
         );
     };
+
+
     this.signOut = function () {
         if ($sessionStorage.customer) {
             delete $sessionStorage.customer;
@@ -261,7 +275,7 @@ module.controller('ShoppingCartController', function (cart, $window, $sessionSto
         //delete $sessionStorage.car;
         $window.location = 'cart.html';
     };
-    this.checkout = function () {
+    this.checkout = function (transaction) {
         if ($sessionStorage.cart) {
             cart.setCustomer($sessionStorage.customer);
             cart.setCar($sessionStorage.car);
@@ -273,7 +287,30 @@ module.controller('ShoppingCartController', function (cart, $window, $sessionSto
             alert("No product in cart");
         }
     };
-})
-        ;
+});
+
+
+
+
+module.controller('OwnerTransactionController', function ($sessionStorage, ownerTransactionAPI, customerTransactionAPI) {
+    this.Message = "Here are your past transactions:";
+
+    this.ownerTransactions = ownerTransactionAPI.query({'ownerId': $sessionStorage.owner.OwnerID});
+
+
+});
+
+module.controller('CustomerTransactionController', function ($sessionStorage, ownerTransactionAPI, customerTransactionAPI) {
+    this.Message = "Here are your past transactions:";
+
+    this.customerTransactions = customerTransactionAPI.query({'customerUsername': $sessionStorage.customer.customerUsername});
+
+
+});
+
+
+
+
+
 
 

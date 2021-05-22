@@ -30,7 +30,7 @@ public class CustomerJdbcDAO implements CustomerDAO {
     @Override
     public void saveCustomer(Customer customer) {
 
-        String sql = "insert into Customer (Username, password,  EmailAddress, first_name, last_name, phone) values (?, ?, ?, ?, ?, ?)";
+        String sql = "insert into Customer (customer_Username, password,  EmailAddress, first_name, last_name, phone) values (?, ?, ?, ?, ?, ?)";
 
         try (
                 Connection dbCon = JdbcConnection.getConnection(url);
@@ -53,7 +53,7 @@ public class CustomerJdbcDAO implements CustomerDAO {
     @Override
     public Customer getCustomer(String username) {
 
-        String sql = "SELECT * FROM CUSTOMER where Username = ?";
+        String sql = "SELECT * FROM CUSTOMER where customer_Username = ?";
 
         try (
                 Connection dbCon = JdbcConnection.getConnection(url); 
@@ -64,7 +64,7 @@ public class CustomerJdbcDAO implements CustomerDAO {
 
             if (rs.next()) {
                 int customerID = rs.getInt("Customer_ID");
-                String customerUsername = rs.getString("Username");
+                String customerUsername = rs.getString("customer_Username");
                 String password = rs.getString("Password");
                 String emailAddress = rs.getString("EmailAddress");
                 String firstName = rs.getString("First_Name");
@@ -84,7 +84,7 @@ public class CustomerJdbcDAO implements CustomerDAO {
 
     @Override
     public Boolean validateCredentials(String username, String password) {
-        String sql = "SELECT * FROM CUSTOMER where Username = ? and Password = ?";
+        String sql = "SELECT * FROM CUSTOMER where customer_Username = ? and Password = ?";
         try (
                 Connection dbCon = JdbcConnection.getConnection(url); 
                 PreparedStatement stmt = dbCon.prepareStatement(sql); 

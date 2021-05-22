@@ -6,15 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="css/homePage.css">
-        
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-       <script src="js/angular.js"></script>
+        <script src="js/angular.js"></script>
         <script src="js/angular-resource.js"></script>
         <script src="js/ngStorage.js"></script>
         <script src="js/main.js"></script>
-       
+
     </head>
-  <body ng-controller="CustomerController as customerCtrl">
+    <body ng-controller="CustomerTransactionController as customerTransactionCtrl">
+
         <nav ng-controller="CustomerController as customerCtrl">
             <ul>
                 <li>Welcome ....</li>
@@ -22,10 +23,38 @@
                 <li><a href="customerHome.html">Home</href></a></li>
             </ul>
         </nav>
+          <p>{{transactionCtrl.Message}}</p>
         <section class="container">
             <div class="innerContainer">
-                <button onclick="location.href='customerViewCars.html'">Rent a car</button>
-                <button onclick="location.href='customerTransactions.html'">Transaction</button>
+                <table >
+                    
+                    <thead>
+                        <tr>
+                            <th>Transaction ID</th>
+                           <th>Transaction Owner Id</th>
+                            <th>Transaction Customer Id</th>
+                            
+                            <th>Transaction Date</th>
+                            
+                  
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr ng-repeat="transaction in customerTransactionCtrl.customerTransactions">
+                            <td>{{transaction.transactionID}}</td>
+                            <td>{{transaction.ownerId}}</td>
+                            <td>{{transaction.customerUsername}}</td>
+                            <td>{{transaction.date}}</td>
+                            
+                      
+
+
+
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
@@ -35,9 +64,6 @@
             <a href="#" class="fa fa-envelope"></a>
 
         </footer>
-        
+
     </body>
 </html>
-
-
-
