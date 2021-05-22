@@ -114,7 +114,7 @@ module.factory('ownerTransactionAPI', function ($resource) {
 });
 
 module.factory('customerTransactionAPI', function ($resource) {
-    return $resource('/api/transactions/:customerId');
+    return $resource('/api/customertransactions/:customerUsername');
 });
 
 
@@ -126,7 +126,7 @@ module.factory('customerTransactionAPI', function ($resource) {
 module.controller('OwnerController', function (ownerRegisterAPI, $window, ownerSignInAPI, $sessionStorage) {
     this.signInMessage = "Please sign in to continue.";
     this.checkSignIn = function () {
- 
+
         if ($sessionStorage.owner) {
             this.signedIn = true;
             this.welcome = "Welcome " + $sessionStorage.owner.username;
@@ -146,8 +146,8 @@ module.controller('OwnerController', function (ownerRegisterAPI, $window, ownerS
     };
     let ctrl = this;
     this.signIn = function (username, password) {
- 
- 
+
+
         ownerSignInAPI.get({'username': username},
                 function (owner) {
                     $sessionStorage.owner = owner;
@@ -158,7 +158,7 @@ module.controller('OwnerController', function (ownerRegisterAPI, $window, ownerS
                 }
         );
     };
- 
+
     this.signOut = function () {
         delete $sessionStorage.owner;
         $window.location = 'index.html';
@@ -167,7 +167,7 @@ module.controller('OwnerController', function (ownerRegisterAPI, $window, ownerS
 
 
 module.controller('CustomerController', function (customerRegisterAPI, $window, customerSignInAPI, $sessionStorage, transactionAPI) {
-    
+
     this.signInMessage = "Please sign in to continue.";
     this.checkSignIn = function () {
 
@@ -202,8 +202,8 @@ module.controller('CustomerController', function (customerRegisterAPI, $window, 
                 }
         );
     };
-    
-    
+
+
     this.signOut = function () {
         if ($sessionStorage.customer) {
             delete $sessionStorage.customer;
@@ -287,16 +287,30 @@ module.controller('ShoppingCartController', function (cart, $window, $sessionSto
             alert("No product in cart");
         }
     };
-})
-        ;
-        
-        module.controller('TransactionController', function($sessionStorage, ownerTransactionAPI, customerTransactionAPI){
-this.Message = "Here are your pastr transactions:";
+});
 
-this.ownerTransactions = ownerTransactionAPI.query({'ownerId': $sessionStorage.owner.OwnerID});
-this.customerTransactions = customerTransactionAPI.query({'customerId': $sessionStorage.customer.customerID});
+
+
+
+module.controller('OwnerTransactionController', function ($sessionStorage, ownerTransactionAPI, customerTransactionAPI) {
+    this.Message = "Here are your past transactions:";
+
+    this.ownerTransactions = ownerTransactionAPI.query({'ownerId': $sessionStorage.owner.OwnerID});
 
 
 });
+
+module.controller('CustomerTransactionController', function ($sessionStorage, ownerTransactionAPI, customerTransactionAPI) {
+    this.Message = "Here are your past transactions:";
+
+    this.customerTransactions = customerTransactionAPI.query({'customerUsername': $sessionStorage.customer.customerUsername});
+
+
+});
+
+
+
+
+
 
 

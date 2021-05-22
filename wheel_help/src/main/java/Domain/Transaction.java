@@ -18,7 +18,8 @@ public class Transaction {
 
     private int transactionID;
     private int ownerId;
-    private int customerId;
+     private String customerUsername;
+//    private int customerId;
     private Timestamp date;
     private BigDecimal total;
     private LocalDateTime transactionDate;
@@ -26,16 +27,17 @@ public class Transaction {
     private Customer customer;
     private Transaction transaction;
     private CarPurchase carpurchase;
+   
 
     private Collection<CarPurchase> items;
 
     public Transaction() {
     }
 
-    public Transaction(int transactionID, int ownerId, int customerId, Timestamp date, BigDecimal total) {
+    public Transaction(int transactionID, int ownerId, String customerUsername, Timestamp date, BigDecimal total) {
         this.transactionID = transactionID;
         this.ownerId = ownerId;
-        this.customerId = customerId;
+        this.customerUsername = customerUsername;
         this.date = date;
         this.total = total;
     }
@@ -122,13 +124,23 @@ public class Transaction {
         this.ownerId = ownerId;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public String getCustomerUsername() {
+        return customerUsername;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setCustomerUsername(String customerUsername) {
+        this.customerUsername = customerUsername;
     }
+    
+    
+
+//    public int getCustomerId() {
+//        return customerId;
+//    }
+//
+//    public void setCustomerId(int customerId) {
+//        this.customerId = customerId;
+//    }
 
     public Timestamp getDate() {
         return date;

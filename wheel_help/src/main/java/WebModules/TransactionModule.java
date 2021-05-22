@@ -30,13 +30,15 @@ public class TransactionModule extends Jooby {
             String ownerId = req.param("ownerId").value();
             return transactionDao.getOwnerTransactions(ownerId);
         });
+        
+            get("/api/customertransactions/:customerUsername", (req) -> {
+            String customerUsername = req.param("customerUsername").value();
+        return transactionDao.getCustomerTransactions(customerUsername);
+    }); 
 
     }
 
-    get("/api/transactions/:customerId", (req) -> {
-            String customerId = req.param("customerId").value();
-        return transactionDao.getCustomerTransactions(customerId);
-    });  
+ 
 
      
  

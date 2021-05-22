@@ -18,13 +18,13 @@ DROP TABLE OWNER
 
 CREATE TABLE  Customer (
 	 Customer_ID INTEGER auto_increment,
-    Username VARCHAR(30),
+    Customer_Username VARCHAR(30),
     Password VARCHAR(30),
     EmailAddress VARCHAR(60),
     First_Name VARCHAR(30),
     Last_Name VARCHAR(50),
     Phone INTEGER,
-	CONSTRAINT customer_pk PRIMARY KEY (Customer_ID)
+	CONSTRAINT customer_pk PRIMARY KEY (Customer_ID, Customer_Username)
 );
  
 
@@ -54,12 +54,12 @@ CREATE TABLE  Car (
 CREATE TABLE  Transaction (
     Transaction_ID INTEGER auto_increment,
 	 Owner_Id VARCHAR(20),
-	 Customer_ID INTEGER,
+	 Customer_Username VARCHAR(30),
     Transaction_Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	 Transaction_Total DECIMAL(7,2),
 	 CONSTRAINT transaction_pk PRIMARY KEY (Transaction_ID),
 	 CONSTRAINT transaction_carid_fk FOREIGN KEY (Owner_ID) REFERENCES Owner(Owner_ID),
-	 CONSTRAINT transaction_customerid_fk FOREIGN KEY (Customer_ID) REFERENCES Customer (Customer_ID)
+	 CONSTRAINT transaction_customerid_fk FOREIGN KEY (Customer_username) REFERENCES Customer (Customer_username)
 );
 
 Create Table Car_Purchase(

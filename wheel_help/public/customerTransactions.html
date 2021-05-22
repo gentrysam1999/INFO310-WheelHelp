@@ -14,16 +14,16 @@
         <script src="js/main.js"></script>
 
     </head>
-    <body ng-controller="OwnerTransactionController as ownerTransactionCtrl">
+    <body ng-controller="CustomerTransactionController as customerTransactionCtrl">
 
-        <nav ng-controller="OwnerController as ownerCtrl">
+        <nav ng-controller="CustomerController as customerCtrl">
             <ul>
                 <li>Welcome ....</li>
-                <li><a href="index.html" data-ng-click="ownerCtrl.signOut()">Sign Out</a></li>
-                <li><a href="ownerHome.html">Home</href></a></li>
+                <li><a href="index.html" data-ng-click="customerCtrl.signOut()">Sign Out</a></li>
+                <li><a href="customerHome.html">Home</href></a></li>
             </ul>
         </nav>
-          <p>{{ownerTransactionCtrl.Message}}</p>
+          <p>{{transactionCtrl.Message}}</p>
         <section class="container">
             <div class="innerContainer">
                 <table >
@@ -42,7 +42,7 @@
                     </thead>
 
                     <tbody>
-                        <tr ng-repeat="transaction in ownerTransactionCtrl.ownerTransactions">
+                        <tr ng-repeat="transaction in customerTransactionCtrl.customerTransactions">
                             <td>{{transaction.transactionID}}</td>
                             <td>{{transaction.ownerId}}</td>
                             <td>{{transaction.customerUsername}}</td>

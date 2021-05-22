@@ -40,7 +40,7 @@ public class TransactionJdbcDAO implements TransactionDAO {
         Connection dbCon = JdbcConnection.getConnection(url);
 
         try {
-            String sql = "insert into Transaction (owner_id, customer_id, transaction_date) values (?, ?, ?)";
+            String sql = "insert into Transaction (owner_id, customer_username, transaction_date) values (?, ?, ?)";
 
             try (
                      PreparedStatement insertTransactionStmt = dbCon.prepareStatement(
@@ -60,7 +60,7 @@ public class TransactionJdbcDAO implements TransactionDAO {
                 Timestamp timestamp = Timestamp.valueOf(date);
 
                 insertTransactionStmt.setInt(1, car.getOwnerId());
-                insertTransactionStmt.setInt(2, customer.getcustomerId());
+                insertTransactionStmt.setString(2, customer.getcustomerUsername());
                 insertTransactionStmt.setTimestamp(3, timestamp);
                 
                 insertTransactionStmt.executeUpdate();
@@ -113,6 +113,8 @@ public class TransactionJdbcDAO implements TransactionDAO {
             }
         }
     }
+    
+    
         @Override
     public Collection<Transaction> getOwnerTransactions(String ownerId) {
 
@@ -132,15 +134,50 @@ public class TransactionJdbcDAO implements TransactionDAO {
                         
                         int transactionID = rs.getInt("transaction_Id");
                         int ownerID = rs.getInt("owner_id");
-                        int customerId = rs.getInt("customer_id");
+                        String customerUsername = rs.getString("customer_username");
                         Timestamp date = rs.getTimestamp("transaction_date");
                         BigDecimal total = rs.getBigDecimal("transaction_total");
                         
-                 Transaction tran = new Transaction(transactionID, ownerID, customerId, date, total);
+                 Transaction tran = new Transaction(transactionID, ownerID, customerUsername, date, total);
                 System.out.println(tran);
                 userTransactions.add(tran);
             }
             return userTransactions;
+            
+
+        } catch (SQLException ex) {
+            throw new DAOException(ex.getMessage(), ex);
+        }
+    }
+    
+    @Override
+        public Collection<Transaction> getCustomerTransactions(String customerUsername) {
+
+        String sql = "SELECT * FROM transaction where customer_username = ?";
+
+        try (
+                Connection dbCon = JdbcConnection.getConnection(url); 
+                PreparedStatement stmt = dbCon.prepareStatement(sql); 
+                ) {
+            stmt.setString(1, customerUsername);
+            ResultSet rs = stmt.executeQuery();
+
+            ArrayList<Transaction> customerTransactions = new ArrayList<>();
+
+            while (rs.next()) {
+                
+                        
+                        int transactionID = rs.getInt("transaction_Id");
+                        int ownerID = rs.getInt("owner_id");
+                        String username = rs.getString("customer_username");
+                        Timestamp date = rs.getTimestamp("transaction_date");
+                        BigDecimal total = rs.getBigDecimal("transaction_total");
+                        
+                 Transaction tran = new Transaction(transactionID, ownerID, username, date, total);
+                System.out.println(tran);
+                customerTransactions.add(tran);
+            }
+            return customerTransactions;
             
 
         } catch (SQLException ex) {
