@@ -15,6 +15,7 @@ import java.util.Collection;
 public interface TransactionDAO {
 	
 		void save(Transaction tran);
-                public Collection<Transaction> getOwnerTransactions(String owner_id);
+                public Collection<Transaction> getOwnerTransactions(String ownerId);
+                public Collection<Transaction> getCustomerTransactions(String customerId);
 	
 }

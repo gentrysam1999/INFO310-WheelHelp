@@ -14,7 +14,7 @@
         <script src="js/main.js"></script>
 
     </head>
-    <body>
+    <body ng-controller="TransactionController as transactionCtrl">
 
         <nav ng-controller="OwnerController as ownerCtrl">
             <ul>
@@ -23,13 +23,19 @@
                 <li><a href="ownerHome.html">Home</href></a></li>
             </ul>
         </nav>
+          <p>{{transactionCtrl.Message}}</p>
         <section class="container">
             <div class="innerContainer">
-                <table ng-controller="TransactionController as transactionCtrl">
+                <table >
+                    
                     <thead>
                         <tr>
                             <th>Transaction ID</th>
+                           <th>Transaction Owner Id</th>
+                            <th>Transaction Customer Id</th>
+                            
                             <th>Transaction Date</th>
+                            
                   
 
                         </tr>
@@ -38,7 +44,10 @@
                     <tbody>
                         <tr ng-repeat="transaction in transactionCtrl.ownerTransactions">
                             <td>{{transaction.transactionID}}</td>
+                            <td>{{transaction.ownerId}}</td>
+                            <td>{{transaction.customerId}}</td>
                             <td>{{transaction.date}}</td>
+                            
                       
 
 

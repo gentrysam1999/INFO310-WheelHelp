@@ -18,8 +18,6 @@ import org.jooby.Status;
 public class TransactionModule extends Jooby {
 
     private TransactionJdbcDAO transactionDao = new TransactionJdbcDAO();
-    
-   
 
     public TransactionModule(TransactionDAO transactionDao) {
         post("/api/transactions", (req, rsp) -> {
@@ -27,14 +25,19 @@ public class TransactionModule extends Jooby {
             transactionDao.save(tran);
             rsp.status(Status.CREATED);
         });
-        
-                get("/api/transactions/:ownerId", (req) -> {
+
+        get("/api/transactions/:ownerId", (req) -> {
             String ownerId = req.param("ownerId").value();
             return transactionDao.getOwnerTransactions(ownerId);
-        });  
+        });
 
     }
-    
+
+    get("/api/transactions/:customerId", (req) -> {
+            String customerId = req.param("customerId").value();
+        return transactionDao.getCustomerTransactions(customerId);
+    });  
+
      
  
 

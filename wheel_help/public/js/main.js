@@ -110,8 +110,13 @@ module.factory('transactionAPI', function ($resource) {
 });
 
 module.factory('ownerTransactionAPI', function ($resource) {
-    return $resource('/api/transactions/ownerId');
+    return $resource('/api/transactions/:ownerId');
 });
+
+module.factory('customerTransactionAPI', function ($resource) {
+    return $resource('/api/transactions/:customerId');
+});
+
 
 
 
@@ -270,7 +275,7 @@ module.controller('ShoppingCartController', function (cart, $window, $sessionSto
         //delete $sessionStorage.car;
         $window.location = 'cart.html';
     };
-    this.checkout = function () {
+    this.checkout = function (transaction) {
         if ($sessionStorage.cart) {
             cart.setCustomer($sessionStorage.customer);
             cart.setCar($sessionStorage.car);
@@ -285,9 +290,11 @@ module.controller('ShoppingCartController', function (cart, $window, $sessionSto
 })
         ;
         
-        module.controller('TransactionController', function($window, $sessionStorage, ownerTransactionAPI){
+        module.controller('TransactionController', function($sessionStorage, ownerTransactionAPI, customerTransactionAPI){
+this.Message = "Here are your pastr transactions:";
 
 this.ownerTransactions = ownerTransactionAPI.query({'ownerId': $sessionStorage.owner.OwnerID});
+this.customerTransactions = customerTransactionAPI.query({'customerId': $sessionStorage.customer.customerID});
 
 
 });

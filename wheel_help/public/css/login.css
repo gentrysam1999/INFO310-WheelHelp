@@ -68,3 +68,9 @@ form input{
     font-size: 15px;
 }
 
+
+form label{
+    display: inline-block;
+    width: 200px;
+    text-align: right;
+}

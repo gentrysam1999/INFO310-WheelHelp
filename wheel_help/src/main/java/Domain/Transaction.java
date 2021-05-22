@@ -32,13 +32,6 @@ public class Transaction {
     public Transaction() {
     }
 
-//    public Transaction(int transactionID, LocalDateTime transactionDate, Car car, Customer customer, CarPurchase carpurchase) {
-//        this.transactionID = transactionID;
-//        this.transactionDate = transactionDate;
-//        this.car = car;
-//        this.customer = customer;
-//        this.carpurchase = carpurchase;
-//    }
     public Transaction(int transactionID, int ownerId, int customerId, Timestamp date, BigDecimal total) {
         this.transactionID = transactionID;
         this.ownerId = ownerId;
@@ -46,6 +39,24 @@ public class Transaction {
         this.date = date;
         this.total = total;
     }
+
+
+    
+
+//    public Transaction(int transactionID, LocalDateTime transactionDate, Car car, Customer customer, CarPurchase carpurchase) {
+//        this.transactionID = transactionID;
+//        this.transactionDate = transactionDate;
+//        this.car = car;
+//        this.customer = customer;
+//        this.carpurchase = carpurchase;
+//    }
+//    public Transaction(int transactionID, int ownerId, int customerId, Timestamp date, BigDecimal total) {
+//        this.transactionID = transactionID;
+//        this.ownerId = ownerId;
+//        this.customerId = customerId;
+//        this.date = date;
+//        this.total = total;
+//    }
 
     public int getTranscactionID() {
         return transactionID;

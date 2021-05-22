@@ -114,7 +114,7 @@ public class TransactionJdbcDAO implements TransactionDAO {
         }
     }
         @Override
-    public Collection<Transaction> getOwnerTransactions(String owner_id) {
+    public Collection<Transaction> getOwnerTransactions(String ownerId) {
 
         String sql = "SELECT * FROM transaction where owner_id = ?";
 
@@ -122,23 +122,27 @@ public class TransactionJdbcDAO implements TransactionDAO {
                 Connection dbCon = JdbcConnection.getConnection(url); 
                 PreparedStatement stmt = dbCon.prepareStatement(sql); 
                 ) {
-            stmt.setString(1, owner_id);
+            stmt.setString(1, ownerId);
             ResultSet rs = stmt.executeQuery();
 
             ArrayList<Transaction> userTransactions = new ArrayList<>();
 
             while (rs.next()) {
-                Transaction tran = new Transaction(
-                        rs.getInt("transaction_Id"),
-                        rs.getInt("owner_id"),
-                        rs.getInt("customer_id"),
-                        rs.getTimestamp("transaction_date"),
-                        rs.getBigDecimal("transaction_total")
-                );
+                
+                        
+                        int transactionID = rs.getInt("transaction_Id");
+                        int ownerID = rs.getInt("owner_id");
+                        int customerId = rs.getInt("customer_id");
+                        Timestamp date = rs.getTimestamp("transaction_date");
+                        BigDecimal total = rs.getBigDecimal("transaction_total");
+                        
+                 Transaction tran = new Transaction(transactionID, ownerID, customerId, date, total);
                 System.out.println(tran);
                 userTransactions.add(tran);
             }
             return userTransactions;
+            
+
         } catch (SQLException ex) {
             throw new DAOException(ex.getMessage(), ex);
         }
