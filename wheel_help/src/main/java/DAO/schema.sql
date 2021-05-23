@@ -17,14 +17,14 @@ DROP TABLE OWNER
 
 
 CREATE TABLE  Customer (
-	 Customer_ID INTEGER auto_increment,
+    Customer_ID INTEGER auto_increment,
     Customer_Username VARCHAR(30),
     Password VARCHAR(30),
     EmailAddress VARCHAR(60),
     First_Name VARCHAR(30),
     Last_Name VARCHAR(50),
     Phone INTEGER,
-	CONSTRAINT customer_pk PRIMARY KEY (Customer_ID, Customer_Username)
+    CONSTRAINT customer_pk PRIMARY KEY (Customer_ID, Customer_Username)
 );
  
 
@@ -45,31 +45,31 @@ CREATE TABLE  Car (
     Seat_Number vARCHAR(20),
     Hourly_Charge DECIMAL(7,2),
     Location VARCHAR(70),
-	 owner_Id integer,
+    owner_Id integer,
     CONSTRAINT car_pk PRIMARY KEY (Car_ID),
-	 CONSTRAINT car_ownerid_fk FOREIGN KEY (owner_id) REFERENCES Owner (Owner_id)
+    CONSTRAINT car_ownerid_fk FOREIGN KEY (owner_id) REFERENCES Owner (Owner_id)
 );
 
  
 CREATE TABLE  Transaction (
     Transaction_ID INTEGER auto_increment,
-	 Owner_Id VARCHAR(20),
-	 Customer_Username VARCHAR(30),
+    Owner_Id VARCHAR(20),
+    Customer_Username VARCHAR(30),
     Transaction_Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	 Transaction_Total DECIMAL(7,2),
-	 CONSTRAINT transaction_pk PRIMARY KEY (Transaction_ID),
-	 CONSTRAINT transaction_carid_fk FOREIGN KEY (Owner_ID) REFERENCES Owner(Owner_ID),
-	 CONSTRAINT transaction_customerid_fk FOREIGN KEY (Customer_username) REFERENCES Customer (Customer_username)
+    Transaction_Total DECIMAL(7,2),
+    CONSTRAINT transaction_pk PRIMARY KEY (Transaction_ID),
+    CONSTRAINT transaction_carid_fk FOREIGN KEY (Owner_ID) REFERENCES Owner(Owner_ID),
+    CONSTRAINT transaction_customerid_fk FOREIGN KEY (Customer_username) REFERENCES Customer (Customer_username)
 );
 
 Create Table Car_Purchase(
-hours_selected decimal(5,3) not null,
-Purchase_Price decimal(5,2) not null,
-Transaction_Id integer (7),
-car_id varchar (7),
-constraint Car_Purchase_Pk primary key (Transaction_id, car_id),
-constraint Car_Purchase_Fk_transaction foreign key (Transaction_id) references transaction,
-constraint Car_Purchase_Fk_car foreign key (car_id) references car
+    hours_selected decimal(5,3) not null,
+    Purchase_Price decimal(5,2) not null,
+    Transaction_Id integer (7),
+    car_id varchar (7),
+    constraint Car_Purchase_Pk primary key (Transaction_id, car_id),
+    constraint Car_Purchase_Fk_transaction foreign key (Transaction_id) references transaction,
+    constraint Car_Purchase_Fk_car foreign key (car_id) references car
 )
 
 /*
