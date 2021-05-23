@@ -16,9 +16,7 @@
     <body ng-controller="CarListController as carListCtrl">
                 <nav ng-controller="OwnerController as ownerCtrl">
             <ul>
-                <li>Welcome ....</li>
-                 <li><a href="index.html" data-ng-click="ownerCtrl.signOut()">Sign Out</a></li>
-                 <li><a href="ownerHome.html">Home</href></a></li>
+                <div ng-include ="'OwnerNav.html' "></div>
             </ul>
         </nav>
 

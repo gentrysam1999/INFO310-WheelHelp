@@ -128,8 +128,8 @@ module.controller('OwnerController', function (ownerRegisterAPI, $window, ownerS
     this.checkSignIn = function () {
 
         if ($sessionStorage.owner) {
-            this.signedIn = true;
-            this.welcome = "Welcome " + $sessionStorage.owner.username;
+            ctrl.signedIn = true;
+            ctrl.welcome = "Welcome " + $sessionStorage.owner.Username;
         } else {
             this.signedIn = false;
         }
@@ -173,7 +173,7 @@ module.controller('CustomerController', function (customerRegisterAPI, $window, 
 
         if ($sessionStorage.customer) {
             this.signedIn = true;
-            this.welcome = "Welcome " + $sessionStorage.customer.customerUsername;
+            this.welcome = "Welcome " + $sessionStorage.customer.customerEmail;
         } else {
             this.signedIn = false;
         }
