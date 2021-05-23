@@ -6,78 +6,80 @@ and open the template in the editor.
 -->
 <html data-ng-app="ShoppingApp">
 
-    <head>
-        <title>buy</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="js/angular.js"></script>
-        <script src="js/angular-resource.js"></script>
-        <script src="js/ngStorage.js"></script>
-        <script src="js/main.js"></script>
+	<head>
+		<title>buy</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="css/about.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="js/angular.js"></script>
+		<script src="js/angular-resource.js"></script>
+		<script src="js/ngStorage.js"></script>
+		<script src="js/main.js"></script>
 
-    </head>
+	</head>
 
-    <body data-ng-controller="ShoppingCartController as cartCtrl">
-
-
-        <nav ng-controller="CustomerController as customerCtrl">
-            <ul>
-                <li>Welcome ....</li>
-                <li><a href="index.html" data-ng-click="customerCtrl.signOut()">Sign Out</a></li>
-                <li><a href="customerHome.html" data-ng-click="customerCtrl.home()">Home</href></a></li>
-            </ul>
-        </nav>
-        <h1>How long do you want to hire?</h1>
-        <table class="center">
-
-            <thead>
+	<body data-ng-controller="ShoppingCartController as cartCtrl">
 
 
+		<nav ng-controller="CustomerController as customerCtrl">
+			<ul>
+				<li>Welcome ....</li>
+				<li><a href="index.html" data-ng-click="customerCtrl.signOut()">Sign Out</a></li>
+				<li><a href="customerHome.html" data-ng-click="customerCtrl.home()">Home</href></a></li>
+			</ul>
+		</nav>
+		<h1>How long do you want to hire?</h1>
+		<table class="center">
 
-            </thead>
-
-
-            <tbody>
-
-                <tr><td>ID
-                    </td> 
-                    <td>{{cartCtrl.selectedCar.carId}}</td>
-                </tr>
-
-                <tr><td>Name
-                    </td> 
-                    <td>{{cartCtrl.selectedCar.carName}}</td>
-                </tr>
-
-                <tr><td>Description
-                    </td> 
-                    <td>{{cartCtrl.selectedCar.carType}}</td>
-                </tr>
-                <tr><td>Price
-                    </td> 
-                    <td>{{cartCtrl.selectedCar.hourlyCharge}}</td>
-                </tr>
+			<thead>
 
 
 
+			</thead>
 
 
-            </tbody>
-        </table>
-        <br>
-        <br>
-        <form class="form-inline" >
-            <fieldset>
-                <legend>Quantity To Buy </legend>
+			<tbody>
 
-                <label for="amount">How long would you like the car?:</label>
-                <input id = "amount" type="number"  data-ng-model="amount" name="amount" min = "1" max = 10>
-                <button ng-click="cartCtrl.addCart(amount)"> Add to Cart</button>
+				<tr><td>ID
+					</td> 
+					<td>{{cartCtrl.selectedCar.carId}}</td>
+				</tr>
 
-                <br>
+				<tr><td>Name
+					</td> 
+					<td>{{cartCtrl.selectedCar.carName}}</td>
+				</tr>
 
-            </fieldset>
-        </form>
-    </body>
+				<tr><td>Description
+					</td> 
+					<td>{{cartCtrl.selectedCar.carType}}</td>
+				</tr>
+				<tr><td>Price
+					</td> 
+					<td>{{cartCtrl.selectedCar.hourlyCharge}}</td>
+				</tr>
+
+
+
+
+
+			</tbody>
+		</table>
+		<br>
+		<br>
+		<form class="form-inline" >
+			<fieldset>
+				<legend>Quantity To Buy </legend>
+
+				<label for="amount">How long would you like the car?:</label>
+				<input id = "amount" type="number"  data-ng-model="amount" name="amount" min = "1" max = 10>
+				<button ng-click="cartCtrl.addCart(amount)"> Add to Cart</button>
+
+				<br>
+
+			</fieldset>
+		</form>
+	</body>
 </html>
