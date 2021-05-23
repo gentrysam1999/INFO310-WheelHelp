@@ -6,6 +6,7 @@
 package DAO;
 
 import Domain.Transaction;
+import java.util.Collection;
 
 /**
  *
@@ -14,5 +15,7 @@ import Domain.Transaction;
 public interface TransactionDAO {
 	
 		void save(Transaction tran);
+                public Collection<Transaction> getOwnerTransactions(String ownerId);
+                public Collection<Transaction> getCustomerTransactions(String customerId);
 	
 }

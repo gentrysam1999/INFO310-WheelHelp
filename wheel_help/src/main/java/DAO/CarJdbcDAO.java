@@ -83,8 +83,9 @@ public class CarJdbcDAO implements CarDAO {
                 String seatNumber = rs.getString("Seat_Number");
                 BigDecimal hourlyCharge = rs.getBigDecimal("Hourly_Charge");
                 String location = rs.getString("Location");
+                int ownerId = rs.getInt("owner_id");
 
-                Car car = new Car(carId, carName, carType, seatNumber, hourlyCharge, location);
+                Car car = new Car(carId, carName, carType, seatNumber, hourlyCharge, location, ownerId);
 
                 carsList.add(car);
 
@@ -157,7 +158,8 @@ public class CarJdbcDAO implements CarDAO {
                         rs.getString("car_Type"),
                         rs.getString("Seat_Number"),
                         rs.getBigDecimal("Hourly_Charge"),
-                        rs.getString("Location")
+                        rs.getString("Location"),
+                        rs.getInt("Owner_id")
                 );
                 System.out.println(car);
                 typeList.add(car);
@@ -212,7 +214,8 @@ public class CarJdbcDAO implements CarDAO {
                         rs.getString("car_Type"),
                         rs.getString("Seat_Number"),
                         rs.getBigDecimal("Hourly_Charge"),
-                        rs.getString("Location")
+                        rs.getString("Location"),
+                        rs.getInt("Owner_id")
                 );
                 System.out.println(car);
                 seatNumberList.add(car);
@@ -241,7 +244,8 @@ public class CarJdbcDAO implements CarDAO {
                         rs.getString("car_Type"),
                         rs.getString("Seat_Number"),
                         rs.getBigDecimal("Hourly_Charge"),
-                        rs.getString("Location")
+                        rs.getString("Location"),
+                        rs.getInt("Owner_id")
                 );
                 System.out.println(car);
                 userCars.add(car);

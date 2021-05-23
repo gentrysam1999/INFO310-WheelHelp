@@ -51,12 +51,12 @@ public class CarJdbcDAOTest {
 //	String carName, int carId, String carType, String seatNumber, BigDecimal hourlyCharge, String location) {
     @BeforeEach
     public void setUp() {
-        this.car1 = new Car("0917817", "Car sokmet", "suv", "1", new BigDecimal("4.00"), "26 Duke street");
+        this.car1 = new Car("0917817", "Car sokmet", "suv", "1", new BigDecimal("4.00"), "26 Duke street", 1);
 
-        this.car2 = new Car("00898297", "Car soet", "4wd", "5", new BigDecimal("6.00"), "26 Dundas street");
+        this.car2 = new Car("00898297", "Car soet", "4wd", "5", new BigDecimal("6.00"), "26 Dundas street", 1);
 
 //        
-        this.car3 = new Car("0936297", "Cat", "Caet", "4", new BigDecimal("3.00"), "2226 Dundas street");
+        this.car3 = new Car("0936297", "Cat", "Caet", "4", new BigDecimal("3.00"), "2226 Dundas street", 1);
 
         dao.saveCar(car1);
         dao.saveCar(car2);

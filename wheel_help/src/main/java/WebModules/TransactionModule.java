@@ -26,6 +26,22 @@ public class TransactionModule extends Jooby {
             rsp.status(Status.CREATED);
         });
 
+        get("/api/transactions/:ownerId", (req) -> {
+            String ownerId = req.param("ownerId").value();
+            return transactionDao.getOwnerTransactions(ownerId);
+        });
+        
+            get("/api/customertransactions/:customerUsername", (req) -> {
+            String customerUsername = req.param("customerUsername").value();
+        return transactionDao.getCustomerTransactions(customerUsername);
+    }); 
+
     }
+
+ 
+
+     
+ 
+
 
 }
