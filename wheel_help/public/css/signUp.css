@@ -12,20 +12,21 @@ body{
 
 .container div{
     width: 500px;
-    height: 300px;
     text-align: center;
-    background-color:rgba(162, 225, 255);
+    background-color: #AED9E9
 }
 
-form input{
-    width: 40%;
-}
 
 form label{
     display: inline-block;
     width: 200px;
-    text-align: right;
+    text-align: left;
 }
+
+form input{
+    padding-left: 50px;
+}
+
 
 
  #createAccBtn{
@@ -59,3 +60,6 @@ form label{
     }
 
 
+.fieldInput{
+    background-color: black;
+}
