@@ -12,6 +12,7 @@ and open the template in the editor.
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="css/index.css">
 		<link rel="stylesheet" href="css/about.css">
+		<link rel="stylesheet" href="css/listCar.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script src="js/angular.js"></script>
 		<script src="js/angular-resource.js"></script>
@@ -72,7 +73,7 @@ and open the template in the editor.
 				<legend>Quantity To Buy </legend>
 
 				<label for="amount">How long would you like the car?:</label>
-				<input id = "amount" type="number"  data-ng-model="amount" name="amount" min = "1" max = 10>
+				<input id = "amount" type="number" min="1" max="10" step="0.1"  data-ng-model="amount" name="amount"  required>
 				<button ng-click="cartCtrl.addCart(amount)"> Add to Cart</button>
 
 				<br>

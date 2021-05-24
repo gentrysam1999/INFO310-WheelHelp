@@ -84,7 +84,7 @@ public class TransactionJdbcDAO implements TransactionDAO {
                 
                 
                 
-                carDao.removeCar(item.getCar());
+//                carDao.removeCar(item.getCar());
                 insertCarPurchaseStmt.executeUpdate();
 
                 dbCon.setAutoCommit(true);

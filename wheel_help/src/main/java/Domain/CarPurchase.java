@@ -32,7 +32,7 @@ public class CarPurchase {
     }
 
     public void setPurchasePrice(BigDecimal PurchasePrice) {
-        this.purchasePrice = purchasePrice;
+        this.purchasePrice = PurchasePrice;
     }
 
     public BigDecimal getHoursSelected() {

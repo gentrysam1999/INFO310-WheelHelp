@@ -13,7 +13,7 @@ and open the template in the editor.
 
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="css/homePage.css">
-
+<link rel="stylesheet" href="css/viewCars.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="js/angular.js"></script>
         <script src="js/angular-resource.js"></script>
@@ -28,7 +28,9 @@ and open the template in the editor.
                 <div ng-include ="'CustomerNav.html' "></div>
             </ul>
         </nav>
-        
+		 <br>
+		 <h1>Select A Car</h1>
+		 <br>
         <section class="container">
             <div class="innerContainer">
                 <table   ng-controller="ShoppingCartController as cartCtrl">
@@ -40,6 +42,7 @@ and open the template in the editor.
 
                             <th>Hourly Rate</th>
                             <th>Location</th>
+									 <th>Select</th>
 
                         </tr>
                     </thead>
@@ -51,7 +54,7 @@ and open the template in the editor.
                             <td>{{car.seatNumber}}</td>
                             <td>{{car.hourlyCharge}}</td>
                             <td>{{car.location}}</td>
-                            <td ><button ng-click="cartCtrl.rentCar(car)">Select Car</button></td>
+                            <td ><button class="w3-button" ng-click="cartCtrl.rentCar(car)">Select Car</button></td>
 
 
                         </tr>
