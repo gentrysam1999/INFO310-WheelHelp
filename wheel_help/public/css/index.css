@@ -1,31 +1,38 @@
-
 ul{
     list-style-type: none;
     color: #C1C1C1;
     
 }
-
+ 
 nav a{
+	 color: #DCDCDC;
     float: right;
     padding: 14px 16px;
     margin-left: 20px;
     margin-right: 20px;
-
+	 text-decoration: none;
+ 
 }
-
+ 
+#confirmation {
+	height:30%;
+	width: 30%;
+	text-align: center;
+}
+ 
 ul a:visited{
     color: #C1C1C1;
 }
-
+ 
 body{
-    background: url(../images/Untitled\ design.png) no-repeat center center fixed; 
-    background-color: #F2F2F2;
-    -webkit-background-size: cover;
+    background: url(../images/indexBackground.png) no-repeat center center fixed; 
+	 text-align: center;
+	 -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;    
+    background-size: cover;  
 }
-
+ 
 nav{
     background-color: #1E1D1D;
     opacity: 0.97;
@@ -33,7 +40,7 @@ nav{
     width: 100%;
     
 }
-
+ 
 footer{
     /*
     background-color: #9A9A9A;
@@ -51,7 +58,7 @@ footer{
     bottom: 0;
     width: 100%;
 }
-
+ 
 footer div{
     /*
     overflow: hidden;
@@ -68,15 +75,21 @@ footer div{
     overflow: hidden;
     display: flex;
     justify-content: center;   
-
+ 
   
 }
-
+ 
 .fa {
+	text-decoration: none;
+	color: #1E1D1D;
     padding: 20px;
     font-size: 200px;
 }
-
+ 
+.fa:hover{
+	color: #DCDCDC;
+}
+ 
 #circle{
     margin-top: 50px;
     margin-bottom: 50px;
@@ -91,11 +104,11 @@ footer div{
     font-family: Copperplate;  
     opacity: 0.5;
 }
-
+ 
 #circle p {
     opacity: 1;
 }
-
+ 
 #circleContainer{
     display: flex; 
     align-items: center; 
@@ -104,9 +117,9 @@ footer div{
     animation-duration: 500ms;
     animation-iteration-count: 1;
     animation-timing-function: linear; 
-
+ 
 }
-
+ 
 @keyframes spin {
     from {
         transform:rotate(0deg);
@@ -115,9 +128,8 @@ footer div{
         transform:rotate(360deg);
     }
 }
-
+ 
 #homeBody{
     text-align: center;
 }
-
-
+ 

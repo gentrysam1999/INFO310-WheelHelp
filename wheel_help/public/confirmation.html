@@ -5,7 +5,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-
+ 
 <html data-ng-app="ShoppingApp">
 	<head>
 		<title>Products</title>
@@ -17,26 +17,34 @@ and open the template in the editor.
 		<script src="js/angular-resource.js"></script>
 		<script src="js/ngStorage.js"></script>
 		<script src="js/main.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-
+ 
 	</head>
-
-    <body>
-
+ 
+    <body ng-controller="CustomerController as customerCtrl">
+ 
         <nav ng-controller="CustomerController as customerCtrl">
             <ul>
                 <div ng-include ="'CustomerNav.html' "></div>
             </ul>
         </nav>
-
-
-
-
-		<h1>Thank You For Using Wheelhelp</h1>
-                
-                
-                <h2>We have emailed you the details of your Car Hire.</h2>
-		
+ 
+ 
+ 
+		 <div id ="confirmation">
+			<h1>Thank You For Using Wheelhelp</h1>       
+			<h2>We have emailed you the details of your Car Hire.</h2>
+		 </div>
+		 
+		 <footer>
+			  <div>
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-instagram"></a>
+            <a href="#" class="fa fa-envelope"></a>
+			  </div>
+        </footer>
+		 
     </body>
+	 
+			
 </html>
-
+ 

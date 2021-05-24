@@ -4,10 +4,11 @@
             <meta charset="utf-8">
             <title>Wheelhelp</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
+ 
             <link rel="stylesheet" href="css/index.css">
-            <link rel="stylesheet" href="css/signUp.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            
+            <link rel="stylesheet" href="css/login.css"> 
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                     <script src="js/angular.js"></script>
         <script src="js/angular-resource.js"></script>
         <script src="js/ngStorage.js"></script>
@@ -16,50 +17,51 @@
         <body ng-controller="CustomerController as customerCtrl">
             <nav>
                 <ul>
-                    <li><a href="about.html">About</href></a></li>
-                    <li><a href="login.html">Log In</href></a></li>
-                    <li><a href="index.html">Home</href></a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="login.html">Log In</a></li>
+                    <li><a href="index.html">Home</a></li>
                 </ul>
             </nav>
+			  <section id="header">
+            
+            <h1>Customer Sign Up</h1>
+            <br>
+            <p>{{customerCtrl.signInMessage}}</p>
+            <br><br>
+        </section>
             <section class = "container">
-                <div>
-                    <h2>Customer</h2>
-                    <h2>Sign Up</h2>
-
-                    <div>
-                    <form ng-submit="customerCtrl.registerCustomer(customer)" required >
+                <div class ="signupContainer">
+					 <h3>Account Details</h3>
+                 <form ng-submit="customerCtrl.registerCustomer(customer)" required >
                         <label for="customerUsername">Username:</label>
                         <input type="text" minLength = "6" maxlength = "30" class="form-control" maxlength = "15" ng-model= "customer.customerUsername" required/><br>
                         
                         <label for="customerPassword">Password:</label>
-
+ 
                         <input  type="password" minLength = "6" maxlength = "30" class="form-control" ng-model =" customer.customerPassword" required><br>
-
+ 
                         <label for="customerEmail">Email:</label>
                         <input  type="email"  minlength = "7" maxlength ="30" class="form-control" ng-model =" customer.customerEmail" required><br>
                         
                         <label for="customerFirstName">First name:</label>
                         <input type="text" minlength = "2" maxlength = "30" class="form-control" maxlength = "20" ng-model= "customer.customerFirstName" required/><br>
-
-
-
+ 
+ 
+ 
                         <label for="customerSurname">Last Name:</label>
                         <input  type="text" minlength = "2" maxlength = "40" class="form-control" maxlength = "20" ng-model= "customer.customerSurname" required/><br>
-
-
+ 
+ 
                         <label for="phoneNumber">Phone Number:</label>
                         <input  type="number"  min = "111111" max = "999999999" class="form-control" ng-model =" customer.phoneNumber" required><br>
-                        
-                        
-
-                 
+ 
                         <button type = "submit">Create Account</button>
-
+ 
                     </form>
-                    </div>
+						 <p>If you already have an account please <a id="register-link" href="customerLogin.html">log in.</a></p>
                 </div>
             </section>
-
+ 
             
             <footer>
                 <div>
@@ -67,7 +69,7 @@
                 <a href="#" class="fa fa-instagram"></a>
                 <a href="#" class="fa fa-envelope"></a>
                 </div>
-
+ 
             </footer>
         </body>
     </html>
