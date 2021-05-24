@@ -30,8 +30,7 @@ public class TransactionJdbcDAO implements TransactionDAO {
 
     private final String url = JdbcConnection.getDefaultConnectionUri();
     
-    
-
+     private CarDAO carDao = new CarJdbcDAO();
 
 
     @Override
@@ -84,6 +83,8 @@ public class TransactionJdbcDAO implements TransactionDAO {
                 insertCarPurchaseStmt.setString(4, item.getCar().getCarId());
                 
                 
+                
+                carDao.removeCar(item.getCar());
                 insertCarPurchaseStmt.executeUpdate();
 
                 dbCon.setAutoCommit(true);

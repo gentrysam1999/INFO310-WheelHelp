@@ -29,25 +29,26 @@
                     <div>
                     <form ng-submit="customerCtrl.registerCustomer(customer)" required >
                         <label for="customerUsername">Username:</label>
-                        <input type="text" class="form-control" maxlength = "15" ng-model= "customer.customerUsername" required/><br>
+                        <input type="text" minLength = "6" maxlength = "30" class="form-control" maxlength = "15" ng-model= "customer.customerUsername" required/><br>
+                        
                         <label for="customerPassword">Password:</label>
 
-                        <input  type="password" class="form-control" ng-model =" customer.customerPassword" required><br>
+                        <input  type="password" minLength = "6" maxlength = "30" class="form-control" ng-model =" customer.customerPassword" required><br>
 
                         <label for="customerEmail">Email:</label>
-                        <input  type="email" class="form-control" ng-model =" customer.customerEmail" required><br>
+                        <input  type="email"  minlength = "7" maxlength ="30" class="form-control" ng-model =" customer.customerEmail" required><br>
                         
                         <label for="customerFirstName">First name:</label>
-                        <input type="text" class="form-control" maxlength = "20" ng-model= "customer.customerFirstName" required/><br>
+                        <input type="text" minlength = "2" maxlength = "30" class="form-control" maxlength = "20" ng-model= "customer.customerFirstName" required/><br>
 
 
 
                         <label for="customerSurname">Last Name:</label>
-                        <input  type="text" class="form-control" maxlength = "20" ng-model= "customer.customerSurname" required/><br>
+                        <input  type="text" minlength = "2" maxlength = "40" class="form-control" maxlength = "20" ng-model= "customer.customerSurname" required/><br>
 
 
                         <label for="phoneNumber">Phone Number:</label>
-                        <input  type="number" class="form-control" ng-model =" customer.phoneNumber" required><br>
+                        <input  type="number"  min = "111111" max = "999999999" class="form-control" ng-model =" customer.phoneNumber" required><br>
                         
                         
 
