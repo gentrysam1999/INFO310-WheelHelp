@@ -5,7 +5,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html data-ng-app="ShoppingApp">
-
+ 
 	<head>
 		<title>buy</title>
 		<meta charset="UTF-8">
@@ -18,12 +18,12 @@ and open the template in the editor.
 		<script src="js/angular-resource.js"></script>
 		<script src="js/ngStorage.js"></script>
 		<script src="js/main.js"></script>
-
+ 
 	</head>
-
+ 
 	<body data-ng-controller="ShoppingCartController as cartCtrl">
-
-
+ 
+ 
 		<nav ng-controller="CustomerController as customerCtrl">
 			<ul>
 				 <div ng-include ="'CustomerNav.html' "></div>
@@ -31,26 +31,26 @@ and open the template in the editor.
 		</nav>
 		<h1>How long do you want to hire?</h1>
 		<table class="center">
-
+ 
 			<thead>
-
-
-
+ 
+ 
+ 
 			</thead>
-
-
+ 
+ 
 			<tbody>
-
+ 
 				<tr><td>ID
 					</td> 
 					<td>{{cartCtrl.selectedCar.carId}}</td>
 				</tr>
-
+ 
 				<tr><td>Name
 					</td> 
 					<td>{{cartCtrl.selectedCar.carName}}</td>
 				</tr>
-
+ 
 				<tr><td>Description
 					</td> 
 					<td>{{cartCtrl.selectedCar.carType}}</td>
@@ -59,11 +59,11 @@ and open the template in the editor.
 					</td> 
 					<td>{{cartCtrl.selectedCar.hourlyCharge}}</td>
 				</tr>
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
 			</tbody>
 		</table>
 		<br>
@@ -71,13 +71,13 @@ and open the template in the editor.
 		<form class="form-inline" >
 			<fieldset>
 				<legend>Quantity To Buy </legend>
-
+ 
 				<label for="amount">How long would you like the car?:</label>
 				<input id = "amount" type="number" min="1" max="10" step="0.1"  data-ng-model="amount" name="amount"  required>
 				<button ng-click="cartCtrl.addCart(amount)"> Add to Cart</button>
-
+ 
 				<br>
-
+ 
 			</fieldset>
 		</form>
 	</body>
