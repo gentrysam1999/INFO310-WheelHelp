@@ -1,5 +1,69 @@
 body{
-    background-image: none;
+    background: url(../images/test1.jpg) no-repeat center center fixed; 
+	 text-align: center;
+	 -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;  
 }
-
-
+ 
+form {
+  width: 80%;
+  margin: 0 auto;
+}
+ 
+label,
+input {
+  /* In order to define widths */
+  display: inline-block;
+}
+ 
+label {
+  width: 30%;
+  /* Positions the label text beside the input */
+  text-align: right;
+}
+ 
+label+input {
+  width: 100%;
+  /* Large margin-right to force the next element to the new-line
+           and margin-left to create a gutter between the label and input */
+  margin: 0 30% 0 4%;
+}
+ 
+ 
+/* Only the submit button is matched by this selector,
+       but to be sure you could use an id or class for that button */
+ 
+input+input {
+  float: right;
+}
+ 
+ 
+ 
+.innerContainer{
+    margin-top: 50px;
+	 background: rgba(216, 216, 216, 0.70);
+    width: 500px;
+    height: 650px;
+    text-align: center; 
+}
+ 
+.innerContainer button, .signupContainer button, .choiceContainer button{
+    display:inline-block;
+    padding:0.46em 1.6em;
+    border:0.1em solid #000000;
+    margin:0 0.2em 0.2em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#000000;
+    text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+    background-color:#FFFFFF;
+    text-align:center;
+    transition: all 0.15s;
+    font-size: 15px;
+    width: 200px;
+    }
