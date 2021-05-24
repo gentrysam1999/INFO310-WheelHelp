@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>Wheelhelp</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="css/signUp.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -29,17 +31,17 @@
 
 
 
-                        <label for="username"><b>Username:</b></label>
-                        <input type="text" maxlength = "15" ng-model= "owner.Username" required/><br>
+                        <label for="username">Username:</label>
+                        <input type="text" minLength = "6" maxlength = "30" class="form-control "  ng-model= "owner.Username" required/><br>
 
 
 
-                        <label for="password"><b>Password:</b></label>
-                        <input  type="password" ng-model =" owner.Password" required><br>
+                        <label for="password">Password:</label>
+                        <input  type="password" minLength = "6" maxlength = "30" class="form-control" ng-model =" owner.Password" required><br>
 
 
-                        <label for="email"><b>Email:</b></label>
-                        <input  type="email" ng-model =" owner.email" required><br>
+                        <label for="email">Email:</label>
+                        <input  type="email" minLength = "7" maxlength = "30" class="form-control" ng-model =" owner.email" required><br>
 
 
 

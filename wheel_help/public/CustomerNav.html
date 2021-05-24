@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div1 class = "navmen" id="menu" data-ng-controller="CustomerController as custCtrl" data-ng-init="custCtrl.checkSignIn()">
+     
+  
+  
+  
+   <div id="welcome" ng-if="custCtrl.checkSignIn">{{custCtrl.welcome}}</div>
+	<li><a href="index.html" data-ng-if="custCtrl.signedIn" data-ng-click="custCtrl.signOut()">Sign Out</a></li>
+   <li><a href="customerHome.html">Home</a></li>
+  <li> <a href="customerViewCars.html" data-ng-if="custCtrl.signedIn">Rent Cars</a></li>
+  <li> <a href="customerTransactions.html" data-ng-if="custCtrl.signedIn">Transactions</a></li>
+  
+   
+   
+  <li> <a href="signin.html" data-ng-if="!custCtrl.signedIn">Sign In</a></li>
+   
+</div1>

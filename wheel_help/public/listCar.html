@@ -4,7 +4,10 @@
         <title>List a car</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
         <link rel="stylesheet" href="css/index.css">
+		  
         <link rel="stylesheet" href="css/listCar.css">
                 <link rel="stylesheet" href="css/signUp.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,9 +19,7 @@
     <body ng-controller="CarListController as carListCtrl">
                 <nav ng-controller="OwnerController as ownerCtrl">
             <ul>
-                <li>Welcome ....</li>
-                 <li><a href="index.html" data-ng-click="ownerCtrl.signOut()">Sign Out</a></li>
-                 <li><a href="ownerHome.html">Home</href></a></li>
+                <div ng-include ="'OwnerNav.html' "></div>
             </ul>
         </nav>
 
@@ -37,25 +38,25 @@
 
 
                         <label for="carId"><b>Registration Number:</b></label>
-                        <input type="text" maxlength = "6" ng-model="car.carId" required></b>
-
+                        <input type="text" minlength = "6" maxlength = "6" ng-model="car.carId" required></b>
+                        <br><br>
                         <label for="carName"><b>Car Name:</b></label>
-                        <input type="text" maxlength = "30" ng-model="car.carName" required></b>
-
+                        <input type="text" minlength= "5" maxlength = "30" ng-model="car.carName" required></b>
+<br><br>
 
                         <label for="carType"><b>Car Type:</b></label>
-                        <input type="text" maxlength = "15" ng-model="car.carType" required></b>
-
+                        <input type="text" minlength= "3" maxlength = "15" ng-model="car.carType" required></b>
+<br><br>
                         <label for="seatNumber"><b>Number of Seats:</b></label>
-                        <input type="number" maxlength = "1" ng-model="car.seatNumber" required></b>
-
+                        <input type="number" min ="1" max = "10" ng-model="car.seatNumber" required></b>
+<br><br>
                         <label for="hourlyCharge"><b>Hourly Rate:</b></label>
-                        <input type="decimal" maxlength = "4" ng-model="car.hourlyCharge" required></b>
-
+                        <input type="number" min="1.00" max="50.00" step="0.1" ng-model="car.hourlyCharge" required></b>
+<br><br>
                         <label for="location"><b>Location for pick up:</b></label>
-                        <input type="text" maxlength = "30" ng-model="car.location" required></b>
+                        <input type="text" maxlength = "50" ng-model="car.location" required></b>
 
-                        <br>
+                        <br><br>
 
                         <button type="submit">List Car</button>
 

@@ -11,6 +11,8 @@ and open the template in the editor.
 		<title>Products</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/index.css">
 		<script src="js/angular.js"></script>
 		<script src="js/angular-resource.js"></script>
 		<script src="js/ngStorage.js"></script>
@@ -23,9 +25,7 @@ and open the template in the editor.
 
         <nav ng-controller="CustomerController as customerCtrl">
             <ul>
-                <li>Welcome ....</li>
-                <li><a href="index.html" data-ng-click="customerCtrl.signOut()">Sign Out</a></li>
-                <li><a href="customerHome.html" data-ng-click="customerCtrl.home()">Home</href></a></li>
+                <div ng-include ="'CustomerNav.html' "></div>
             </ul>
         </nav>
 
