@@ -22,19 +22,32 @@
                 <div ng-include ="'CustomerNav.html' "></div>
             </ul>
         </nav>
+        <section id="header">
+            <h1>WHEELHELP</h1> 
+        </section>
+
         <section class="container">
             <div class="innerContainer">
-                <button onclick="location.href='customerViewCars.html'">Rent a car</button>
-                <button onclick="location.href='customerTransactions.html'">Transaction</button>
+                <div class = "gridContainer">
+                    <div class="gridContainerDiv">
+                        <button onclick="location.href='customerViewCars.html'">Rent a car</button>
+                        <p>Rent a car on your terms. Select a car from our diverse range.</p>
+                    </div>
+                    <div class="gridContainerDiv">
+                        <button onclick="location.href='customerTransactions.html'">Transaction</button>
+                        <p>View your past invoices.</p>
+                    </div>
+            </div>
             </div>
         </section>
- 
+        </div>
         <footer>
 			  <div>
             <a href="#" class="fa fa-facebook"></a>
             <a href="#" class="fa fa-instagram"></a>
             <a href="#" class="fa fa-envelope"></a>
 			  </div>
+              </footer>
         </footer>
         
     </body>

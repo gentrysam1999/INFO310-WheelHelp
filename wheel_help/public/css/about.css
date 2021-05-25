@@ -1,4 +1,7 @@
+body{
+    background-image: linear-gradient(rgba(0,0,0,0), rgba(216, 216, 216, 0.5));
 
+}
 #header{
     text-align: center;
     background-color:rgba(162, 225, 255, .65);
@@ -11,9 +14,6 @@
 
 }
 
-body{
-    background-image: none;
-}
 
 .gridContainer{
     display: grid;
@@ -46,4 +46,8 @@ footer{
     justify-content: center;
 
 
+}
+
+.centerFlex{
+    margin-top: 10px;
 }
