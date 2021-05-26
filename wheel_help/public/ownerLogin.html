@@ -15,7 +15,7 @@
         <script src="js/main.js"></script>
         
     </head>
-    <body ng-controller="OwnerController as ownerCtrl">
+    <body ng-controller="OwnerController as ownerCtrl" class="gradientBody">
         <nav>
             <ul>
                 <li><a href="about.html">About</a></li>
@@ -30,6 +30,7 @@
            <br><br>
         </section>
         <section class="container">
+            <div class = "outerContainer">
             <div class="innerContainer">
                 <h2>Account Details</h2>
 
@@ -47,9 +48,13 @@
                     <br>
                    <button type="submit">Log In</button>
                 </form>
+                <br>
+                <p>If you don't have an account then you can <a id="register-link" href="ownerSignUp.html">create one.</a></p>
+            </div>
             </div>
         </section>
-        <p>If you don't have an account then you can <a id="register-link" href="ownerSignUp.html">create one.</a></p>
+
+      
 
         <footer>
             <a href="#" class="fa fa-facebook"></a>

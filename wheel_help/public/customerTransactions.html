@@ -17,12 +17,14 @@
  
     </head>
     <body ng-controller="CustomerTransactionController as customerTransactionCtrl">
- 
         <nav ng-controller="CustomerController as customerCtrl">
             <ul>
                 <div ng-include ="'CustomerNav.html' "></div>
             </ul>
         </nav>
+        <section id="header">
+            <h1>WHEELHELP</h1> 
+        </section>
           <p>{{transactionCtrl.Message}}</p>
         <section class="container">
             <div class="innerContainer">
