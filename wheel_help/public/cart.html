@@ -24,13 +24,15 @@
                  <div ng-include ="'CustomerNav.html' "></div>
             </ul>
         </nav>
- 
- 
+                   <section id="header">
+            <h1>WHEELHELP</h1> 
+        </section>
+        <br>
         <h1>Shopping Cart</h1>
  
- 
- 
-        <table class="center" data-ng-controller="ShoppingCartController as cartCtrl">
+                       <section class="container">
+            <div class="innerContainer">
+        <table data-ng-controller="ShoppingCartController as cartCtrl">
             <thead>
                 <tr>
                     <th>Car</th>
@@ -56,6 +58,8 @@
             
             <tbody>
         </table>
+                		</section>
+                       </div>
         <br>
         <br>
 <button ng-click="cartCtrl.checkout()"> Checkout Cart </button>

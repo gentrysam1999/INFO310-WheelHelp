@@ -10,9 +10,13 @@ and open the template in the editor.
 		<title>buy</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="css/index.css">
+<!--		<link rel="stylesheet" href="css/index.css">
 		<link rel="stylesheet" href="css/about.css">
-		<link rel="stylesheet" href="css/listCar.css">
+		<link rel="stylesheet" href="css/hireCar.css">-->
+
+		  <link rel="stylesheet" href="css/index.css">
+		   <link rel="stylesheet" href="css/viewCars.css">
+		  <link rel="stylesheet" href="css/homePage.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script src="js/angular.js"></script>
 		<script src="js/angular-resource.js"></script>
@@ -29,8 +33,15 @@ and open the template in the editor.
 				 <div ng-include ="'CustomerNav.html' "></div>
 			</ul>
 		</nav>
+            
+                    <section id="header">
+            <h1>WHEELHELP</h1> 
+        </section>
 		<h1>How long do you want to hire?</h1>
-		<table class="center">
+                
+                        <section class="container">
+            <div class="innerContainer">
+		<table >
  
 			<thead>
  
@@ -66,15 +77,19 @@ and open the template in the editor.
  
 			</tbody>
 		</table>
+                       </div>
+        </section>
 		<br>
+		<br>
+                	<br>
 		<br>
 		<form class="form-inline" >
 			<fieldset>
-				<legend>Quantity To Buy </legend>
+				<legend>Hire Length</legend>
  
-				<label for="amount">How long would you like the car?:</label>
+				<label for="amount">How many hours would you like the car?:</label>
 				<input id = "amount" type="number" min="1" max="10" step="0.1"  data-ng-model="amount" name="amount"  required>
-				<button ng-click="cartCtrl.addCart(amount)"> Add to Cart</button>
+				<button ng-click="cartCtrl.addCart(amount)"> Rent Car</button>
  
 				<br>
  
